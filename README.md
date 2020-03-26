@@ -74,33 +74,21 @@ Sortior is an app that keeps track of basic communal tasks that are shared betwe
 
 ### Screenshots
 
-<div class="row">
-  <div class="column">
-    <img src="Screenshots/iPhone 11 Pro Max - First Screen.png" width=250>
-  </div>
-  <div class="column">
-    <img src="Screenshots/iPhone 11 Pro Max - Login.png" width=250>
-  </div>
-  <div class="column">
-    <img src="Screenshots/iPhone 11 Pro Max - Signup.png" width=250>
-  </div>
-</div>
+<p float="left">
+  <img src="Screenshots/iPhone 11 Pro Max - First Screen.png" width=250>
+  <img src="Screenshots/iPhone 11 Pro Max - Login.png" width=250> 
+  <img src="Screenshots/iPhone 11 Pro Max - Signup.png" width=250>
+</p>
 </br>
-<div class="row">
-  <div class="column">
-    <img src="Screenshots/iPhone 11 Pro Max - Tasks.png" width=250>
-  </div>
-  <div class="column">
-    <img src="Screenshots/iPhone 11 Pro Max - Tasks Detail.png" width=250>
-</div>
+<p float="left">
+  <img src="Screenshots/iPhone 11 Pro Max - Tasks.png" width=250>
+  <img src="Screenshots/iPhone 11 Pro Max - Tasks Detail.png" width=250>
+</p>
 </br>
-<div class="row">
-  <div class="column">
-    <img src="Screenshots/iPhone 11 Pro Max - Groups.png" width=250>
-  </div>
-  <div class="column">
-    <img src="Screenshots/iPhone 11 Pro Max - Groups Detail.png" width=250>
-</div>
+<p float="left">
+  <img src="Screenshots/iPhone 11 Pro Max - Groups.png" width=250>
+  <img src="Screenshots/iPhone 11 Pro Max - Groups Detail.png" width=250>
+</p>
 </br>
 
 ### Screen Recording
