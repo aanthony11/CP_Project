@@ -7,7 +7,7 @@
 2. [Schema](#Schema)
 
 ## Overview
-[Insert App Name Here] is an app that keeps track of basic communal tasks that are shared between a group of people (i.e. who's turn is it to do the dishes).
+Sortior is an app that keeps track of basic communal tasks that are shared between a group of people (i.e. who's turn is it to do the dishes).
 
 ### App Evaluation
 - **Category:** Lifestyle
@@ -71,12 +71,43 @@
 => Detail
 
 ## Wireframes
-[Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
 
-### [BONUS] Digital Wireframes & Mockups
+### Screenshots
 
-### [BONUS] Interactive Prototype
+<div class="row">
+  <div class="column">
+    <img src="Screenshots/iPhone 11 Pro Max - First Screen.png" width=250>
+  </div>
+  <div class="column">
+    <img src="Screenshots/iPhone 11 Pro Max - Login.png" width=250>
+  </div>
+  <div class="column">
+    <img src="Screenshots/iPhone 11 Pro Max - Signup.png" width=250>
+  </div>
+</div>
+</br>
+<div class="row">
+  <div class="column">
+    <img src="Screenshots/iPhone 11 Pro Max - Tasks.png" width=250>
+  </div>
+  <div class="column">
+    <img src="Screenshots/iPhone 11 Pro Max - Tasks Detail.png" width=250>
+</div>
+</br>
+<div class="row">
+  <div class="column">
+    <img src="Screenshots/iPhone 11 Pro Max - Groups.png" width=250>
+  </div>
+  <div class="column">
+    <img src="Screenshots/iPhone 11 Pro Max - Groups Detail.png" width=250>
+</div>
+</br>
+
+### Screen Recording
+
+<img src="http://g.recordit.co/L6iMC1iA2y.gif" width=250>
+
+
 
 ## Schema 
 [This section will be completed in Unit 9]
