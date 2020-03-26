@@ -35,6 +35,7 @@ Sortior is an app that keeps track of basic communal tasks that are shared betwe
 * Users can chat with their groups
 * Users can create a shared grocery list
 * Users can create a whats in th fridge list
+* +Calendar view of tasks list
 
 ### 2. Screen Archetypes
 
@@ -51,14 +52,13 @@ Sortior is an app that keeps track of basic communal tasks that are shared betwe
     * User can check off task in list, and task is designated to next person
 * Detail
     * User can tap on item to view full list in full detail
-    * ...
 
 ### 3. Navigation
 
 **Tab Navigation** (Tab to Screen)
 
 * Groups
-* Tasks Feed
+* Tasks
 
 **Flow Navigation** (Screen to Screen)
 
