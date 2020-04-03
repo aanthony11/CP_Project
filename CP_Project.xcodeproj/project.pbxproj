@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		008728FB2436C6F40075F1B2 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008728FA2436C6F40075F1B2 /* loginViewController.swift */; };
+		008728FD2436C7080075F1B2 /* signupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008728FC2436C7080075F1B2 /* signupViewController.swift */; };
 		06A264EEE870F3E323A422BE /* Pods_CP_ProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B98EF21FED09002ABD6CB668 /* Pods_CP_ProjectTests.framework */; };
 		13E73B4F242C225F000DCA5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E73B4E242C225F000DCA5E /* AppDelegate.swift */; };
 		13E73B51242C225F000DCA5E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E73B50242C225F000DCA5E /* SceneDelegate.swift */; };
@@ -38,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		008728FA2436C6F40075F1B2 /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
+		008728FC2436C7080075F1B2 /* signupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signupViewController.swift; sourceTree = "<group>"; };
 		13E73B4B242C225F000DCA5E /* CP_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CP_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13E73B4E242C225F000DCA5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13E73B50242C225F000DCA5E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -119,7 +123,9 @@
 				13E73B4E242C225F000DCA5E /* AppDelegate.swift */,
 				13E73B50242C225F000DCA5E /* SceneDelegate.swift */,
 				13E73B52242C225F000DCA5E /* ViewController.swift */,
+				008728FA2436C6F40075F1B2 /* loginViewController.swift */,
 				13E73B54242C225F000DCA5E /* Main.storyboard */,
+				008728FC2436C7080075F1B2 /* signupViewController.swift */,
 				13E73B57242C2262000DCA5E /* Assets.xcassets */,
 				13E73B59242C2262000DCA5E /* LaunchScreen.storyboard */,
 				13E73B5C242C2262000DCA5E /* Info.plist */,
@@ -155,7 +161,6 @@
 				3DC96409840F389ADF19F0CC /* Pods-CP_ProjectTests.debug.xcconfig */,
 				73EE0363476DEAF743F1B7B8 /* Pods-CP_ProjectTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -408,7 +413,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				008728FB2436C6F40075F1B2 /* loginViewController.swift in Sources */,
 				13E73B53242C225F000DCA5E /* ViewController.swift in Sources */,
+				008728FD2436C7080075F1B2 /* signupViewController.swift in Sources */,
 				13E73B4F242C225F000DCA5E /* AppDelegate.swift in Sources */,
 				13E73B51242C225F000DCA5E /* SceneDelegate.swift in Sources */,
 			);
@@ -584,7 +591,8 @@
 			baseConfigurationReference = 6E7D7AEBEAE27D3A580B0C28 /* Pods-CP_Project.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = CP_Project/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -592,6 +600,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "manish.rajendran.CP-Project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -602,7 +611,8 @@
 			baseConfigurationReference = 391F1FA714CA74329FD61DC6 /* Pods-CP_Project.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = CP_Project/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -610,6 +620,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "manish.rajendran.CP-Project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
