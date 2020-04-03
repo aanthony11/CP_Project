@@ -1,0 +1,1 @@
+parse-dashboard --appId Sortior --masterKey beet-swamp-ever --serverURL "https://arcane-river-31190.herokuapp.com/parse"
