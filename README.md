@@ -7,7 +7,7 @@
 2. [Schema](#Schema)
 
 ## Overview
-[Insert App Name Here] is an app that keeps track of basic communal tasks that are shared between a group of people (i.e. who's turn is it to do the dishes).
+Sortior is an app that keeps track of basic communal tasks that are shared between a group of people (i.e. who's turn is it to do the dishes).
 
 ### App Evaluation
 - **Category:** Lifestyle
@@ -23,7 +23,8 @@
 
 **Required Must-have Stories**
 
-* User is able to login to the app. (Must sign in first) 
+* User is able to login.
+* User is able to sign up.
 * User is able to create a group.
 * User is able to add a task that is displayed to everyone in the group
 * Chore designated in turn-style action
@@ -35,6 +36,8 @@
 * Users can chat with their groups
 * Users can create a shared grocery list
 * Users can create a whats in th fridge list
+* Calendar view of tasks list
+* Profile customization
 
 ### 2. Screen Archetypes
 
@@ -51,14 +54,13 @@
     * User can check off task in list, and task is designated to next person
 * Detail
     * User can tap on item to view full list in full detail
-    * ...
 
 ### 3. Navigation
 
 **Tab Navigation** (Tab to Screen)
 
 * Groups
-* Tasks Feed
+* Tasks
 
 **Flow Navigation** (Screen to Screen)
 
@@ -71,18 +73,122 @@
 => Detail
 
 ## Wireframes
-[Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
 
-### [BONUS] Digital Wireframes & Mockups
+### Screenshots
 
-### [BONUS] Interactive Prototype
+<p float="left">
+  <img src="Screenshots/iPhone 11 Pro Max - First Screen.png" width=250>
+  <img src="Screenshots/iPhone 11 Pro Max - Login.png" width=250> 
+  <img src="Screenshots/iPhone 11 Pro Max - Signup.png" width=250>
+</p>
+</br>
+<p float="left">
+  <img src="Screenshots/iPhone 11 Pro Max - Tasks.png" width=250>
+  <img src="Screenshots/iPhone 11 Pro Max - Tasks Detail.png" width=250>
+</p>
+</br>
+<p float="left">
+  <img src="Screenshots/iPhone 11 Pro Max - Groups.png" width=250>
+  <img src="Screenshots/iPhone 11 Pro Max - Groups Detail.png" width=250>
+</p>
+</br>
+
+### Screen Recording
+
+<img src="http://g.recordit.co/L6iMC1iA2y.gif" width=250>
+
+
 
 ## Schema 
-[This section will be completed in Unit 9]
 ### Models
-[Add table of models]
+</br>Task
+| Property      | Type     | Description |
+| ------------- | -------- | ------------|
+| objectId      | String   | unique id for the task (default field) |
+| creator        | Pointer to User| task creator |
+| notes       | String   | notes by author/group |
+| group | Pointer to Group   | task's association to group |
+| frequency | Array[Number]   | flexible frequency of task |
+| createdAt     | DateTime | date when task is created (default field) |
+| updatedAt     | DateTime | date when task is last updated (default field) |
+
+</br>Group
+
+
+| Property | Type | Description |
+| -------- | -------- | -------- |
+| objectId      | String   | unique id for the task (default field) |
+| name | String | name of the group |
+| users        | Array[Pointer to User]| users in group |
+| createdAt     | DateTime | date when task is created (default field) |
+| updatedAt     | DateTime | date when task is last updated (default field) |
+
+</br>User
+
+| Property | Type | Description |
+| -------- | -------- | -------- |
+| objectId      | String   | unique id for the task (default field) |
+| firstName       | String   | first name of user |
+| lastName       | String   | last name of user |
+| email       | String   | email of user |
+| salt       | String   | for hashing password |
+| password       | String   | encrypted password |
+| group        | Pointer to Group| group of user |
+| createdAt     | DateTime | date when task is created (default field) |
+| updatedAt     | DateTime | date when task is last updated (default field) |
+
 ### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+#### List of network requests by screen
+- Login Screen
+    - (Read/GET) User logs into app
+        - User can also create new profile
+- Signup Screen
+    - (Create/POST) User signs up
+- Tasks Feed Screen
+    - (Read/GET) Query all tasks from group
+    - (Create/POST) User creates new task for group
+- Tasks Detail Screen
+    - (Update/PUT) Can change task's group association
+- Groups Screen
+    - (Read/GET) Display all groups that user is in
+    - (Create/POST) User can create new group
+- Groups Detail Screen 
+    - (Create/POST) User can add others to it
+
+#### Code snippets
+##### (Read/GET) Query all tasks from group
+```
+// iOS
+// (Read/GET) Query all tasks where user is in current group
+let query = PFQuery(className:"Task")
+query.whereKey("users", equalTo: currentUser)
+query.order(byDescending: "createdAt")
+query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
+   if let error = error {
+      print(error.localizedDescription)
+   } else if let posts = posts {
+      print("Successfully retrieved \(posts.count) posts.")
+      // TODO: Do something with posts...
+   }
+} 
+```
+##### (Read/GET) Display all groups that user is in
+```
+// iOS
+// (Read/GET) Query all groups where user is in group
+let query = PFQuery(className:"Group")
+query.whereKey("group", equalTo: currentGroup)
+query.order(byAscending: "name")
+query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
+   if let error = error {
+      print(error.localizedDescription)
+   } else if let posts = posts {
+      print("Successfully retrieved \(posts.count) posts.")
+      // TODO: Do something with posts...
+   }
+} 
+```
+
+#### OPTIONAL: Existing API endpoints
+- None
+
