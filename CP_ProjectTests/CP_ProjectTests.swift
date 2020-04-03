@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import CP_Project
+//@testable import CP_Project
 
 class CP_ProjectTests: XCTestCase {
 
