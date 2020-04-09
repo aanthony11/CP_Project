@@ -12,27 +12,44 @@ import Parse
 class loginViewController: UIViewController {
 
     @IBOutlet weak var usernameField: UITextField!
-    
     @IBOutlet weak var passwordField: UITextField!
-    
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var errorLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        errorLabel.alpha = 0
 
         // Do any additional setup after loading the view.
-        loginButton.layer.cornerRadius = 25
+//        loginButton.layer.cornerRadius = 25
+    }
+    
+    //    https://stackoverflow.com/questions/25471114/how-to-validate-an-e-mail-address-in-swift
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
     }
     
     @IBAction func onLogin(_ sender: Any) {
-        let username = usernameField.text!
+        let username = usernameField.text!.lowercased()
         let password = passwordField.text!
+        let notEmail = "Not a valid email address."
+        let loginFail = "Invalid email or password."
         
-        PFUser.logInWithUsername(inBackground: username, password: password) { (user, error) in
-            if user != nil {
-                self.performSegue(withIdentifier: "loginSegue", sender: nil)
-            } else {
-                print("Error: \(error?.localizedDescription)")
+        if isValidEmail(username) != true {
+            errorLabel.text = notEmail
+            errorLabel.alpha = 1
+        } else {
+            PFUser.logInWithUsername(inBackground: username, password: password) { (user, error) in
+                if (user != nil) {
+                    self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                } else {
+                    self.errorLabel.text = loginFail
+                    self.errorLabel.alpha = 1
+                    print("Error: \(error?.localizedDescription)")
+                }
             }
         }
         
