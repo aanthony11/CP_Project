@@ -9,6 +9,23 @@
 import UIKit
 import Parse
 
+extension UITextField {
+    func setStyleLogin() {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.frame.height))
+        self.leftView = paddingView
+        self.leftViewMode = .always
+        
+        self.layer.cornerRadius = 5
+        self.backgroundColor = UIColor(red: 232/255, green: 232/255, blue: 232/255, alpha: 1)
+    }
+}
+
+extension UIButton {
+    func setStyleLogin() {
+        self.layer.cornerRadius = 10
+    }
+}
+
 class loginViewController: UIViewController {
 
     @IBOutlet weak var usernameField: UITextField!
@@ -21,7 +38,9 @@ class loginViewController: UIViewController {
         errorLabel.alpha = 0
 
         // Do any additional setup after loading the view.
-//        loginButton.layer.cornerRadius = 25
+        usernameField.setStyleLogin()
+        passwordField.setStyleLogin()
+        loginButton.setStyleLogin()
     }
     
     //    https://stackoverflow.com/questions/25471114/how-to-validate-an-e-mail-address-in-swift
