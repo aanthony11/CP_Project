@@ -17,8 +17,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        loginButton.layer.cornerRadius = 20
-        signupButton.layer.cornerRadius = 20
+        loginButton.layer.cornerRadius = 10
+        signupButton.layer.cornerRadius = 10
     }
 
     
