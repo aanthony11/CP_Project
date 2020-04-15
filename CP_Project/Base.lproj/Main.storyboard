@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hP9-pc-Ckr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hP9-pc-Ckr">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -130,7 +130,7 @@
         <!--Shared Tasks-->
         <scene sceneID="1Ib-8r-517">
             <objects>
-                <viewController id="2LZ-nT-BYe" sceneMemberID="viewController">
+                <viewController id="2LZ-nT-BYe" customClass="TasksViewController" customModule="CP_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EV8-Qw-vlF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -144,18 +144,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="fmh-CF-51h">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskCell" id="fmh-CF-51h" customClass="TaskCell" customModule="CP_Project" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fmh-CF-51h" id="fp6-Nd-pIW">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="info.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="uRL-6I-MHD">
+                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="info.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="uRL-6I-MHD">
                                                     <rect key="frame" x="351" y="5.5" width="33" height="33"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rFh-uZ-JdB">
+                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rFh-uZ-JdB">
                                                     <rect key="frame" x="30" y="5.5" width="33" height="33"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -168,6 +168,11 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="didCompleteImageVIew" destination="rFh-uZ-JdB" id="vnS-IK-i8t"/>
+                                            <outlet property="infoImageView" destination="uRL-6I-MHD" id="J8n-Uz-TTM"/>
+                                            <outlet property="taskLabel" destination="wgm-Dp-UQS" id="faJ-HQ-04p"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -180,6 +185,9 @@
                             <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="SID-l7-QnZ" id="CfY-Ug-Biy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M3v-Zs-4WD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -247,7 +255,7 @@
                                     <action selector="onLogin:" destination="peX-mS-Ldq" eventType="touchUpInside" id="DQt-HG-6zs"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7Sz-OO-RRv">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7Sz-OO-RRv">
                                 <rect key="frame" x="49" y="313" width="316" height="136.5"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="52A-Cz-tZ9" userLabel="UsernameField">
@@ -355,7 +363,7 @@
                                     </textField>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="aVx-Iq-H5W">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="aVx-Iq-H5W">
                                 <rect key="frame" x="42" y="263" width="330" height="186.5"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9Jn-Rn-qvN">
@@ -414,7 +422,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Popover Arrow Type 2" translatesAutoresizingMaskIntoConstraints="NO" id="W8K-Tu-Dhh">
                                 <rect key="frame" x="188" y="5" width="38" height="17"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZpO-tm-iHm">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZpO-tm-iHm">
                                 <rect key="frame" x="50" y="475" width="315" height="50"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -523,15 +531,15 @@
             <point key="canvasLocation" x="999" y="1708"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Popover Arrow Type 2" width="38" height="17"/>
-        <image name="circle" catalog="system" width="64" height="60"/>
-        <image name="info.circle" catalog="system" width="64" height="60"/>
-        <image name="list.bullet" catalog="system" width="64" height="44"/>
-        <image name="person.3.fill" catalog="system" width="71" height="34"/>
-        <image name="plus.circle.fill" catalog="system" width="64" height="60"/>
-    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ltb-5g-AgW"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <image name="Popover Arrow Type 2" width="38" height="17"/>
+        <image name="circle" catalog="system" width="128" height="121"/>
+        <image name="info.circle" catalog="system" width="128" height="121"/>
+        <image name="list.bullet" catalog="system" width="128" height="88"/>
+        <image name="person.3.fill" catalog="system" width="128" height="61"/>
+        <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
+    </resources>
 </document>
