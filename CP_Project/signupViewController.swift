@@ -82,6 +82,7 @@ class signupViewController: UIViewController {
             user.password = password
             user["firstName"] = firstnameTextField.text!.lowercased()
             user["lastName"] = lastnameTextField.text!.lowercased()
+            user["tasks"] = []
             
             user.signUpInBackground { (success, error) in
             if success {

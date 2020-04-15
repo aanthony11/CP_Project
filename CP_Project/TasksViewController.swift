@@ -13,7 +13,8 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBOutlet weak var tableView: UITableView!
     
-    var tasks = [PFObject]()
+    var tasks = [String]()
+    var currentUser = PFUser.current()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,20 +22,14 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // Do any additional setup after loading the view.
         tableView.dataSource = self
         tableView.delegate = self
+        
+        self.tableView.reloadData()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        // Get Tasks from Parse
-        let query = PFQuery(className: "Tasks")
-        query.includeKeys(["task"])
-        
-        query.findObjectsInBackground { (tasks, error) in
-            if tasks != nil {
-                self.tasks = tasks!
-                self.tableView.reloadData()
-            }
+    override func viewWillAppear(_ animated: Bool) {
+        if currentUser!["tasks"] != nil {
+            tasks = currentUser!["tasks"] as! [String]
+            self.tableView.reloadData()
         }
     }
     
@@ -45,7 +40,7 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell") as! TaskCell
         
-//        cell.taskLabel.text = tasks["task"] as? String
+        cell.taskLabel.text = tasks[indexPath.row]
         
         return cell
     }
