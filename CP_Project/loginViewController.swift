@@ -51,6 +51,7 @@ class loginViewController: UIViewController {
         return emailPred.evaluate(with: email)
     }
     
+    
     @IBAction func onLogin(_ sender: Any) {
         let username = usernameField.text!.lowercased()
         let password = passwordField.text!
@@ -63,7 +64,15 @@ class loginViewController: UIViewController {
         } else {
             PFUser.logInWithUsername(inBackground: username, password: password) { (user, error) in
                 if (user != nil) {
-                    self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                    //print("Bool before: ")
+                    //print(UserDefaults.standard.bool(forKey: "loginSegue"))
+                    
+                    UserDefaults.standard.set(true, forKey: "UserLoggedIn")
+                    self.performSegue(withIdentifier: "loginSegue", sender: nil) // performs segue to login
+                    
+                    //print("Bool after: ")
+                    //print(UserDefaults.standard.bool(forKey: "loginSegue"))
+                    
                 } else {
                     self.errorLabel.text = loginFail
                     self.errorLabel.alpha = 1

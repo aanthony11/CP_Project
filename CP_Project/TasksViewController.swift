@@ -22,16 +22,16 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // Do any additional setup after loading the view.
         tableView.dataSource = self
         tableView.delegate = self
-        
+                
         self.tableView.reloadData()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        if currentUser!["tasks"] != nil {
-            tasks = currentUser!["tasks"] as! [String]
-            self.tableView.reloadData()
-        }
-    }
+     override func viewWillAppear(_ animated: Bool) {
+           if currentUser?["tasks"] != nil {
+               tasks = currentUser!["tasks"] as! [String]
+               self.tableView.reloadData()
+           }
+       }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tasks.count

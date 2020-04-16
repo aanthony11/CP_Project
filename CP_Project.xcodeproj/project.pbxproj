@@ -10,10 +10,13 @@
 		008728FB2436C6F40075F1B2 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008728FA2436C6F40075F1B2 /* loginViewController.swift */; };
 		008728FD2436C7080075F1B2 /* signupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008728FC2436C7080075F1B2 /* signupViewController.swift */; };
 		008729012436D13C0075F1B2 /* tasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008729002436D13C0075F1B2 /* tasksViewController.swift */; };
+		008729032447D8E80075F1B2 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008729022447D8E80075F1B2 /* GroupsViewController.swift */; };
+		008729072447F3580075F1B2 /* GroupDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008729062447F3580075F1B2 /* GroupDetailsViewController.swift */; };
+		00872909244800490075F1B2 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00872908244800490075F1B2 /* GroupCell.swift */; };
 		06A264EEE870F3E323A422BE /* Pods_CP_ProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B98EF21FED09002ABD6CB668 /* Pods_CP_ProjectTests.framework */; };
 		13E73B4F242C225F000DCA5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E73B4E242C225F000DCA5E /* AppDelegate.swift */; };
 		13E73B51242C225F000DCA5E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E73B50242C225F000DCA5E /* SceneDelegate.swift */; };
-		13E73B53242C225F000DCA5E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E73B52242C225F000DCA5E /* ViewController.swift */; };
+		13E73B53242C225F000DCA5E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E73B52242C225F000DCA5E /* HomeViewController.swift */; };
 		13E73B56242C225F000DCA5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13E73B54242C225F000DCA5E /* Main.storyboard */; };
 		13E73B58242C2262000DCA5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13E73B57242C2262000DCA5E /* Assets.xcassets */; };
 		13E73B5B242C2262000DCA5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13E73B59242C2262000DCA5E /* LaunchScreen.storyboard */; };
@@ -47,10 +50,13 @@
 		008728FA2436C6F40075F1B2 /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
 		008728FC2436C7080075F1B2 /* signupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signupViewController.swift; sourceTree = "<group>"; };
 		008729002436D13C0075F1B2 /* tasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tasksViewController.swift; sourceTree = "<group>"; };
+		008729022447D8E80075F1B2 /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
+		008729062447F3580075F1B2 /* GroupDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailsViewController.swift; sourceTree = "<group>"; };
+		00872908244800490075F1B2 /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		13E73B4B242C225F000DCA5E /* CP_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CP_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13E73B4E242C225F000DCA5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13E73B50242C225F000DCA5E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		13E73B52242C225F000DCA5E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		13E73B52242C225F000DCA5E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		13E73B55242C225F000DCA5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		13E73B57242C2262000DCA5E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		13E73B5A242C2262000DCA5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -130,9 +136,12 @@
 			children = (
 				13E73B4E242C225F000DCA5E /* AppDelegate.swift */,
 				13E73B50242C225F000DCA5E /* SceneDelegate.swift */,
-				13E73B52242C225F000DCA5E /* ViewController.swift */,
+				13E73B52242C225F000DCA5E /* HomeViewController.swift */,
 				008728FA2436C6F40075F1B2 /* loginViewController.swift */,
 				13E73B54242C225F000DCA5E /* Main.storyboard */,
+				008729062447F3580075F1B2 /* GroupDetailsViewController.swift */,
+				008729022447D8E80075F1B2 /* GroupsViewController.swift */,
+				00872908244800490075F1B2 /* GroupCell.swift */,
 				008728FC2436C7080075F1B2 /* signupViewController.swift */,
 				13E73B57242C2262000DCA5E /* Assets.xcassets */,
 				13E73B59242C2262000DCA5E /* LaunchScreen.storyboard */,
@@ -428,12 +437,15 @@
 				7164B9EA2447CBBB00F001DE /* GroupViewController.swift in Sources */,
 				008728FB2436C6F40075F1B2 /* loginViewController.swift in Sources */,
 				008729012436D13C0075F1B2 /* tasksViewController.swift in Sources */,
-				13E73B53242C225F000DCA5E /* ViewController.swift in Sources */,
+				00872909244800490075F1B2 /* GroupCell.swift in Sources */,
+				13E73B53242C225F000DCA5E /* HomeViewController.swift in Sources */,
 				713C6DBD2447672800954DC7 /* TasksViewController.swift in Sources */,
 				713C6DBF2447673C00954DC7 /* TaskCell.swift in Sources */,
+				008729072447F3580075F1B2 /* GroupDetailsViewController.swift in Sources */,
 				008728FD2436C7080075F1B2 /* signupViewController.swift in Sources */,
 				13E73B4F242C225F000DCA5E /* AppDelegate.swift in Sources */,
 				13E73B51242C225F000DCA5E /* SceneDelegate.swift in Sources */,
+				008729032447D8E80075F1B2 /* GroupsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

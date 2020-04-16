@@ -7,11 +7,20 @@
 //
 
 import UIKit
+import Parse
 
 class ViewController: UIViewController {
     
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
+    
+override func viewDidAppear(_ animated: Bool) {
+       
+    if UserDefaults.standard.bool(forKey: "UserLoggedIn") == true {
+        performSegue(withIdentifier: "UserLoggedInFromHome", sender: nil)
+        
+    }
+}
     
     override func viewDidLoad() {
         super.viewDidLoad()
