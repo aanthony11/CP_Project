@@ -66,13 +66,14 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBAction func onLogout(_ sender: Any) {
             
-         PFUser.logOut()
+        PFUser.logOut()
+        UserDefaults.standard.set(false, forKey: "UserLoggedIn")
                    
-           let main = UIStoryboard(name: "Main", bundle: nil)
-           let viewController = main.instantiateViewController(withIdentifier: "ViewController")
-           let sceneDelegate = self.view.window?.windowScene?.delegate as! SceneDelegate
-           
-           sceneDelegate.window?.rootViewController = viewController
+        let main = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = main.instantiateViewController(withIdentifier: "ViewController")
+        let sceneDelegate = self.view.window?.windowScene?.delegate as! SceneDelegate
+
+        sceneDelegate.window?.rootViewController = viewController
         
     }
     
