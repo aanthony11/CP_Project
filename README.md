@@ -1,4 +1,4 @@
-# Sortior
+# Tuurns
 
 ## Table of Contents
 1. [Overview](#Overview)
@@ -7,7 +7,7 @@
 2. [Schema](#Schema)
 
 ## Overview
-Sortior is an app that keeps track of basic communal tasks that are shared between a group of people (i.e. who's turn is it to do the dishes).
+Turrns is a turn-based or cyclic tasks app. It allows users to keeps track of tasks that are shared between a group of people (i.e. who's turn is it to buy groceries, do the dishes, do a task at the office).
 
 ### App Evaluation
 - **Category:** Lifestyle
