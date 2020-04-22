@@ -33,6 +33,10 @@ class loginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
     
+    @IBAction func onTap(_ sender: Any) {
+        view.endEditing(true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         errorLabel.alpha = 0
