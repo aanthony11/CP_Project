@@ -54,7 +54,7 @@
 		008729022447D8E80075F1B2 /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		008729062447F3580075F1B2 /* GroupDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailsViewController.swift; sourceTree = "<group>"; };
 		00872908244800490075F1B2 /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
-		13E73B4B242C225F000DCA5E /* CP_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CP_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13E73B4B242C225F000DCA5E /* Tuurns.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tuurns.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13E73B4E242C225F000DCA5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13E73B50242C225F000DCA5E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		13E73B52242C225F000DCA5E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -126,7 +126,7 @@
 		13E73B4C242C225F000DCA5E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13E73B4B242C225F000DCA5E /* CP_Project.app */,
+				13E73B4B242C225F000DCA5E /* Tuurns.app */,
 				13E73B61242C2263000DCA5E /* CP_ProjectTests.xctest */,
 				13E73B6C242C2263000DCA5E /* CP_ProjectUITests.xctest */,
 			);
@@ -217,7 +217,7 @@
 			);
 			name = CP_Project;
 			productName = CP_Project;
-			productReference = 13E73B4B242C225F000DCA5E /* CP_Project.app */;
+			productReference = 13E73B4B242C225F000DCA5E /* Tuurns.app */;
 			productType = "com.apple.product-type.application";
 		};
 		13E73B60242C2263000DCA5E /* CP_ProjectTests */ = {
@@ -632,7 +632,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "manish.rajendran.CP-ProjectTemp";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Tuurns;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -653,7 +653,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "manish.rajendran.CP-ProjectTemp";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Tuurns;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
