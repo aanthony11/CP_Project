@@ -12,8 +12,12 @@ import Parse
 class TaskDetailsViewController: UITableViewController {
     
     @IBOutlet weak var taskTextField: UITextField!
+    @IBOutlet weak var groupNameLabel: UILabel!
     @IBOutlet weak var notesTextField: UITextField!
+    @IBOutlet weak var frequencyLabel: UILabel!
     
+    var currentUser = PFUser.current()
+    var groupName = "Group 1"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,12 +28,41 @@ class TaskDetailsViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
 
     
     @IBAction func didTapDone(_ sender: Any) {
         
-        // Insert Parse Magic
+        let task = taskTextField.text
+        var userIds = [String]()
         
+        // Insert Parse Magic
+        let query = PFQuery(className: "Group")
+        query.whereKey("Group", equalTo: groupName)
+        query.findObjectsInBackground { (results: [PFObject]?, error: Error?) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let results = results {
+                for users in results {
+                    userIds = users["Users"] as! [String]
+                }
+                for user in userIds {
+                    let query = PFUser.query()
+                    query?.getObjectInBackground(withId: user) { (result: PFObject?, error: Error?) in
+                        if let error = error {
+                            print(error.localizedDescription)
+                        } else {
+                            result?.add(task, forKey: "tasks")
+                            result?.saveInBackground()
+                        }
+                    }
+                }
+            }
+        }
     }
     
     @IBAction func didTapCancel(_ sender: Any) {
@@ -39,10 +72,12 @@ class TaskDetailsViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 1 {
-            performSegue(withIdentifier: "goToFrequency", sender: nil)
-        } else if indexPath.section == 2 {
-            performSegue(withIdentifier: "goToGroups", sender: nil)
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == 2 {
+            groupNameLabel.text = groupName
         }
     }
 
