@@ -14,7 +14,6 @@ class GroupSelectViewController: UIViewController, UIPickerViewDelegate, UIPicke
     var currentUser = PFUser.current()
     var groups = [PFObject]()
     
-    @IBOutlet weak var albel: UILabel!
     @IBOutlet weak var pickerView: UIPickerView!
     
     override func viewDidLoad() {
@@ -30,7 +29,7 @@ class GroupSelectViewController: UIViewController, UIPickerViewDelegate, UIPicke
         
         let userId = currentUser?.objectId
         let query = PFQuery(className: "Group")
-        query.whereKey("Users", contains: userId)
+        query.whereKey("users", contains: userId)
         query.findObjectsInBackground { (results: [PFObject]?, error: Error?) in
             if let error = error {
                 print(error.localizedDescription)

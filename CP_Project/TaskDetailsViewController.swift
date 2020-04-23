@@ -17,7 +17,7 @@ class TaskDetailsViewController: UITableViewController {
     @IBOutlet weak var frequencyLabel: UILabel!
     
     var currentUser = PFUser.current()
-    var groupName = "Group 1"
+    var groupName = "Team Red"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,28 +38,32 @@ class TaskDetailsViewController: UITableViewController {
     @IBAction func didTapDone(_ sender: Any) {
         
         let task = taskTextField.text
-        var userIds = [String]()
+        var groupId = [String]()
         
-        // Insert Parse Magic
+        // Get group and save task to group
         let query = PFQuery(className: "Group")
-        query.whereKey("Group", equalTo: groupName)
-        query.findObjectsInBackground { (results: [PFObject]?, error: Error?) in
+        query.whereKey("name", equalTo: groupName)
+        query.findObjectsInBackground { (objects: [AnyObject]!, error: Error?) in
             if let error = error {
                 print(error.localizedDescription)
-            } else if let results = results {
-                for users in results {
-                    userIds = users["Users"] as! [String]
+            } else {
+                for object in objects {
+                    groupId.append(object.objectId!)
                 }
-                for user in userIds {
-                    let query = PFUser.query()
-                    query?.getObjectInBackground(withId: user) { (result: PFObject?, error: Error?) in
-                        if let error = error {
-                            print(error.localizedDescription)
+            }
+            let newQuery = PFQuery(className: "Group")
+            newQuery.getObjectInBackground(withId: groupId[0]) { (group: PFObject?, error: Error?) in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else {
+                    group?.add(task, forKey: "tasks")
+                    group?.saveInBackground(block: { (success, error) in
+                        if success {
+                            print("task saved")
                         } else {
-                            result?.add(task, forKey: "tasks")
-                            result?.saveInBackground()
+                            print("error saving task")
                         }
-                    }
+                    })
                 }
             }
         }
