@@ -102,8 +102,6 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        // image of group, user may choose group image
         let photos = ["crown.png","fish.png","smiley.png","hat.png","shinin.png","rocket.png"]
         let random_num = Int.random(in: 0...5)
         
