@@ -13,7 +13,6 @@
 		008729032447D8E80075F1B2 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008729022447D8E80075F1B2 /* GroupsViewController.swift */; };
 		008729072447F3580075F1B2 /* GroupDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008729062447F3580075F1B2 /* GroupDetailsViewController.swift */; };
 		00872909244800490075F1B2 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00872908244800490075F1B2 /* GroupCell.swift */; };
-		0087290B2450EF590075F1B2 /* GroupDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087290A2450EF590075F1B2 /* GroupDetailViewCell.swift */; };
 		06A264EEE870F3E323A422BE /* Pods_CP_ProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B98EF21FED09002ABD6CB668 /* Pods_CP_ProjectTests.framework */; };
 		1323FFDD2450E2B40055DEFB /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1323FFDC2450E2B40055DEFB /* CreateGroupViewController.swift */; };
 		13E73B4F242C225F000DCA5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E73B4E242C225F000DCA5E /* AppDelegate.swift */; };
@@ -142,23 +141,23 @@
 			isa = PBXGroup;
 			children = (
 				13E73B4E242C225F000DCA5E /* AppDelegate.swift */,
-				13E73B50242C225F000DCA5E /* SceneDelegate.swift */,
+				13E73B57242C2262000DCA5E /* Assets.xcassets */,
+				1323FFDC2450E2B40055DEFB /* CreateGroupViewController.swift */,
+				00872908244800490075F1B2 /* GroupCell.swift */,
+				008729062447F3580075F1B2 /* GroupDetailsViewController.swift */,
+				7199FBAA2450B16A00FFE42F /* GroupSelectViewController.swift */,
+				008729022447D8E80075F1B2 /* GroupsViewController.swift */,
+				7164B9E92447CBBB00F001DE /* GroupViewController.swift */,
 				13E73B52242C225F000DCA5E /* HomeViewController.swift */,
+				13E73B5C242C2262000DCA5E /* Info.plist */,
+				13E73B59242C2262000DCA5E /* LaunchScreen.storyboard */,
 				008728FA2436C6F40075F1B2 /* loginViewController.swift */,
 				13E73B54242C225F000DCA5E /* Main.storyboard */,
-				008729062447F3580075F1B2 /* GroupDetailsViewController.swift */,
-				008729022447D8E80075F1B2 /* GroupsViewController.swift */,
-				00872908244800490075F1B2 /* GroupCell.swift */,
+				13E73B50242C225F000DCA5E /* SceneDelegate.swift */,
 				008728FC2436C7080075F1B2 /* signupViewController.swift */,
-				13E73B57242C2262000DCA5E /* Assets.xcassets */,
-				13E73B59242C2262000DCA5E /* LaunchScreen.storyboard */,
-				13E73B5C242C2262000DCA5E /* Info.plist */,
-				713C6DBC2447672800954DC7 /* TasksViewController.swift */,
 				713C6DBE2447673C00954DC7 /* TaskCell.swift */,
-				7164B9E92447CBBB00F001DE /* GroupViewController.swift */,
 				7134F90E244F560800B3054E /* TaskDetailsViewController.swift */,
-				7199FBAA2450B16A00FFE42F /* GroupSelectViewController.swift */,
-				1323FFDC2450E2B40055DEFB /* CreateGroupViewController.swift */,
+				713C6DBC2447672800954DC7 /* TasksViewController.swift */,
 			);
 			path = CP_Project;
 			sourceTree = "<group>";
