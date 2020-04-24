@@ -17,6 +17,8 @@ class CreateGroupViewController: UIViewController, UISearchBarDelegate, UITableV
     
     var usersTempArray:[PFUser] = []
     var emailsTempArray:[String] = []
+    var group = PFObject(className:"Group")
+    var groupCreationSuccess = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,29 +35,78 @@ class CreateGroupViewController: UIViewController, UISearchBarDelegate, UITableV
     }
     
     @IBAction func onCreate(_ sender: Any) {
+//        for user in usersTempArray{
+//            print(user)
+//            let userId = user.objectId!
+//            let query = PFQuery(className:"_User")
+//            query.getObjectInBackground(withId: userId) { (gameScore: PFObject?, error: Error?) in
+//                if let error = error {
+//                    print(error.localizedDescription)
+//                } else if let gameScore = gameScore {
+////                    query["groups"] =
+//                    gameScore.saveInBackground()
+//                }
+//            }
+//        }
+        
+        // SAVE GROUP TO PARSE
         if usersTempArray.count > 1 && groupName.text != "" {
-            let group = PFObject(className:"Group")
-            group["name"] = groupName.text
-            group["users"] = usersTempArray
-            group["count"] = usersTempArray.count
-            group.saveInBackground { (succeeded, error)  in
+            self.group["name"] = groupName.text
+            self.group["users"] = usersTempArray
+            self.group["count"] = usersTempArray.count
+            self.group.saveInBackground { (succeeded, error)  in
                 if (succeeded) {
-                    self.dismiss(animated: true, completion: nil)
+                    self.groupCreationSuccess = true
                 } else {
                     print(error?.localizedDescription)
                 }
             }
         } else {
-            print("Need at least one and/or group name")
+            print("Need at least two users in group and/or group name")
         }
+        
+        
+        print("Users temp array: ", usersTempArray)
+        // QUERY EVERY USER'S GROUPS ARRAY IN GROUP THAT WAS JUST CREATED
+        for user in usersTempArray {
+            print("Loop user: ", user)
+            // GET USER'S GROUP ARRAY
+            let query = PFQuery(className:"_User")
+            query.getObjectInBackground(withId: user.objectId!) { (userObj, error) in
+                if error == nil {
+                    var userGroups = userObj?.object(forKey: "groups") as? Array<String>
+//                    print(userGroups)
+                    if userGroups == nil{
+                        userGroups = []
+                    }
+                    // GOT USER'S GROUP ARRAY AND NOW UPDATE THE USER'S GROUP ARRAY
+                    userGroups?.append(self.group.objectId!)
+//                    print(userGroups)
+
+                    // NOW PUSH UPDATED GROUPS ARRAY TO PARSE
+                    userObj!["groups"] = userGroups
+                    userObj!.saveInBackground()
+
+                } else {
+                    print(error?.localizedDescription)
+                }
+            }
+        } //END FOR USER LOOP
+        
+        
+        
+//        if self.groupCreationSuccess == true{
+        self.dismiss(animated: true, completion: nil)
+//        }
+
         
 
 
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print(usersTempArray)
-        print(emailsTempArray)
+//        print(usersTempArray)
+//        print(emailsTempArray)
 //        for object in usersTempArray {
 //              print(object.username!)
 //          }
@@ -70,7 +121,7 @@ class CreateGroupViewController: UIViewController, UISearchBarDelegate, UITableV
                 print(error.localizedDescription)
             } else if let objects = objects {
                 // The find succeeded.
-                print("Successfully retrieved \(objects.count) users.")
+//                print("Successfully retrieved \(objects.count) users.")
                 // Do something with the found objects
                 for object in objects {
                     let tempUser = object as! PFUser
