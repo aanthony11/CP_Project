@@ -108,32 +108,33 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="173"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Group" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fmm-7m-FBL">
-                                                    <rect key="frame" x="316" y="76" width="60" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="I9m-0a-tUV"/>
-                                                        <constraint firstAttribute="width" constant="60" id="yNR-gD-zcq"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Xb-yv-f2d">
                                                     <rect key="frame" x="16" y="11" width="220" height="151"/>
                                                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="151" id="nIo-JW-U5N"/>
-                                                        <constraint firstAttribute="width" constant="220" id="xOx-z1-sfr"/>
+                                                        <constraint firstAttribute="height" constant="151" id="HoW-OQ-fWX"/>
+                                                        <constraint firstAttribute="width" constant="220" id="hxc-gI-sQO"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fmm-7m-FBL">
+                                                    <rect key="frame" x="244" y="11" width="162" height="151"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="151" id="DyR-hq-SI1"/>
+                                                        <constraint firstAttribute="width" constant="162" id="XXG-ET-RCw"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="1Xb-yv-f2d" firstAttribute="bottom" secondItem="Jd4-JF-PDU" secondAttribute="bottomMargin" id="4Ni-Kf-jte"/>
-                                                <constraint firstItem="Fmm-7m-FBL" firstAttribute="top" secondItem="Jd4-JF-PDU" secondAttribute="topMargin" constant="65" id="5G4-Fn-LzJ"/>
-                                                <constraint firstItem="1Xb-yv-f2d" firstAttribute="leading" secondItem="Jd4-JF-PDU" secondAttribute="leadingMargin" id="IWX-tj-Gdg"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Fmm-7m-FBL" secondAttribute="trailing" constant="30" id="KXN-2s-02a"/>
-                                                <constraint firstItem="1Xb-yv-f2d" firstAttribute="top" secondItem="Jd4-JF-PDU" secondAttribute="topMargin" id="Kti-pM-LC9"/>
+                                                <constraint firstAttribute="bottom" secondItem="1Xb-yv-f2d" secondAttribute="bottom" constant="11" id="79n-Hx-hQr"/>
+                                                <constraint firstItem="1Xb-yv-f2d" firstAttribute="leading" secondItem="Jd4-JF-PDU" secondAttribute="leading" constant="16" id="Fll-01-3nj"/>
+                                                <constraint firstAttribute="bottom" secondItem="Fmm-7m-FBL" secondAttribute="bottom" constant="11" id="HK7-mN-BxJ"/>
+                                                <constraint firstItem="Fmm-7m-FBL" firstAttribute="leading" secondItem="1Xb-yv-f2d" secondAttribute="trailing" constant="8" id="PQ6-vY-rAu"/>
+                                                <constraint firstItem="1Xb-yv-f2d" firstAttribute="top" secondItem="Jd4-JF-PDU" secondAttribute="top" constant="11" id="Zg3-Yl-pWW"/>
+                                                <constraint firstItem="Fmm-7m-FBL" firstAttribute="top" secondItem="Jd4-JF-PDU" secondAttribute="top" constant="11" id="lLh-Hv-ecn"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -169,7 +170,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qn4-XU-wfp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1452" y="2435"/>
+            <point key="canvasLocation" x="1450.7246376811595" y="2434.8214285714284"/>
         </scene>
         <!--Create Group-->
         <scene sceneID="sXa-p4-nmM">
