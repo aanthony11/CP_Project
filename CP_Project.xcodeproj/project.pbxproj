@@ -24,6 +24,7 @@
 		13E73B5B242C2262000DCA5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13E73B59242C2262000DCA5E /* LaunchScreen.storyboard */; };
 		13E73B66242C2263000DCA5E /* CP_ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E73B65242C2263000DCA5E /* CP_ProjectTests.swift */; };
 		13E73B71242C2263000DCA5E /* CP_ProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E73B70242C2263000DCA5E /* CP_ProjectUITests.swift */; };
+		13E936AC24539ACE00BE3FD0 /* ParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E936AB24539ACE00BE3FD0 /* ParseHelper.swift */; };
 		1EE96DD95BF61CC7480BFF6B /* Pods_CP_Project_CP_ProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4FD44C0BB1FE971DCFFF90E /* Pods_CP_Project_CP_ProjectUITests.framework */; };
 		7134F90F244F560800B3054E /* TaskDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7134F90E244F560800B3054E /* TaskDetailsViewController.swift */; };
 		713C6DBD2447672800954DC7 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713C6DBC2447672800954DC7 /* TasksViewController.swift */; };
@@ -73,6 +74,7 @@
 		13E73B6C242C2263000DCA5E /* CP_ProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CP_ProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		13E73B70242C2263000DCA5E /* CP_ProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CP_ProjectUITests.swift; sourceTree = "<group>"; };
 		13E73B72242C2263000DCA5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		13E936AB24539ACE00BE3FD0 /* ParseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseHelper.swift; sourceTree = "<group>"; };
 		2328B80884221587998751E9 /* Pods-CP_Project-CP_ProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CP_Project-CP_ProjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-CP_Project-CP_ProjectUITests/Pods-CP_Project-CP_ProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2FA2AA51EE9D422C56EBDB97 /* Pods-CP_Project-CP_ProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CP_Project-CP_ProjectUITests.release.xcconfig"; path = "Target Support Files/Pods-CP_Project-CP_ProjectUITests/Pods-CP_Project-CP_ProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
 		391F1FA714CA74329FD61DC6 /* Pods-CP_Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CP_Project.release.xcconfig"; path = "Target Support Files/Pods-CP_Project/Pods-CP_Project.release.xcconfig"; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				13E73B57242C2262000DCA5E /* Assets.xcassets */,
 				13E73B59242C2262000DCA5E /* LaunchScreen.storyboard */,
 				13E73B54242C225F000DCA5E /* Main.storyboard */,
+				13E936AB24539ACE00BE3FD0 /* ParseHelper.swift */,
 			);
 			path = CP_Project;
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 				713C6DBD2447672800954DC7 /* TasksViewController.swift in Sources */,
 				713C6DBF2447673C00954DC7 /* TaskCell.swift in Sources */,
 				7199FBAB2450B16A00FFE42F /* GroupSelectViewController.swift in Sources */,
+				13E936AC24539ACE00BE3FD0 /* ParseHelper.swift in Sources */,
 				008729072447F3580075F1B2 /* GroupDetailsViewController.swift in Sources */,
 				008728FD2436C7080075F1B2 /* signupViewController.swift in Sources */,
 				13E73B4F242C225F000DCA5E /* AppDelegate.swift in Sources */,

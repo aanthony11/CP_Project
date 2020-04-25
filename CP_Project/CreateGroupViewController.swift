@@ -14,20 +14,23 @@ class CreateGroupViewController: UIViewController, UISearchBarDelegate, UITableV
     @IBOutlet weak var groupName: UITextField!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var errorLabel: UILabel!
     
+    var currentUser = PFUser.current()
     var usersTempArray:[PFUser] = []
     var emailsTempArray:[String] = []
     var group = PFObject(className:"Group")
-    var groupCreationSuccess = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
         searchBar.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
-        // Do any additional setup after loading the view.
-        
         searchBar.autocapitalizationType = .none
+        
+        self.errorLabel.alpha = CGFloat(0.0)
     }
     
     @IBAction func onCancel(_ sender: Any) {
@@ -35,69 +38,89 @@ class CreateGroupViewController: UIViewController, UISearchBarDelegate, UITableV
     }
     
     @IBAction func onCreate(_ sender: Any) {
-//        for user in usersTempArray{
-//            print(user)
-//            let userId = user.objectId!
-//            let query = PFQuery(className:"_User")
-//            query.getObjectInBackground(withId: userId) { (gameScore: PFObject?, error: Error?) in
-//                if let error = error {
-//                    print(error.localizedDescription)
-//                } else if let gameScore = gameScore {
-////                    query["groups"] =
-//                    gameScore.saveInBackground()
-//                }
-//            }
-//        }
-        
+
         // SAVE GROUP TO PARSE
         if usersTempArray.count > 1 && groupName.text != "" {
             self.group["name"] = groupName.text
             self.group["users"] = usersTempArray
             self.group["count"] = usersTempArray.count
+            self.group["owner"] = PFUser.current()
             self.group.saveInBackground { (succeeded, error)  in
                 if (succeeded) {
-                    self.groupCreationSuccess = true
-                } else {
-                    print(error?.localizedDescription)
-                }
-            }
-        } else {
-            print("Need at least two users in group and/or group name")
-        }
-        
-        
-        print("Users temp array: ", usersTempArray)
-        // QUERY EVERY USER'S GROUPS ARRAY IN GROUP THAT WAS JUST CREATED
-        for user in usersTempArray {
-            print("Loop user: ", user)
-            // GET USER'S GROUP ARRAY
-            let query = PFQuery(className:"_User")
-            query.getObjectInBackground(withId: user.objectId!) { (userObj, error) in
-                if error == nil {
-                    var userGroups = userObj?.object(forKey: "groups") as? Array<String>
-//                    print(userGroups)
-                    if userGroups == nil{
-                        userGroups = []
+                    
+                    // CREATE CONNECTION FOR EVERY USER ADDED TO NEWLY CREATED GROUP
+                    for user in self.usersTempArray {
+                        let userToGroup = PFObject(className: "UserToGroup")
+                        userToGroup["user"] = user
+                        userToGroup["group"] = self.group
+                        userToGroup.saveInBackground()
                     }
-                    // GOT USER'S GROUP ARRAY AND NOW UPDATE THE USER'S GROUP ARRAY
-                    userGroups?.append(self.group.objectId!)
-//                    print(userGroups)
-
-                    // NOW PUSH UPDATED GROUPS ARRAY TO PARSE
-                    userObj!["groups"] = userGroups
-                    userObj!.saveInBackground()
-
+                    
+                    self.dismiss(animated: true, completion: nil)
+    
                 } else {
                     print(error?.localizedDescription)
+                    self.errorLabel.text = error?.localizedDescription
+                    self.errorLabel.alpha = 1.0
                 }
             }
-        } //END FOR USER LOOP
+        } else if groupName.text == "" {
+            self.errorLabel.text = ("Add a Group Name to create a group.")
+            
+            UIView.animate(withDuration: 1.5, delay: 0, animations: {
+                self.errorLabel.alpha = 1.0
+            }, completion: {
+                (Completed : Bool) -> Void in
+                UIView.animate(withDuration: 1.5, delay: 2.0, animations: {
+                self.errorLabel.alpha = 0
+                })
+            })
+        } else if usersTempArray.count < 2 {
+            self.errorLabel.text = "Add at least two users to create a group."
+    
+            UIView.animate(withDuration: 1.5, delay: 0, animations: {
+                self.errorLabel.alpha = 1.0
+            }, completion: {
+                (Completed : Bool) -> Void in
+                UIView.animate(withDuration: 1.5, delay: 2.0, animations: {
+                self.errorLabel.alpha = 0
+                })
+            })
+        }
+
+        
+
+        
+        
+                                                                                        //        print("Users temp array: ", usersTempArray)
+                                                                                        //        // QUERY EVERY USER'S GROUPS ARRAY IN GROUP THAT WAS JUST CREATED
+                                                                                        //        for user in usersTempArray {
+                                                                                        //            print("Loop user: ", user)
+                                                                                        //            // GET USER'S GROUP ARRAY
+                                                                                        //            let query = PFQuery(className:"_User")
+                                                                                        //            query.getObjectInBackground(withId: user.objectId!) { (userObj, error) in
+                                                                                        //                if error == nil {
+                                                                                        //                    var userGroups = userObj?.object(forKey: "groups") as? Array<String>
+                                                                                        ////                    print(userGroups)
+                                                                                        //                    if userGroups == nil{
+                                                                                        //                        userGroups = []
+                                                                                        //                    }
+                                                                                        //                    // GOT USER'S GROUP ARRAY AND NOW UPDATE THE USER'S GROUP ARRAY
+                                                                                        //                    userGroups?.append(self.group.objectId!)
+                                                                                        ////                    print(userGroups)
+                                                                                        //
+                                                                                        //                    // NOW PUSH UPDATED GROUPS ARRAY TO PARSE
+                                                                                        //                    userObj!["groups"] = userGroups
+                                                                                        //                    userObj!.saveInBackground()
+                                                                                        //
+                                                                                        //                } else {
+                                                                                        //                    print(error?.localizedDescription)
+                                                                                        //                }
+                                                                                        //            }
+                                                                                        //        } //END FOR USER LOOP
         
         
         
-//        if self.groupCreationSuccess == true{
-        self.dismiss(animated: true, completion: nil)
-//        }
 
         
 
@@ -116,6 +139,19 @@ class CreateGroupViewController: UIViewController, UISearchBarDelegate, UITableV
         let query = PFQuery(className:"_User")
         query.whereKey("username", equalTo:username)
         query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
+            if objects!.count == 0 || objects?.count == nil {
+                self.errorLabel.text = ("User not found or could not be added to group.")
+
+                UIView.animate(withDuration: 1.5, delay: 0, animations: {
+                   self.errorLabel.alpha = 1.0
+                }, completion: {
+                   (Completed : Bool) -> Void in
+                   UIView.animate(withDuration: 1.5, delay: 2.0, animations: {
+                   self.errorLabel.alpha = 0
+                   })
+                })
+            }
+            
             if let error = error {
                 // Log details of the failure
                 print(error.localizedDescription)
@@ -127,7 +163,16 @@ class CreateGroupViewController: UIViewController, UISearchBarDelegate, UITableV
                     let tempUser = object as! PFUser
                     let tempEmail = tempUser.username!
                     if self.emailsTempArray.contains(tempEmail){
-                        print("User already in array")
+                        self.errorLabel.text = ("User already ready to be added.")
+
+                        UIView.animate(withDuration: 1.5, delay: 0, animations: {
+                           self.errorLabel.alpha = 1.0
+                        }, completion: {
+                           (Completed : Bool) -> Void in
+                           UIView.animate(withDuration: 1.5, delay: 2.0, animations: {
+                           self.errorLabel.alpha = 0
+                           })
+                        })
                     } else {
                         self.usersTempArray.append(tempUser)
                         self.emailsTempArray.append(tempUser.username!)
