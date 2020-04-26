@@ -8,14 +8,16 @@
 
 import UIKit
 import Parse
+import AlamofireImage
 
 
 
 
-class GroupDetailsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class GroupDetailsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     
-    @IBOutlet weak var removemembersButton: UIButton!
+    
+    @IBOutlet weak var changeImageButton: UIButton!
     @IBOutlet weak var addmembersButton: UIButton!
     @IBOutlet weak var ownerLabel: UILabel!
     @IBOutlet weak var groupnameLabel: UILabel!
@@ -26,6 +28,7 @@ class GroupDetailsViewController: UIViewController, UITableViewDataSource, UITab
     var user_names:[String] = []
     var arr:[String] = []
     var num = 0
+    var group_title = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,11 +37,14 @@ class GroupDetailsViewController: UIViewController, UITableViewDataSource, UITab
         groupDetailTableView.delegate = self
         groupDetailTableView.dataSource = self
         
+        self.groupDetailTableView.reloadData()
+        
+        changeImageButton.layer.cornerRadius = 10
         addmembersButton.layer.cornerRadius = 10
-        removemembersButton.layer.cornerRadius = 10
         
         // create variable for current user
         let user_current = PFUser.current()
+        groupnameLabel.text? = group_title
         
         do {
             
@@ -75,6 +81,33 @@ class GroupDetailsViewController: UIViewController, UITableViewDataSource, UITab
         }
     }
     
+    @IBAction func onPressed(_ sender: Any) {
+        
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            print("Camera is available 📸")
+            picker.sourceType = .camera
+        } else {
+            
+            picker.sourceType = .photoLibrary
+        }
+        
+        present(picker, animated: true, completion: nil)
+        
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        let image = info[.editedImage] as! UIImage
+        let size = CGSize(width: 300, height: 300)
+        let scaled = image.af_imageScaled(to: size)
+        
+        dismiss(animated: true, completion: nil)
+        
+    }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import AlamofireImage
 
 extension UITextField {
     func setStyleSignup() {
@@ -86,6 +87,11 @@ class signupViewController: UIViewController {
             user["firstName"] = firstnameTextField.text!.lowercased()
             user["lastName"] = lastnameTextField.text!.lowercased()
             user["tasks"] = []
+            
+            let img = UIImage(named: "Default User Profile")
+            let imageData = img?.pngData()
+            let file = PFFileObject(data: imageData!)
+            user["profilePicture"] = file
             
             user.signUpInBackground { (success, error) in
             if success {

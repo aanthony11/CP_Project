@@ -9,37 +9,52 @@
 import UIKit
 import Parse
 
-class GroupsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class GroupsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     
     @IBOutlet weak var logoutButton: UIBarButtonItem!
     @IBOutlet weak var GroupTableView: UITableView!
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var usernameLabel: UILabel!
+    
     
     var groups_lst:[String] = []
     var group_names:[String] = []
     var usersTempList:[PFUser] = []
     var count = 0
     var group_dict = [String:String]()
+    var table_data = [Int:String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         GroupTableView.dataSource = self
         GroupTableView.delegate = self
-        
+    
         // create variable for current user
-         let current_user = PFUser.current()
+        let current_user = PFUser.current()
+        let firstname = current_user!["firstName"] as! String
+        let lastname = current_user!["lastName"] as! String
+        let name = "\(firstname) \(lastname)"
+        
+        let data = current_user!["profilePicture"] as? PFFileObject
+        
+        if data != nil {
+            do {
+                
+                // get image data and change image view
+                let imgData = try data?.getData()
+                let img = UIImage(data: imgData as! Data)
+                profileImageView.image = img
+           
+            }
+            catch {
+                // image cant be loaded
+            }
+        }
+        usernameLabel.text = name
          
-         let query = PFQuery(className:"Group")
-         query.getObjectInBackground(withId: "RAn718yP3z") { (group, error) in
-             if error == nil {
-                 // Success!
-                 print("group retrival was sucessful")
-             } else {
-                 // Fail!
-                 print("error occured: \(error?.localizedDescription)")
-             }
-         }
+        
          do {
              
              let query1 = PFQuery(className: "_User")
@@ -97,6 +112,16 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let titles_lst = [String](group_dict.keys)
+        let cell = sender as! UITableViewCell
+        let indexpath = GroupTableView.indexPath(for: cell)!
+        let title = titles_lst[indexpath.row]
+        
+        let detailController = segue.destination as! GroupDetailsViewController
+        detailController.group_title = title
+    }
     
 
     /*
@@ -108,6 +133,9 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -123,10 +151,12 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell") as! GroupCell
         cell.groupImageView.image = UIImage(named: photos[random_num])
+        table_data[count] = group_titles[count]
         cell.groupLabel.text = group_titles[count]
         count += 1
         
-        //let findGroup = groups[indexPath.row]
+        
+        
                 
         
         return cell
