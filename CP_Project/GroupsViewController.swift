@@ -12,18 +12,22 @@ import Parse
 class GroupsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     
+    @IBOutlet weak var createGroupButton: UIBarButtonItem!
     @IBOutlet weak var logoutButton: UIBarButtonItem!
     @IBOutlet weak var GroupTableView: UITableView!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     
     
+    
+    
     var groups_lst:[String] = []
     var group_names:[String] = []
     var usersTempList:[PFUser] = []
     var count = 0
-    var group_dict = [String:String]()
+    var group_dict = [String:String]() // dictionary of group[name] --> groupId
     var table_data = [Int:String]()
+    var group_id = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +67,7 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
              
              // make array of groupId's that user is in
              let user_groups = user_array["groups"] as! Array<String>
-             groups_lst = user_groups
+             groups_lst = user_groups // list of group id's
          
          }
          catch {
@@ -98,6 +102,10 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
         
     }
     
+    @IBAction func createSegue(_ sender: Any) {
+        performSegue(withIdentifier: "createGroupSegue", sender: self)
+        
+    }
     
     @IBAction func onLogout(_ sender: Any) {
             
@@ -112,15 +120,21 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
         
     }
     
+    @IBAction func unwindToViewControllerA(segue: UIStoryboardSegue) {}
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let titles_lst = [String](group_dict.keys)
-        let cell = sender as! UITableViewCell
-        let indexpath = GroupTableView.indexPath(for: cell)!
-        let title = titles_lst[indexpath.row]
-        
-        let detailController = segue.destination as! GroupDetailsViewController
-        detailController.group_title = title
+        if segue.identifier == "detailSegue" {
+            let titles_lst = [String](group_dict.keys)
+            let cell = try sender as! UITableViewCell
+            let indexpath = GroupTableView.indexPath(for: cell)!
+            let title = titles_lst[indexpath.row]
+            group_id = group_dict[title]!
+            
+            let detailController = segue.destination as! GroupDetailsViewController
+            detailController.group_title = title
+            detailController.group_id = group_id
+        }
     }
     
 

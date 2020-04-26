@@ -20,6 +20,9 @@ class CreateGroupViewController: UIViewController, UISearchBarDelegate, UITableV
     var usersTempArray:[PFUser] = []
     var emailsTempArray:[String] = []
     var group = PFObject(className:"Group")
+    var image : UIImage?
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +48,12 @@ class CreateGroupViewController: UIViewController, UISearchBarDelegate, UITableV
             self.group["users"] = usersTempArray
             self.group["count"] = usersTempArray.count
             self.group["owner"] = PFUser.current()
+            
+            // set group profile picture
+            let imageData = image?.pngData()
+            let file = PFFileObject(data: imageData!)
+            self.group["groupPicture"] = file
+            
             self.group.saveInBackground { (succeeded, error)  in
                 if (succeeded) {
                     
@@ -56,7 +65,9 @@ class CreateGroupViewController: UIViewController, UISearchBarDelegate, UITableV
                         userToGroup.saveInBackground()
                     }
                     
-                    self.dismiss(animated: true, completion: nil)
+                    self.performSegue(withIdentifier: "goToHome", sender: self)
+                    //self.presentingViewController?.dismiss(animated: true, completion: nil)
+                    //self.dismiss(animated: true, completion: nil)
     
                 } else {
                     print(error?.localizedDescription)

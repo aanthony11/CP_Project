@@ -29,6 +29,7 @@ class GroupDetailsViewController: UIViewController, UITableViewDataSource, UITab
     var arr:[String] = []
     var num = 0
     var group_title = ""
+    var group_id = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +51,7 @@ class GroupDetailsViewController: UIViewController, UITableViewDataSource, UITab
             
             let query = PFQuery(className: "Group") // query for group class
 
-            query.whereKey("name", equalTo: "Group 2") // search by group name (change Group 2 to label text)
+            query.whereKey("objectId", equalTo: group_id) // search by group id (change Group 2 to label text)
             
             // make array of user Id's
             let lst = try query.getFirstObject()
