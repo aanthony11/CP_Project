@@ -17,8 +17,8 @@ class CreateGroupViewController: UIViewController, UISearchBarDelegate, UITableV
     @IBOutlet weak var errorLabel: UILabel!
     
     var currentUser = PFUser.current()
-    var usersTempArray:[PFUser] = []
-    var emailsTempArray:[String] = []
+    var usersTempArray:[PFUser] = [PFUser.current()!]
+    var emailsTempArray:[String] = [PFUser.current()!.username!]
     var group = PFObject(className:"Group")
     
     override func viewDidLoad() {
@@ -191,7 +191,15 @@ class CreateGroupViewController: UIViewController, UISearchBarDelegate, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = emailsTempArray[indexPath.row]
+        
+        if indexPath.row == 0 {
+            var firstEmail = "You: "
+            firstEmail.append(emailsTempArray[indexPath.row])
+            cell.textLabel?.text = firstEmail
+        } else {
+            cell.textLabel?.text = emailsTempArray[indexPath.row]
+        }
+        
         return cell
     }
     
