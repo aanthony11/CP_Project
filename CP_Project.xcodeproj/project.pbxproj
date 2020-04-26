@@ -13,6 +13,10 @@
 		008729032447D8E80075F1B2 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008729022447D8E80075F1B2 /* GroupsViewController.swift */; };
 		008729072447F3580075F1B2 /* GroupDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008729062447F3580075F1B2 /* GroupDetailsViewController.swift */; };
 		00872909244800490075F1B2 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00872908244800490075F1B2 /* GroupCell.swift */; };
+		009615282455000400426DC9 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009615272455000400426DC9 /* UserInfoViewController.swift */; };
+		0096152A24554EF600426DC9 /* AddMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0096152924554EF600426DC9 /* AddMembersViewController.swift */; };
+		0096152E2455543A00426DC9 /* AddMembersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0096152D2455543A00426DC9 /* AddMembersCell.swift */; };
+		009615302455620400426DC9 /* GroupImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0096152F2455620300426DC9 /* GroupImageViewController.swift */; };
 		06A264EEE870F3E323A422BE /* Pods_CP_ProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B98EF21FED09002ABD6CB668 /* Pods_CP_ProjectTests.framework */; };
 		1323FFDD2450E2B40055DEFB /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1323FFDC2450E2B40055DEFB /* CreateGroupViewController.swift */; };
 		132ACE84245154E100904D07 /* GroupDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132ACE83245154E100904D07 /* GroupDetailViewCell.swift */; };
@@ -58,6 +62,10 @@
 		008729022447D8E80075F1B2 /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		008729062447F3580075F1B2 /* GroupDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailsViewController.swift; sourceTree = "<group>"; };
 		00872908244800490075F1B2 /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
+		009615272455000400426DC9 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
+		0096152924554EF600426DC9 /* AddMembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMembersViewController.swift; sourceTree = "<group>"; };
+		0096152D2455543A00426DC9 /* AddMembersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddMembersCell.swift; path = /Users/aa/Documents/CP_Project/CP_Project/AddMembersCell.swift; sourceTree = "<absolute>"; };
+		0096152F2455620300426DC9 /* GroupImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupImageViewController.swift; sourceTree = "<group>"; };
 		1323FFDC2450E2B40055DEFB /* CreateGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
 		132ACE83245154E100904D07 /* GroupDetailViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDetailViewCell.swift; sourceTree = "<group>"; };
 		13E73B4B242C225F000DCA5E /* Tuurns.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tuurns.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,8 +153,10 @@
 			isa = PBXGroup;
 			children = (
 				13E73B5C242C2262000DCA5E /* Info.plist */,
+				0096152D2455543A00426DC9 /* AddMembersCell.swift */,
 				13E73B4E242C225F000DCA5E /* AppDelegate.swift */,
 				1323FFDC2450E2B40055DEFB /* CreateGroupViewController.swift */,
+				0096152F2455620300426DC9 /* GroupImageViewController.swift */,
 				00872908244800490075F1B2 /* GroupCell.swift */,
 				008729062447F3580075F1B2 /* GroupDetailsViewController.swift */,
 				132ACE83245154E100904D07 /* GroupDetailViewCell.swift */,
@@ -163,6 +173,8 @@
 				13E73B57242C2262000DCA5E /* Assets.xcassets */,
 				13E73B59242C2262000DCA5E /* LaunchScreen.storyboard */,
 				13E73B54242C225F000DCA5E /* Main.storyboard */,
+				0096152924554EF600426DC9 /* AddMembersViewController.swift */,
+				009615272455000400426DC9 /* UserInfoViewController.swift */,
 				13E936AB24539ACE00BE3FD0 /* ParseHelper.swift */,
 			);
 			path = CP_Project;
@@ -450,8 +462,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7164B9EA2447CBBB00F001DE /* GroupViewController.swift in Sources */,
+				009615302455620400426DC9 /* GroupImageViewController.swift in Sources */,
 				008728FB2436C6F40075F1B2 /* loginViewController.swift in Sources */,
 				008729012436D13C0075F1B2 /* tasksViewController.swift in Sources */,
+				0096152E2455543A00426DC9 /* AddMembersCell.swift in Sources */,
 				00872909244800490075F1B2 /* GroupCell.swift in Sources */,
 				7134F90F244F560800B3054E /* TaskDetailsViewController.swift in Sources */,
 				1323FFDD2450E2B40055DEFB /* CreateGroupViewController.swift in Sources */,
@@ -459,9 +473,11 @@
 				713C6DBD2447672800954DC7 /* TasksViewController.swift in Sources */,
 				713C6DBF2447673C00954DC7 /* TaskCell.swift in Sources */,
 				7199FBAB2450B16A00FFE42F /* GroupSelectViewController.swift in Sources */,
+				0096152A24554EF600426DC9 /* AddMembersViewController.swift in Sources */,
 				13E936AC24539ACE00BE3FD0 /* ParseHelper.swift in Sources */,
 				008729072447F3580075F1B2 /* GroupDetailsViewController.swift in Sources */,
 				008728FD2436C7080075F1B2 /* signupViewController.swift in Sources */,
+				009615282455000400426DC9 /* UserInfoViewController.swift in Sources */,
 				13E73B4F242C225F000DCA5E /* AppDelegate.swift in Sources */,
 				13E73B51242C225F000DCA5E /* SceneDelegate.swift in Sources */,
 				008729032447D8E80075F1B2 /* GroupsViewController.swift in Sources */,

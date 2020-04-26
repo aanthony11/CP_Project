@@ -9,60 +9,103 @@
 import UIKit
 import Parse
 
-class GroupsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class GroupsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     
+    @IBOutlet weak var createGroupButton: UIBarButtonItem!
     @IBOutlet weak var logoutButton: UIBarButtonItem!
     @IBOutlet weak var GroupTableView: UITableView!
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var usernameLabel: UILabel!
     
-    var groups = [[group].self]
+    
+    
+    
+    var groups_lst:[String] = []
+    var group_names:[String] = []
+    var usersTempList:[PFUser] = []
+    var count = 0
+    var group_dict = [String:String]() // dictionary of group[name] --> groupId
+    var table_data = [Int:String]()
+    var group_id = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         GroupTableView.dataSource = self
         GroupTableView.delegate = self
+    
+        // create variable for current user
+        let current_user = PFUser.current()
+        let firstname = current_user!["firstName"] as! String
+        let lastname = current_user!["lastName"] as! String
+        let name = "\(firstname) \(lastname)"
         
-        //create a new button
-        //let button = UIButton(type: .custom)
-        //set image for button
-        //button.setImage(UIImage(named: "crown.png"), for: .normal)
-        //add function for button
-        //button.addTarget(self, action: #selector(fbButtonPressed), for: .touchUpInside)
-        //set frame
-        //button.frame = CGRect(x: 0, y: 0, width: 53, height: 51)
-
-        //let barButton = UIBarButtonItem(customView: button)
-        //assign button to navigationbar
-        //self.navigationItem.rightBarButtonItem = barButton
+        let data = current_user!["profilePicture"] as? PFFileObject
         
-        // create new object
-        let group = PFObject(className: "Group")
-        
-        
-        // initialize group
-        var init_group: [String] = ["n6wB4V1ojB"] // add user to list
-        init_group.append("BETn0mfdWB")
-        
-        // set properties
-        group["name"] = "Group 1"
-        group["users"] = init_group
-        group["users count"] = init_group.count
-        
-        let query = PFQuery(className:"Group")
-        query.getObjectInBackground(withId: "RAn718yP3z") { (group, error) in
-            if error == nil {
-                // Success!
-                print("group retrival was sucessful")
-            } else {
-                // Fail!
-                print("error occured: \(error?.localizedDescription)")
+        if data != nil {
+            do {
+                
+                // get image data and change image view
+                let imgData = try data?.getData()
+                let img = UIImage(data: imgData as! Data)
+                profileImageView.image = img
+           
+            }
+            catch {
+                // image cant be loaded
             }
         }
+        usernameLabel.text = name
+         
         
+         do {
+             
+             let query1 = PFQuery(className: "_User")
+             query1.whereKey("objectId", equalTo: current_user?.objectId)
+             let user_array = try query1.getFirstObject()
+             
+             // make array of groupId's that user is in
+             let user_groups = user_array["groups"] as! Array<String>
+             groups_lst = user_groups // list of group id's
+         
+         }
+         catch {
+             // if user cant be found
+             print("error occured1")
+         }
+
+         
+         for id in groups_lst {
+             do {
+                 // query for group
+                 let query2 = PFQuery(className: "Group")
+                 let group = try query2.getObjectWithId(id)
+                 
+                 group_names.append(group["name"] as! String)
+                 
+             }
+             catch{
+                 // couldn't find group
+                 print("couldn't find group")
+             }
+         }
+         // create dictionary to hold group id's and group names [name] --> "groupid"
+         var num = 0
+         print("groups lst: ", groups_lst)
+         for i in group_names {
+             group_dict[i] = groups_lst[num]
+             num += 1
+         }
+         
+         print("group dictionary: ", group_dict)
         
     }
     
+    @IBAction func createSegue(_ sender: Any) {
+        performSegue(withIdentifier: "createGroupSegue", sender: self)
+        
+    }
     
     @IBAction func onLogout(_ sender: Any) {
             
@@ -77,12 +120,21 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
         
     }
     
+    @IBAction func unwindToViewControllerA(segue: UIStoryboardSegue) {}
     
-
-//This method will call when you press button.
-    @objc func fbButtonPressed() {
-
-        print("Share to fb")
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "detailSegue" {
+            let titles_lst = [String](group_dict.keys)
+            let cell = try sender as! UITableViewCell
+            let indexpath = GroupTableView.indexPath(for: cell)!
+            let title = titles_lst[indexpath.row]
+            group_id = group_dict[title]!
+            
+            let detailController = segue.destination as! GroupDetailsViewController
+            detailController.group_title = title
+            detailController.group_id = group_id
+        }
     }
     
 
@@ -96,9 +148,12 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
     }
     */
     
+    
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 5
+        return group_dict.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -106,12 +161,16 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
         // image of group, user may choose group image
         let photos = ["crown.png","fish.png","smiley.png","hat.png","shinin.png","rocket.png"]
         let random_num = Int.random(in: 0...5)
+        let group_titles = [String](group_dict.keys)
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell") as! GroupCell
         cell.groupImageView.image = UIImage(named: photos[random_num])
+        table_data[count] = group_titles[count]
+        cell.groupLabel.text = group_titles[count]
+        count += 1
         
-        cell.textLabel?.text = "Group"
-        //let findGroup = groups[indexPath.row]
+        
+        
                 
         
         return cell
