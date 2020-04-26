@@ -15,11 +15,11 @@
 		00872909244800490075F1B2 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00872908244800490075F1B2 /* GroupCell.swift */; };
 		009615282455000400426DC9 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009615272455000400426DC9 /* UserInfoViewController.swift */; };
 		0096152A24554EF600426DC9 /* AddMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0096152924554EF600426DC9 /* AddMembersViewController.swift */; };
-		0096152E2455543A00426DC9 /* AddMembersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0096152D2455543A00426DC9 /* AddMembersCell.swift */; };
 		009615302455620400426DC9 /* GroupImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0096152F2455620300426DC9 /* GroupImageViewController.swift */; };
 		06A264EEE870F3E323A422BE /* Pods_CP_ProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B98EF21FED09002ABD6CB668 /* Pods_CP_ProjectTests.framework */; };
 		1323FFDD2450E2B40055DEFB /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1323FFDC2450E2B40055DEFB /* CreateGroupViewController.swift */; };
 		132ACE84245154E100904D07 /* GroupDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132ACE83245154E100904D07 /* GroupDetailViewCell.swift */; };
+		13CBA0842456551A0031D013 /* AddMembersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CBA083245655190031D013 /* AddMembersCell.swift */; };
 		13E73B4F242C225F000DCA5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E73B4E242C225F000DCA5E /* AppDelegate.swift */; };
 		13E73B51242C225F000DCA5E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E73B50242C225F000DCA5E /* SceneDelegate.swift */; };
 		13E73B53242C225F000DCA5E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E73B52242C225F000DCA5E /* HomeViewController.swift */; };
@@ -68,6 +68,7 @@
 		0096152F2455620300426DC9 /* GroupImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupImageViewController.swift; sourceTree = "<group>"; };
 		1323FFDC2450E2B40055DEFB /* CreateGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
 		132ACE83245154E100904D07 /* GroupDetailViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDetailViewCell.swift; sourceTree = "<group>"; };
+		13CBA083245655190031D013 /* AddMembersCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMembersCell.swift; sourceTree = "<group>"; };
 		13E73B4B242C225F000DCA5E /* Tuurns.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tuurns.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13E73B4E242C225F000DCA5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13E73B50242C225F000DCA5E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -152,6 +153,7 @@
 		13E73B4D242C225F000DCA5E /* CP_Project */ = {
 			isa = PBXGroup;
 			children = (
+				13CBA083245655190031D013 /* AddMembersCell.swift */,
 				13E73B5C242C2262000DCA5E /* Info.plist */,
 				0096152D2455543A00426DC9 /* AddMembersCell.swift */,
 				13E73B4E242C225F000DCA5E /* AppDelegate.swift */,
@@ -462,10 +464,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7164B9EA2447CBBB00F001DE /* GroupViewController.swift in Sources */,
+				13CBA0842456551A0031D013 /* AddMembersCell.swift in Sources */,
 				009615302455620400426DC9 /* GroupImageViewController.swift in Sources */,
 				008728FB2436C6F40075F1B2 /* loginViewController.swift in Sources */,
 				008729012436D13C0075F1B2 /* tasksViewController.swift in Sources */,
-				0096152E2455543A00426DC9 /* AddMembersCell.swift in Sources */,
 				00872909244800490075F1B2 /* GroupCell.swift in Sources */,
 				7134F90F244F560800B3054E /* TaskDetailsViewController.swift in Sources */,
 				1323FFDD2450E2B40055DEFB /* CreateGroupViewController.swift in Sources */,
