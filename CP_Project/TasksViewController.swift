@@ -35,10 +35,16 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
         
         
-        #warning("Timer runnning")
-        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.onTimer), userInfo: nil, repeats: true)
+//        #warning("Timer runnning")
+//        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.onTimer), userInfo: nil, repeats: true)
 
     }
+    
+//        @objc func onTimer() {
+//            getTasksFromPFUser(user: PFUser.current()!)
+//            #warning("Timer runnning")
+//
+//        }
     
     @objc func loadList(notification: NSNotification){
         getTasksFromPFUser(user: PFUser.current()!)
@@ -156,12 +162,6 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    @objc func onTimer() {
-        getTasksFromPFUser(user: PFUser.current()!)
-        #warning("Timer runnning")
-        
     }
     
     

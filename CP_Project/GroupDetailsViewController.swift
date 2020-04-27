@@ -27,7 +27,6 @@ class GroupDetailsViewController: UIViewController, UITableViewDataSource, UITab
     var userIds:[String] = []
     var user_names:[String] = []
     var arr:[String] = []
-    var num = 0
     var group_title = ""
     var group_id = ""
     
@@ -129,8 +128,7 @@ class GroupDetailsViewController: UIViewController, UITableViewDataSource, UITab
        // let random_num = Int.random(in: 0...4)
         
         let cell = groupDetailTableView.dequeueReusableCell(withIdentifier: "GroupDetailViewCell") as! GroupDetailViewCell
-        cell.usernameLabel.text = user_names[self.num]
-        num += 1
+        cell.usernameLabel.text = user_names[indexPath.row]
         
         return cell
         
