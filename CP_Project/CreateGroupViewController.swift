@@ -21,6 +21,11 @@ class CreateGroupViewController: UIViewController, UISearchBarDelegate, UITableV
     var emailsTempArray:[String] = []
     var group = PFObject(className:"Group")
     var image : UIImage?
+    var userIds:[String] = []
+    var groupsLst:[String] = []
+    var count = 0
+    var itr = 0
+    var get_id = ""
     
     
     
@@ -51,23 +56,56 @@ class CreateGroupViewController: UIViewController, UISearchBarDelegate, UITableV
             
             // set group profile picture
             let imageData = image?.pngData()
-            let file = PFFileObject(data: imageData!)
-            self.group["groupPicture"] = file
+            if imageData != nil {
+                let file = PFFileObject(data: imageData!)
+                self.group["groupPicture"] = file
+            } else {
+                let img = UIImage(named: "crown.png")
+                let imgData = img?.pngData()
+                let file1 = PFFileObject(data: imgData!)
+                self.group["groupPicture"] = file1
+            }
+            for user in self.usersTempArray {
+                self.userIds.append(user.objectId!)
+            }
             
             self.group.saveInBackground { (succeeded, error)  in
                 if (succeeded) {
                     
                     // CREATE CONNECTION FOR EVERY USER ADDED TO NEWLY CREATED GROUP
+                    print("usersTempArray count: ", self.usersTempArray.count)
                     for user in self.usersTempArray {
+                        
+                        
                         let userToGroup = PFObject(className: "UserToGroup")
                         userToGroup["user"] = user
                         userToGroup["group"] = self.group
+                        userToGroup["allUsers"] = self.userIds
                         userToGroup.saveInBackground()
+                        
+                        
+                        let query = PFQuery(className: "userGroups")
+                        let uuid = user["userGroupsId"]
+                        var tempId = ""
+                        query.whereKey("uuidString", equalTo: uuid)
+                        query.getFirstObjectInBackground { (object:PFObject?, error:Error?) in
+                            
+                            let arr = object!["allUserGroups"] as? Array<String>
+                            var arry:[String] = []
+                            arry.append(contentsOf: arr!)
+                            arry.append(self.group.objectId!)
+                            object!["allUserGroups"] = arry
+                            object!.saveInBackground()
+                            
+                        }
+                        
+                       
+                        
+                        
                     }
                     
                     self.performSegue(withIdentifier: "goToHome", sender: self)
-                    //self.presentingViewController?.dismiss(animated: true, completion: nil)
-                    //self.dismiss(animated: true, completion: nil)
+
     
                 } else {
                     print(error?.localizedDescription)

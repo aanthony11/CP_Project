@@ -72,6 +72,7 @@ class signupViewController: UIViewController {
         let confirmedPassword = confirmPasswordTextFIeld.text!
         let passwordMismatch = "Passwords do not match."
         let notEmail = "Not a valid email address."
+        let identifier = UUID().uuidString
 
         
         if isValidEmail(username) != true {
@@ -81,13 +82,16 @@ class signupViewController: UIViewController {
             errorLabel.text = passwordMismatch
             errorLabel.alpha = 1
         } else {
+            // initialiae user settings
             let user = PFUser()
             user.username = username
             user.password = password
             user["firstName"] = firstnameTextField.text!.lowercased()
             user["lastName"] = lastnameTextField.text!.lowercased()
             user["tasks"] = []
+            user["userGroupsId"] = identifier
             
+            // create default user image
             let img = UIImage(named: "Default User Profile")
             let imageData = img?.pngData()
             let file = PFFileObject(data: imageData!)
@@ -95,12 +99,18 @@ class signupViewController: UIViewController {
             
             user.signUpInBackground { (success, error) in
             if success {
+                print("Success!")
                 self.performSegue(withIdentifier: "signUpSegue", sender: nil)
             } else {
                 self.errorLabel.text = error?.localizedDescription
                 self.errorLabel.alpha = 1
                 print("Error: \(error?.localizedDescription)")
             }
+                
+            
+           // userGroup["user"] = user
+           // userGroup["allUserGroups"] = []
+           // userGroup.saveInBackground()
         }
     }
     

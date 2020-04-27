@@ -28,13 +28,22 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
     var group_dict = [String:String]() // dictionary of group[name] --> groupId
     var table_data = [Int:String]()
     var group_id = ""
+    var userGroupsId = ""
+    var groupsIds:[String] = []
+    var groupImg: UIImage?
+    var IDtoImage = [Int:UIImage]()
+    
+    let myRefreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         GroupTableView.dataSource = self
         GroupTableView.delegate = self
-    
+
+        
+        
+        
         // create variable for current user
         let current_user = PFUser.current()
         let firstname = current_user!["firstName"] as! String
@@ -59,6 +68,31 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
         usernameLabel.text = name
          
         
+        do {
+            
+            let query3 = PFQuery(className: "_User")
+            query3.whereKey("objectId", equalTo: current_user?.objectId)
+            let usr_arr = try query3.getFirstObject()
+            
+            userGroupsId = usr_arr["userGroupsId"] as! String
+            
+        }
+        catch {
+            //
+        }
+        
+        do {
+            
+           let query4 = PFQuery(className: "userGroups")
+            query4.whereKey("uuidString", equalTo: userGroupsId)
+            let group_arr = try query4.getFirstObject()
+            groupsIds = group_arr["allUserGroups"] as! Array<String>
+            
+        }
+        catch {
+            // if error occurs
+        }
+        
          do {
              
              let query1 = PFQuery(className: "_User")
@@ -76,29 +110,58 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
          }
 
          
-         for id in groups_lst {
+         for id in groupsIds {
+            var num = 0
              do {
                  // query for group
                  let query2 = PFQuery(className: "Group")
                  let group = try query2.getObjectWithId(id)
                  
                  group_names.append(group["name"] as! String)
+                
+                let imageData = group["groupPicture"] as? PFFileObject
+                if imageData != nil {
+                    do {
+                        // get image data and change image view
+                        let imgData = try imageData?.getData()
+                        let img = UIImage(data: imgData as! Data)
+                        groupImg = img
+                        IDtoImage[num] = groupImg
+                    
+                     }
+                     catch {
+                         // image cant be loaded
+                     }
+        
+                }
                  
              }
              catch{
                  // couldn't find group
                  print("couldn't find group")
              }
+            num += 1
          }
+        
          // create dictionary to hold group id's and group names [name] --> "groupid"
          var num = 0
-         print("groups lst: ", groups_lst)
+         print("groups lst: ", groupsIds)
          for i in group_names {
-             group_dict[i] = groups_lst[num]
+             group_dict[i] = groupsIds[num]
              num += 1
          }
+        
+        myRefreshControl.addTarget(self, action: #selector(reloadData), for: .valueChanged)
+        GroupTableView.refreshControl = myRefreshControl
          
-         print("group dictionary: ", group_dict)
+        
+    }
+    
+    @objc func reloadData() {
+        
+        // pull up to refresh table
+        self.GroupTableView.reloadData()
+        self.myRefreshControl.endRefreshing()
         
     }
     
@@ -162,9 +225,10 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
         let photos = ["crown.png","fish.png","smiley.png","hat.png","shinin.png","rocket.png"]
         let random_num = Int.random(in: 0...5)
         let group_titles = [String](group_dict.keys)
+        let group_ids = [String](group_dict.values)
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell") as! GroupCell
-        cell.groupImageView.image = UIImage(named: photos[random_num])
+        cell.groupImageView.image = IDtoImage[count]
         table_data[count] = group_titles[count]
         cell.groupLabel.text = group_titles[count]
         count += 1

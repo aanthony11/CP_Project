@@ -51,12 +51,21 @@ class GroupDetailsViewController: UIViewController, UITableViewDataSource, UITab
             
             let query = PFQuery(className: "Group") // query for group class
 
-            query.whereKey("objectId", equalTo: group_id) // search by group id (change Group 2 to label text)
+            query.whereKey("objectId", equalTo: group_id) // search by group id
+            query.includeKey("users")
             
             // make array of user Id's
+            
             let lst = try query.getFirstObject()
-            let arry = lst["Users"] as? Array<String> // make array from dictionary value
-            userIds = arry! // set userIds to array of userd Id's
+            let arr = lst.object(forKey: "users")
+            let arr_data:NSArray = (arr as? NSArray)!
+            
+            for i in 0...(arr_data.count-1) {
+                let user = arr_data[i] as! PFUser
+                userIds.append(user.objectId!)
+            }
+            
+            
         }
         catch {
             // if list cant be found
