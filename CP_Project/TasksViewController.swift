@@ -26,6 +26,19 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.tableView.reloadData()
     }
     
+    @IBAction func onLogout(_ sender: Any) {
+            
+        PFUser.logOut()
+        UserDefaults.standard.set(false, forKey: "UserLoggedIn")
+                   
+        let main = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = main.instantiateViewController(withIdentifier: "ViewController")
+        let sceneDelegate = self.view.window?.windowScene?.delegate as! SceneDelegate
+
+        sceneDelegate.window?.rootViewController = viewController
+        
+    }
+    
      override func viewWillAppear(_ animated: Bool) {
         if currentUser?["tasks"] != nil {
             tasks = currentUser!["tasks"] as! [String]
