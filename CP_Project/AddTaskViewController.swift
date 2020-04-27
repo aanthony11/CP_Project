@@ -9,18 +9,18 @@
 import UIKit
 import Parse
 
-class TaskDetailsViewController: UITableViewController {
+class AddTaskViewController: UITableViewController {
     
     @IBOutlet weak var taskTextField: UITextField!
     @IBOutlet weak var groupNameLabel: UILabel!
-    @IBOutlet weak var notesTextField: UITextField!
-    @IBOutlet weak var frequencyLabel: UILabel!
     
     var currentUser = PFUser.current()
     var groupName = "Team Red"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        taskTextField.becomeFirstResponder()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -33,57 +33,73 @@ class TaskDetailsViewController: UITableViewController {
         super.viewWillAppear(animated)
         tableView.reloadData()
     }
-
-    
-    @IBAction func didTapDone(_ sender: Any) {
-        
-        let task = taskTextField.text
-        var groupId = [String]()
-        
-        // Get group and save task to group
-        let query = PFQuery(className: "Group")
-        query.whereKey("name", equalTo: groupName)
-        query.findObjectsInBackground { (objects: [AnyObject]!, error: Error?) in
-            if let error = error {
-                print(error.localizedDescription)
-            } else {
-                for object in objects {
-                    groupId.append(object.objectId!)
-                }
-            }
-            let newQuery = PFQuery(className: "Group")
-            newQuery.getObjectInBackground(withId: groupId[0]) { (group: PFObject?, error: Error?) in
-                if let error = error {
-                    print(error.localizedDescription)
-                } else {
-                    group?.add(task, forKey: "tasks")
-                    group?.saveInBackground(block: { (success, error) in
-                        if success {
-                            print("task saved")
-                        } else {
-                            print("error saving task")
-                        }
-                    })
-                }
-            }
-        }
-    }
     
     @IBAction func didTapCancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func didTapDone(_ sender: Any) {      
+        let task = PFObject(className: "Task")
+        task["title"] = taskTextField.text
+        task["creator"] = PFUser.current()
+        task.saveInBackground()
+        
+        let taskToUser = PFObject(className: "TaskToUser")
+        taskToUser["user"] = PFUser.current()
+        taskToUser["task"] = task
+        taskToUser.saveInBackground()
+        
+        dismiss(animated: true, completion: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+
+
+        
+        
+//        let taskTitle = taskTextField.text
+//        var groupId = [String]()
+        
+        // Get group and save task to group
+//        let query = PFQuery(className: "Group")
+//        query.whereKey("name", equalTo: groupName)
+//        query.findObjectsInBackground { (objects: [AnyObject]!, error: Error?) in
+//            if let error = error {
+//                print(error.localizedDescription)
+//            } else {
+//                for object in objects {
+//                    groupId.append(object.objectId!)
+//                }
+//            }
+//            let newQuery = PFQuery(className: "Group")
+//            newQuery.getObjectInBackground(withId: groupId[0]) { (group: PFObject?, error: Error?) in
+//                if let error = error {
+//                    print(error.localizedDescription)
+//                } else {
+//                    group?.add(task, forKey: "tasks")
+//                    group?.saveInBackground(block: { (success, error) in
+//                        if success {
+//                            print("task saved")
+//                        } else {
+//                            print("error saving task")
+//                        }
+//                    })
+//                }
+//            }
+//        }
+    } //end didTapDone
+    
+
+    
     // MARK: - Table view data source
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
-    
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == 2 {
-            groupNameLabel.text = groupName
-        }
-    }
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//
+//    }
+//
+//    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        if indexPath.row == 2 {
+//            groupNameLabel.text = groupName
+//        }
+//    }
 
     
 

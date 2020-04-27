@@ -20,6 +20,7 @@
 		1323FFDD2450E2B40055DEFB /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1323FFDC2450E2B40055DEFB /* CreateGroupViewController.swift */; };
 		132ACE84245154E100904D07 /* GroupDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132ACE83245154E100904D07 /* GroupDetailViewCell.swift */; };
 		13CBA0842456551A0031D013 /* AddMembersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CBA083245655190031D013 /* AddMembersCell.swift */; };
+		13CBA0872456E3980031D013 /* Tasks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13CBA0862456E3980031D013 /* Tasks.storyboard */; };
 		13E73B4F242C225F000DCA5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E73B4E242C225F000DCA5E /* AppDelegate.swift */; };
 		13E73B51242C225F000DCA5E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E73B50242C225F000DCA5E /* SceneDelegate.swift */; };
 		13E73B53242C225F000DCA5E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E73B52242C225F000DCA5E /* HomeViewController.swift */; };
@@ -30,7 +31,7 @@
 		13E73B71242C2263000DCA5E /* CP_ProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E73B70242C2263000DCA5E /* CP_ProjectUITests.swift */; };
 		13E936AC24539ACE00BE3FD0 /* ParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E936AB24539ACE00BE3FD0 /* ParseHelper.swift */; };
 		1EE96DD95BF61CC7480BFF6B /* Pods_CP_Project_CP_ProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4FD44C0BB1FE971DCFFF90E /* Pods_CP_Project_CP_ProjectUITests.framework */; };
-		7134F90F244F560800B3054E /* TaskDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7134F90E244F560800B3054E /* TaskDetailsViewController.swift */; };
+		7134F90F244F560800B3054E /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7134F90E244F560800B3054E /* AddTaskViewController.swift */; };
 		713C6DBD2447672800954DC7 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713C6DBC2447672800954DC7 /* TasksViewController.swift */; };
 		713C6DBF2447673C00954DC7 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713C6DBE2447673C00954DC7 /* TaskCell.swift */; };
 		7164B9EA2447CBBB00F001DE /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7164B9E92447CBBB00F001DE /* GroupViewController.swift */; };
@@ -69,6 +70,7 @@
 		1323FFDC2450E2B40055DEFB /* CreateGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
 		132ACE83245154E100904D07 /* GroupDetailViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDetailViewCell.swift; sourceTree = "<group>"; };
 		13CBA083245655190031D013 /* AddMembersCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMembersCell.swift; sourceTree = "<group>"; };
+		13CBA0862456E3980031D013 /* Tasks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tasks.storyboard; sourceTree = SOURCE_ROOT; };
 		13E73B4B242C225F000DCA5E /* Tuurns.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tuurns.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13E73B4E242C225F000DCA5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13E73B50242C225F000DCA5E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,7 +92,7 @@
 		3DC96409840F389ADF19F0CC /* Pods-CP_ProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CP_ProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-CP_ProjectTests/Pods-CP_ProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		400AC7A499439A18AE1995CF /* Pods_CP_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CP_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E7D7AEBEAE27D3A580B0C28 /* Pods-CP_Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CP_Project.debug.xcconfig"; path = "Target Support Files/Pods-CP_Project/Pods-CP_Project.debug.xcconfig"; sourceTree = "<group>"; };
-		7134F90E244F560800B3054E /* TaskDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsViewController.swift; sourceTree = "<group>"; };
+		7134F90E244F560800B3054E /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		713C6DBC2447672800954DC7 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		713C6DBE2447673C00954DC7 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		7164B9E92447CBBB00F001DE /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
@@ -153,31 +155,32 @@
 		13E73B4D242C225F000DCA5E /* CP_Project */ = {
 			isa = PBXGroup;
 			children = (
-				13CBA083245655190031D013 /* AddMembersCell.swift */,
 				13E73B5C242C2262000DCA5E /* Info.plist */,
+				13CBA0862456E3980031D013 /* Tasks.storyboard */,
+				13CBA083245655190031D013 /* AddMembersCell.swift */,
 				0096152D2455543A00426DC9 /* AddMembersCell.swift */,
+				0096152924554EF600426DC9 /* AddMembersViewController.swift */,
+				7134F90E244F560800B3054E /* AddTaskViewController.swift */,
 				13E73B4E242C225F000DCA5E /* AppDelegate.swift */,
 				1323FFDC2450E2B40055DEFB /* CreateGroupViewController.swift */,
-				0096152F2455620300426DC9 /* GroupImageViewController.swift */,
 				00872908244800490075F1B2 /* GroupCell.swift */,
 				008729062447F3580075F1B2 /* GroupDetailsViewController.swift */,
 				132ACE83245154E100904D07 /* GroupDetailViewCell.swift */,
+				0096152F2455620300426DC9 /* GroupImageViewController.swift */,
 				7199FBAA2450B16A00FFE42F /* GroupSelectViewController.swift */,
 				008729022447D8E80075F1B2 /* GroupsViewController.swift */,
 				7164B9E92447CBBB00F001DE /* GroupViewController.swift */,
 				13E73B52242C225F000DCA5E /* HomeViewController.swift */,
 				008728FA2436C6F40075F1B2 /* loginViewController.swift */,
+				13E936AB24539ACE00BE3FD0 /* ParseHelper.swift */,
 				13E73B50242C225F000DCA5E /* SceneDelegate.swift */,
 				008728FC2436C7080075F1B2 /* signupViewController.swift */,
 				713C6DBE2447673C00954DC7 /* TaskCell.swift */,
-				7134F90E244F560800B3054E /* TaskDetailsViewController.swift */,
 				713C6DBC2447672800954DC7 /* TasksViewController.swift */,
+				009615272455000400426DC9 /* UserInfoViewController.swift */,
 				13E73B57242C2262000DCA5E /* Assets.xcassets */,
 				13E73B59242C2262000DCA5E /* LaunchScreen.storyboard */,
 				13E73B54242C225F000DCA5E /* Main.storyboard */,
-				0096152924554EF600426DC9 /* AddMembersViewController.swift */,
-				009615272455000400426DC9 /* UserInfoViewController.swift */,
-				13E936AB24539ACE00BE3FD0 /* ParseHelper.swift */,
 			);
 			path = CP_Project;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13E73B5B242C2262000DCA5E /* LaunchScreen.storyboard in Resources */,
+				13CBA0872456E3980031D013 /* Tasks.storyboard in Resources */,
 				13E73B58242C2262000DCA5E /* Assets.xcassets in Resources */,
 				13E73B56242C225F000DCA5E /* Main.storyboard in Resources */,
 			);
@@ -469,7 +473,7 @@
 				008728FB2436C6F40075F1B2 /* loginViewController.swift in Sources */,
 				008729012436D13C0075F1B2 /* tasksViewController.swift in Sources */,
 				00872909244800490075F1B2 /* GroupCell.swift in Sources */,
-				7134F90F244F560800B3054E /* TaskDetailsViewController.swift in Sources */,
+				7134F90F244F560800B3054E /* AddTaskViewController.swift in Sources */,
 				1323FFDD2450E2B40055DEFB /* CreateGroupViewController.swift in Sources */,
 				13E73B53242C225F000DCA5E /* HomeViewController.swift in Sources */,
 				713C6DBD2447672800954DC7 /* TasksViewController.swift in Sources */,

@@ -84,20 +84,20 @@ class CreateGroupViewController: UIViewController, UISearchBarDelegate, UITableV
                         userToGroup.saveInBackground()
                         
                         
-                        let query = PFQuery(className: "userGroups")
-                        let uuid = user["userGroupsId"]
-                        var tempId = ""
-                        query.whereKey("uuidString", equalTo: uuid)
-                        query.getFirstObjectInBackground { (object:PFObject?, error:Error?) in
-                            
-                            let arr = object!["allUserGroups"] as? Array<String>
-                            var arry:[String] = []
-                            arry.append(contentsOf: arr!)
-                            arry.append(self.group.objectId!)
-                            object!["allUserGroups"] = arry
-                            object!.saveInBackground()
-                            
-                        }
+//                        let query = PFQuery(className: "userGroups")
+//                        let uuid = user["userGroupsId"]
+//                        var tempId = ""
+//                        query.whereKey("uuidString", equalTo: uuid)
+//                        query.getFirstObjectInBackground { (object:PFObject?, error:Error?) in
+//
+//                            let arr = object!["allUserGroups"] as? Array<String>
+//                            var arry:[String] = []
+//                            arry.append(contentsOf: arr!)
+//                            arry.append(self.group.objectId!)
+//                            object!["allUserGroups"] = arry
+//                            object!.saveInBackground()
+//                            
+//                        }
                         
                        
                         

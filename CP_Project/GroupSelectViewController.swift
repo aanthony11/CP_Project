@@ -12,7 +12,8 @@ import Parse
 class GroupSelectViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     var currentUser = PFUser.current()
-    var groups = [PFObject]()
+//    var groups = [PFObject]()
+    var groups = [String]()
     
     @IBOutlet weak var pickerView: UIPickerView!
     
@@ -23,32 +24,34 @@ class GroupSelectViewController: UIViewController, UIPickerViewDelegate, UIPicke
         pickerView.delegate = self
         pickerView.dataSource = self
         
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let userId = currentUser?.objectId
-        let query = PFQuery(className: "Group")
-        query.whereKey("users", contains: userId)
-        query.findObjectsInBackground { (results: [PFObject]?, error: Error?) in
-            if let error = error {
-                print(error.localizedDescription)
-            } else {
-                self.groups = results!
-                self.pickerView.reloadAllComponents()
-            }
-        }
+//        let userId = currentUser?.objectId
+//        let query = PFQuery(className: "Group")
+//        query.whereKey("users", contains: userId)
+//        query.findObjectsInBackground { (results: [PFObject]?, error: Error?) in
+//            if let error = error {
+//                print(error.localizedDescription)
+//            } else {
+//                self.groups = results!
+//                self.pickerView.reloadAllComponents()
+//            }
+//        }
+        
+        self.groups = ["Mace", "Anakin", "Luke", "Obi-Wan"]
+        self.pickerView.reloadAllComponents()
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return groups.count
+        return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         let group = groups[row]
-        let groupName = group["Group"] as? String
-        
-        return groupName!
+        return group
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
@@ -57,10 +60,8 @@ class GroupSelectViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let group = groups[row]
-        let groupName = group["Group"] as? String
         
-        let vc = storyboard?.instantiateViewController(withIdentifier: "TaskDetailsVC") as? TaskDetailsViewController
-        vc?.groupName = groupName!
+        let vc = storyboard?.instantiateViewController(withIdentifier: "TaskDetailsVC") as? AddTaskViewController
         vc?.tableView.reloadData()
     }
 
