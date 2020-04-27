@@ -91,6 +91,17 @@ class signupViewController: UIViewController {
             user["tasks"] = []
             user["userGroupsId"] = identifier
             
+            let userGroups = PFObject(className: "userGroups")
+            userGroups["allUserGroups"] = []
+            userGroups["uuidString"] = identifier
+            userGroups.saveInBackground { (success, error) in
+                if success {
+                    print("succesfully created userGroups instance")
+                } else {
+                    print("Error in userGroups: \(error?.localizedDescription)")
+                }
+            }
+            
             // create default user image
             let img = UIImage(named: "Default User Profile")
             let imageData = img?.pngData()

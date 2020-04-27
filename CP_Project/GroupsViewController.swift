@@ -98,9 +98,17 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
              let query1 = PFQuery(className: "_User")
              query1.whereKey("objectId", equalTo: current_user?.objectId)
              let user_array = try query1.getFirstObject()
+            let user_uuid = user_array["userGroupsId"]
+            
+            
+            let query6 = PFQuery(className: "userGroups")
+            query6.whereKey("uuidString", equalTo: user_uuid)
+            let userGroupsArray = try query6.getFirstObject()
+            //print("userGroupsArray: ", userGroupsArray)
+            //print("allUsersGroups list: ",userGroupsArray["allUserGroups"])
              
              // make array of groupId's that user is in
-             let user_groups = user_array["groups"] as! Array<String>
+             let user_groups = userGroupsArray["allUserGroups"] as! Array<String>
              groups_lst = user_groups // list of group id's
          
          }
