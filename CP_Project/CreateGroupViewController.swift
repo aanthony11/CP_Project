@@ -98,9 +98,6 @@ class CreateGroupViewController: UIViewController, UISearchBarDelegate, UITableV
                             
                         }
                         
-                       
-                        
-                        
                     }
                     
                     self.performSegue(withIdentifier: "goToHome", sender: self)
@@ -256,11 +253,24 @@ class CreateGroupViewController: UIViewController, UISearchBarDelegate, UITableV
        return "Users to be added to group: "
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "goToHome" {
+            print("going back to groupsViewController")
+            let destination = segue.destination as! GroupsViewController
+            destination.count = 0 // reset counter
+            destination.GroupTableView.reloadData()
+            
+        }
+        
+    }
+    
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        <#code#>
 //    }
     
 
+    
     /*
     // MARK: - Navigation
 
