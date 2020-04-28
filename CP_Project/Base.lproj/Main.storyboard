@@ -445,7 +445,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="usernameLabel" destination="heI-Pj-9nN" id="YqZ-HA-9FI"/>
-                                            <segue destination="Fmh-37-f6Q" kind="presentation" id="Rtn-6N-44D"/>
+                                            <segue destination="Fmh-37-f6Q" kind="presentation" identifier="userInfoSegue" id="Rtn-6N-44D"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -948,10 +948,21 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="John Doe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCj-hH-r4y">
+                                <rect key="frame" x="129" y="355" width="156" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="oZh-Ib-FBV"/>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="90T-fp-S7H" id="zgG-7U-Zbf"/>
+                        <outlet property="usernameLabel" destination="ZCj-hH-r4y" id="mKX-Om-N2M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hBV-NW-bV4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

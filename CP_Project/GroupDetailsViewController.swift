@@ -59,6 +59,7 @@ class GroupDetailsViewController: UIViewController, UITableViewDataSource, UITab
             let lst = try query.getFirstObject()
             // owner name
             let ownerObj = lst["owner"] as! PFObject
+ 
             var name = "\(ownerObj["firstName"] as! String) \(ownerObj["lastName"] as! String)"
             name = name.capitalized
             ownerLabel.text = name
@@ -100,6 +101,7 @@ class GroupDetailsViewController: UIViewController, UITableViewDataSource, UITab
     
     @IBAction func onPressed(_ sender: Any) {
         
+        // open users camera or photo library
         let picker = UIImagePickerController()
         picker.delegate = self
         picker.allowsEditing = true
@@ -121,6 +123,22 @@ class GroupDetailsViewController: UIViewController, UITableViewDataSource, UITab
         let image = info[.editedImage] as! UIImage
         let size = CGSize(width: 300, height: 300)
         let scaled = image.af_imageScaled(to: size)
+        let imageData = scaled.pngData()
+        let file = PFFileObject(data: imageData!)
+        
+        // update groups["groupPicture"] data
+        let groupQuery = PFQuery(className: "Group") // query for group datr
+        groupQuery.getObjectInBackground(withId: group_id) { (object:PFObject?, error:Error?) in
+            if object != nil {
+                print("success from imagePicker!")
+                object!["groupPicture"] = file
+                object!.saveInBackground()
+                
+            } else {
+                // some error occured
+            }
+            
+        }
         
         dismiss(animated: true, completion: nil)
         
@@ -139,6 +157,21 @@ class GroupDetailsViewController: UIViewController, UITableViewDataSource, UITab
         cell.usernameLabel.text = user_names[indexPath.row]
         
         return cell
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "userInfoSegue" {
+            
+            let cell = try sender as! UITableViewCell
+            let indexpath = groupDetailTableView.indexPath(for: cell)!
+            let name = user_names[indexpath.row]
+            
+            let destination = segue.destination as! UserInfoViewController
+            destination.name = name
+            destination.userId = userIds[indexpath.row]
+        }
+        
         
     }
     /*
