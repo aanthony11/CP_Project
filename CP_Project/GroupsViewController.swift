@@ -238,12 +238,11 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
         let random_num = Int.random(in: 0...5)
         let group_titles = [String](group_dict.keys)
         let group_ids = [String](group_dict.values)
-        let imageData = imageDataList[indexPath.row]
-        print("imageData: ", imageData)
-        //let image = UIImage(data: imageData)
+        let imageData = imageDataList[indexPath.row] // get image data of group
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell") as! GroupCell
         
+        // turn image data into UIImage and change imageView
         imageData.getDataInBackground { (imgData:Data?, error:Error?) in
             if let error = error {
                 print(error.localizedDescription)

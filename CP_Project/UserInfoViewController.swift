@@ -7,13 +7,48 @@
 //
 
 import UIKit
+import Parse
+import AlamofireImage
 
 class UserInfoViewController: UIViewController {
+    
+    // data is passed from previous view controller
+    var name = ""
+    var userId = ""
 
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var usernameLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Change label to display user's name
+        usernameLabel.text = name
+        
+        // display user's profile picture
+        do {
+            
+            let userQuery = PFQuery(className: "_User")
+            let user = try userQuery.getObjectWithId(userId)
+            let profileImageData = user["profilePicture"] as! PFFileObject
+            profileImageData.getDataInBackground { (imageData:Data?, error:Error?) in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else if let imageData = imageData {
+                    print("succesfully got image data :)")
+                    let image = UIImage(data: imageData)
+                    self.imageView.image = image
+                }
+            }
+            
+            
+        }
+        catch {
+            // if error occured
+            print("error occured retrieving user data")
+        }
+        
     }
     
 

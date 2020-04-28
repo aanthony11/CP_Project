@@ -59,6 +59,7 @@ class GroupDetailsViewController: UIViewController, UITableViewDataSource, UITab
             let lst = try query.getFirstObject()
             // owner name
             let ownerObj = lst["owner"] as! PFObject
+ 
             var name = "\(ownerObj["firstName"] as! String) \(ownerObj["lastName"] as! String)"
             name = name.capitalized
             ownerLabel.text = name
@@ -156,6 +157,21 @@ class GroupDetailsViewController: UIViewController, UITableViewDataSource, UITab
         cell.usernameLabel.text = user_names[indexPath.row]
         
         return cell
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "userInfoSegue" {
+            
+            let cell = try sender as! UITableViewCell
+            let indexpath = groupDetailTableView.indexPath(for: cell)!
+            let name = user_names[indexpath.row]
+            
+            let destination = segue.destination as! UserInfoViewController
+            destination.name = name
+            destination.userId = userIds[indexpath.row]
+        }
+        
         
     }
     /*
