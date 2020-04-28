@@ -9,7 +9,13 @@
 import UIKit
 import Parse
 
-class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+protocol AddTaskProtocol {
+    func didAddTask(task: PFObject, taskToUser: PFObject)
+}
+
+class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddTaskProtocol {
+    
+    //var pushCount : int = 0
     
     var helper = ParseHelper()
     var groups : Array<PFObject> = []
@@ -32,9 +38,6 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         getTasksFromPFUser(user: PFUser.current()!)
         
         
-        NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
-        
-        
 //        #warning("Timer runnning")
 //        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.onTimer), userInfo: nil, repeats: true)
 
@@ -45,10 +48,6 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
 //            #warning("Timer runnning")
 //
 //        }
-    
-    @objc func loadList(notification: NSNotification){
-        getTasksFromPFUser(user: PFUser.current()!)
-    }
     
     func getGroupsFromPFUser(user: PFUser) -> Void {
         let query = PFQuery(className:"UserToGroup")
@@ -115,15 +114,48 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 }
             }
             self.tableView.reloadData()
-
         }
+        
+        
 
     }
     
     @IBAction func onJoker(_ sender: Any) {
-        print("\n____ PRINTING GROUPS ____\n", self.groups, "\n____ DONE PRINTING GROUPS ____\n")
-        print("\n____ PRINTING TASKS ____\n", self.tasks, "\n____ DONE PRINTING TASK ____\n")
+//        print("\n____ PRINTING GROUPS ____\n", self.groups, "\n____ DONE PRINTING GROUPS ____\n")
+//        print("\n____ PRINTING TASKS ____\n", self.tasks, "\n____ DONE PRINTING TASK ____\n")
+        	
         
+        let query = PFQuery(className:"UserToGroup")
+        query.whereKey("user", equalTo:PFUser.current()!)
+        query.includeKeys(["group"])
+        query.selectKeys(["group"])
+        query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
+            if let error = error {
+                // Log details of the failure
+                print(error.localizedDescription)
+            } else if let objects = objects {
+                // The find succeeded.
+                print("Successfully retrieved \(objects.count) objects.")
+                // Do something with the found objects
+                for object in objects{
+                    let group = object["group"] as! PFObject
+                    print(group)
+                }
+            }
+        }
+        
+    }
+    
+    func didAddTask(task: PFObject, taskToUser: PFObject) {
+        task.saveInBackground { (x, y) in
+            self.taskIds.append(task.objectId!)
+        }
+        
+        taskToUser.saveInBackground()
+        
+        self.tasks.append(task)
+        
+        tableView.reloadData()
     }
     
     @IBAction func onLogout(_ sender: Any) {
@@ -148,6 +180,12 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     }
     
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//
+//        performSegue(withIdentifier: "plusSegue", sender: nil)
+//    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tasks.count
     }
@@ -164,16 +202,17 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    
-
-    /*
-    // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+
+        if segue.identifier == "plusSegue" {
+            let newNvc = segue.destination as! UINavigationController
+            let newVc = newNvc.children.first as! AddTaskViewController
+            newVc.delegate = self
+        }
     }
-    */
+    
 
 }

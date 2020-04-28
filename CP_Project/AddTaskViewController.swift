@@ -17,6 +17,8 @@ class AddTaskViewController: UITableViewController {
     var currentUser = PFUser.current()
     var groupName = "Team Red"
     
+    var delegate: AddTaskProtocol!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,18 +44,17 @@ class AddTaskViewController: UITableViewController {
         let task = PFObject(className: "Task")
         task["title"] = taskTextField.text
         task["creator"] = PFUser.current()
-        task.saveInBackground()
         
         let taskToUser = PFObject(className: "TaskToUser")
         taskToUser["user"] = PFUser.current()
         taskToUser["task"] = task
-        taskToUser.saveInBackground()
+        //taskToUser.saveInBackground()
         
-        dismiss(animated: true, completion: nil)
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
-
-
+        // show a loading animation to the user while it saves...
         
+        delegate.didAddTask(task: task, taskToUser: taskToUser);
+        self.dismiss(animated: true, completion: nil)
+       
         
 //        let taskTitle = taskTextField.text
 //        var groupId = [String]()
