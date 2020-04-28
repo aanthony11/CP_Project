@@ -66,7 +66,7 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
                 // image cant be loaded
             }
         }
-        usernameLabel.text = name
+        usernameLabel.text = name.capitalized
          
         
         do {

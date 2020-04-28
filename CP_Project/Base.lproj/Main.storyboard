@@ -392,7 +392,7 @@
             </objects>
             <point key="canvasLocation" x="1451" y="4705"/>
         </scene>
-        <!--Group Details View Controller-->
+        <!--Group Details-->
         <scene sceneID="7UO-lH-kci">
             <objects>
                 <viewController id="xsM-cM-cTp" customClass="GroupDetailsViewController" customModule="Tuurns" customModuleProvider="target" sceneMemberID="viewController">
@@ -427,11 +427,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="415" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Doe" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heI-Pj-9nN">
-                                                    <rect key="frame" x="251" y="17" width="124" height="26"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="John Doe" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heI-Pj-9nN">
+                                                    <rect key="frame" x="133" y="20" width="148" height="26"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="124" id="JOl-UV-hmq"/>
-                                                        <constraint firstAttribute="height" constant="26" id="VfQ-qj-fZR"/>
+                                                        <constraint firstAttribute="width" constant="148" id="IUe-JN-fnn"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -439,9 +438,9 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="heI-Pj-9nN" firstAttribute="leading" secondItem="KCH-74-WET" secondAttribute="leadingMargin" constant="231" id="fGE-y7-m4T"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="heI-Pj-9nN" secondAttribute="bottom" constant="11" id="tLr-gN-LnK"/>
-                                                <constraint firstItem="heI-Pj-9nN" firstAttribute="top" secondItem="KCH-74-WET" secondAttribute="topMargin" constant="6" id="uQr-gK-VbM"/>
+                                                <constraint firstItem="heI-Pj-9nN" firstAttribute="centerX" secondItem="KCH-74-WET" secondAttribute="centerX" id="hJK-cW-0YN"/>
+                                                <constraint firstItem="heI-Pj-9nN" firstAttribute="centerY" secondItem="KCH-74-WET" secondAttribute="centerY" id="iuc-rj-ZkU"/>
+                                                <constraint firstItem="heI-Pj-9nN" firstAttribute="top" secondItem="KCH-74-WET" secondAttribute="topMargin" constant="9" id="o4p-SO-q04"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -530,7 +529,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vBY-1p-l7m"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ck8-at-p1r"/>
+                    <navigationItem key="navigationItem" title="Group Details" id="ck8-at-p1r"/>
                     <connections>
                         <outlet property="addmembersButton" destination="Aqa-97-ib2" id="qvm-0S-hO2"/>
                         <outlet property="changeImageButton" destination="OCm-Zu-2m3" id="y4v-hw-02x"/>
@@ -966,6 +965,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eAH-5n-25i">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

@@ -52,11 +52,19 @@ class GroupDetailsViewController: UIViewController, UITableViewDataSource, UITab
 
             query.whereKey("objectId", equalTo: group_id) // search by group id
             query.includeKey("users")
+            query.includeKey("owner")
             
             // make array of user Id's
             
             let lst = try query.getFirstObject()
+            // owner name
+            let ownerObj = lst["owner"] as! PFObject
+            var name = "\(ownerObj["firstName"] as! String) \(ownerObj["lastName"] as! String)"
+            name = name.capitalized
+            ownerLabel.text = name
+            //owner name end
             let arr = lst.object(forKey: "users")
+            
             let arr_data:NSArray = (arr as? NSArray)!
             
             for i in 0...(arr_data.count-1) {
@@ -81,7 +89,7 @@ class GroupDetailsViewController: UIViewController, UITableViewDataSource, UITab
                 
                 // get first and last name, and add to user_names array
                 let name = "\(user["firstName"] as! String) \(user["lastName"] as! String)"
-                user_names.append(name)
+                user_names.append(name.capitalized)
                 
             }
             catch {

@@ -73,7 +73,7 @@
                             <barButtonItem image="plus.circle.fill" catalog="system" id="SDU-Zk-xWF">
                                 <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <segue destination="H49-cp-Idb" kind="presentation" id="HG6-jO-gj2"/>
+                                    <segue destination="H49-cp-Idb" kind="presentation" modalPresentationStyle="fullScreen" id="HG6-jO-gj2"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Joker" id="g6j-cr-ciP">
@@ -97,7 +97,7 @@
             <objects>
                 <tableViewController id="o52-DF-6O4" customClass="AddTaskViewController" customModule="Tuurns" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="35k-GG-GKs">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <sections>
                             <tableViewSection headerTitle="Task" id="9fe-Ez-B26">
@@ -196,7 +196,7 @@
             <objects>
                 <viewController storyboardIdentifier="TaskDetailsVC" id="bxf-53-kVn" customClass="GroupSelectViewController" customModule="Tuurns" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ycN-TE-uex">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select group" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lhO-At-cA3">
@@ -229,7 +229,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="H49-cp-Idb" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Nrq-Zl-atN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
