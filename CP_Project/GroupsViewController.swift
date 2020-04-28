@@ -32,6 +32,7 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
     var groupsIds:[String] = []
     var groupImg: UIImage?
     var IDtoImage = [Int:UIImage]()
+    var imageDataList:[PFFileObject] = []
     
     let myRefreshControl = UIRefreshControl()
 
@@ -127,6 +128,7 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
                  let group = try query2.getObjectWithId(id)
                  
                  group_names.append(group["name"] as! String)
+                imageDataList.append(group["groupPicture"] as! PFFileObject)
                 
                 let imageData = group["groupPicture"] as? PFFileObject
                 if imageData != nil {
@@ -160,6 +162,7 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
              num += 1
          }
         
+        // needed for pull to refresh
         myRefreshControl.addTarget(self, action: #selector(loadGroups), for: .valueChanged)
         GroupTableView.refreshControl = myRefreshControl
          
@@ -235,16 +238,29 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
         let random_num = Int.random(in: 0...5)
         let group_titles = [String](group_dict.keys)
         let group_ids = [String](group_dict.values)
+        let imageData = imageDataList[indexPath.row]
+        print("imageData: ", imageData)
+        //let image = UIImage(data: imageData)
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell") as! GroupCell
-        cell.groupImageView.image = IDtoImage[indexPath.row]
+        
+        imageData.getDataInBackground { (imgData:Data?, error:Error?) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let imgData = imgData {
+                print("succesfully got image data :)")
+                let image = UIImage(data: imgData)
+                cell.groupImageView.image = image
+            }
+        }
+        
         table_data[indexPath.row] = group_titles[indexPath.row]
         cell.groupLabel.text = group_titles[indexPath.row]
         
         return cell
     }
 
-    
+    // pull to refresh data function
     @objc func loadGroups() {
         
         groups_lst.removeAll()
@@ -257,6 +273,7 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
         userGroupsId = ""
         groupsIds.removeAll()
         IDtoImage.removeAll()
+        imageDataList.removeAll()
         
         let current_user = PFUser.current()
         do {
@@ -317,6 +334,7 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
                  let group = try query2.getObjectWithId(id)
                  
                  group_names.append(group["name"] as! String)
+                imageDataList.append(group["groupPicture"] as! PFFileObject)
                 
                 let imageData = group["groupPicture"] as? PFFileObject
                 if imageData != nil {

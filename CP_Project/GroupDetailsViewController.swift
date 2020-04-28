@@ -100,6 +100,7 @@ class GroupDetailsViewController: UIViewController, UITableViewDataSource, UITab
     
     @IBAction func onPressed(_ sender: Any) {
         
+        // open users camera or photo library
         let picker = UIImagePickerController()
         picker.delegate = self
         picker.allowsEditing = true
@@ -121,6 +122,22 @@ class GroupDetailsViewController: UIViewController, UITableViewDataSource, UITab
         let image = info[.editedImage] as! UIImage
         let size = CGSize(width: 300, height: 300)
         let scaled = image.af_imageScaled(to: size)
+        let imageData = scaled.pngData()
+        let file = PFFileObject(data: imageData!)
+        
+        // update groups["groupPicture"] data
+        let groupQuery = PFQuery(className: "Group") // query for group datr
+        groupQuery.getObjectInBackground(withId: group_id) { (object:PFObject?, error:Error?) in
+            if object != nil {
+                print("success from imagePicker!")
+                object!["groupPicture"] = file
+                object!.saveInBackground()
+                
+            } else {
+                // some error occured
+            }
+            
+        }
         
         dismiss(animated: true, completion: nil)
         
