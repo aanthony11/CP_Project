@@ -27,7 +27,7 @@ extension UIButton {
     }
 }
 
-class signupViewController: UIViewController {
+class SignupViewController: UIViewController {
 
     @IBOutlet weak var firstnameTextField: UITextField!
     @IBOutlet weak var lastnameTextField: UITextField!

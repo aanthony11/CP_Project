@@ -24,7 +24,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "442B12C9-F277-4151-A078-4DC92663608E"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CP_Project/TasksViewController.swift"
@@ -33,6 +33,198 @@
             startingLineNumber = "116"
             endingLineNumber = "116"
             landmarkName = "getTasksFromPFUser(user:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "348BDD4F-1CE8-4934-B533-92D97868C848"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CP_Project/TasksViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "getTasksFromPFUser(user:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "348BDD4F-1CE8-4934-B533-92D97868C848 - 797112e40b1e9e55"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Tuurns.TasksViewController.getTasksFromPFUser(user: __C.PFUser) -&gt; ()"
+                  moduleName = "Tuurns"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/manish/Documents/Semester%202/Codepath/CP_Project/CP_Project/TasksViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "98"
+                  endingLineNumber = "98"
+                  offsetFromSymbolStart = "610">
+               </Location>
+               <Location
+                  uuid = "348BDD4F-1CE8-4934-B533-92D97868C848 - daa1bb9ad44dd2c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;__C.PFObject&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Tuurns.TasksViewController.getTasksFromPFUser(user: __C.PFUser) -&gt; ()"
+                  moduleName = "Tuurns"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/manish/Documents/Semester%202/Codepath/CP_Project/CP_Project/TasksViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "99"
+                  endingLineNumber = "99"
+                  offsetFromSymbolStart = "290">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "308A3798-FC49-4296-8A1A-454C52088689"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CP_Project/TasksViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "getTasksFromPFUser(user:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "31F469CC-F8E5-490C-9282-3337E80F125B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CP_Project/TasksViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "getTasksFromPFUser(user:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8D348405-FD83-4A37-B7B9-2FCE99D3D50A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CP_Project/TasksViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "getTasksFromPFUser(user:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3592AEA2-45EB-47CB-B1C1-3B5D9BA222BE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CP_Project/TasksViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "getTasksFromPFUser(user:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "103EA4C9-DAB2-436B-9F3F-3FC6D19C09AA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CP_Project/TasksViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "getTasksFromPFUser(user:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "103EA4C9-DAB2-436B-9F3F-3FC6D19C09AA - daa1bb9ad44dd2c"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;__C.PFObject&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Tuurns.TasksViewController.getTasksFromPFUser(user: __C.PFUser) -&gt; ()"
+                  moduleName = "Tuurns"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/manish/Documents/Semester%202/Codepath/CP_Project/CP_Project/TasksViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "102"
+                  endingLineNumber = "102"
+                  offsetFromSymbolStart = "341">
+               </Location>
+               <Location
+                  uuid = "103EA4C9-DAB2-436B-9F3F-3FC6D19C09AA - daa1bb9ad44dd2c"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;__C.PFObject&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Tuurns.TasksViewController.getTasksFromPFUser(user: __C.PFUser) -&gt; ()"
+                  moduleName = "Tuurns"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/manish/Documents/Semester%202/Codepath/CP_Project/CP_Project/TasksViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "102"
+                  endingLineNumber = "102"
+                  offsetFromSymbolStart = "737">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3DAF1AC6-097F-42A3-8D13-8C3C74C958D9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CP_Project/TasksViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "onJoker(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7A4E4D35-E524-4A84-BDFA-820E33048399"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CP_Project/TasksViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "onJoker(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

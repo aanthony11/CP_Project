@@ -1,20 +1,19 @@
 //
-//  ParseHelper.swift
+//  Extensions.swift
 //  CP_Project
 //
-//  Created by Manish Rajendran on 4/24/20.
+//  Created by Manish Rajendran on 4/28/20.
 //  Copyright © 2020 Manish Rajendran. All rights reserved.
 //
 
 import Foundation
 import Parse
 
-
-class ParseHelper {
+extension PFUser {
     
-    func getGroupsFromPFUser(user: PFUser,  completion: @escaping (([PFObject]?, Error?) -> ())) -> Void {
+    func getGroups(completion: @escaping (([PFObject]?, Error?) -> ())) {
         let query = PFQuery(className:"UserToGroup")
-        query.whereKey("user", equalTo:user)
+        query.whereKey("user", equalTo: self)
         query.includeKey("group")
         
         query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
@@ -33,17 +32,5 @@ class ParseHelper {
                 completion(groups, nil)
             }
         }
-    } // end function
-    
-        
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-} // end Class
+    }
+}

@@ -564,7 +564,7 @@
         <!--Login View Controller-->
         <scene sceneID="3xm-8q-Pru">
             <objects>
-                <viewController id="peX-mS-Ldq" customClass="loginViewController" customModule="Tuurns" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="peX-mS-Ldq" customClass="LoginViewController" customModule="Tuurns" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ktC-jK-oCb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -673,7 +673,7 @@
         <!--Signup View Controller-->
         <scene sceneID="96L-ma-NJL">
             <objects>
-                <viewController id="hc4-au-L2U" customClass="signupViewController" customModule="Tuurns" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hc4-au-L2U" customClass="SignupViewController" customModule="Tuurns" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LE3-HL-CEL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1034,6 +1034,6 @@
         <image name="plus.circle.fill" catalog="system" width="64" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ofL-5w-usX"/>
+        <segue reference="ltb-5g-AgW"/>
     </inferredMetricsTieBreakers>
 </document>

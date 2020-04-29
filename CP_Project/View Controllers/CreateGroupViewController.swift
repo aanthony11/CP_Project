@@ -257,9 +257,9 @@ class CreateGroupViewController: UIViewController, UISearchBarDelegate, UITableV
         
         if segue.identifier == "goToHome" {
             print("going back to groupsViewController")
-            let destination = segue.destination as! GroupsViewController
-            destination.count = 0 // reset counter
-            destination.GroupTableView.reloadData()
+            //let destination = segue.destination as! GroupsViewController
+            //destination.count = 0 // reset counter
+            //destination.GroupTableView.reloadData() // TODO
             
         }
         

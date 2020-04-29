@@ -123,26 +123,38 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBAction func onJoker(_ sender: Any) {
 //        print("\n____ PRINTING GROUPS ____\n", self.groups, "\n____ DONE PRINTING GROUPS ____\n")
 //        print("\n____ PRINTING TASKS ____\n", self.tasks, "\n____ DONE PRINTING TASK ____\n")
-        	
         
-        let query = PFQuery(className:"UserToGroup")
-        query.whereKey("user", equalTo:PFUser.current()!)
-        query.includeKeys(["group"])
-        query.selectKeys(["group"])
-        query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
-            if let error = error {
-                // Log details of the failure
-                print(error.localizedDescription)
-            } else if let objects = objects {
-                // The find succeeded.
-                print("Successfully retrieved \(objects.count) objects.")
-                // Do something with the found objects
-                for object in objects{
-                    let group = object["group"] as! PFObject
-                    print(group)
-                }
-            }
+        helper.getGroupsFromPFUser(user: PFUser.current()!) { (groups, error) in
+            print(groups)
         }
+        
+        PFUser.current()?.getGroups(completion: { (groups, error) in
+            print(groups)
+        })
+        
+        	
+//
+//        let query = PFQuery(className:"UserToGroup")
+//        query.whereKey("user", equalTo:PFUser.current()!)
+//        query.includeKeys(["group"])
+//        query.selectKeys(["group"])
+//        query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
+//            if let error = error {
+//                // Log details of the failure
+//                print(error.localizedDescription)
+//            } else if let objects = objects {
+//                // The find succeeded.
+//                print("Successfully retrieved \(objects.count) objects.")
+//                // Do something with the found objects
+//                for object in objects{
+//                    let group = object["group"] as! PFObject
+//                    print(group)
+//                }
+//            }
+//        }
+        
+        
+        
         
     }
     
