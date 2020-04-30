@@ -23,6 +23,7 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var taskIds : Array<String> = []
     
     @IBOutlet weak var tableView: UITableView!
+
     
     var currentUser = PFUser.current()
     
@@ -143,6 +144,7 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
             self.tableView.reloadData()
         }
+        performSegue(withIdentifier: "calendarSegue", sender: self)
         
         	
 //
@@ -244,6 +246,15 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let newVc = newNvc.children.first as! AddTaskViewController
             newVc.delegate = self
             newVc.groupsFromTaskVC = self.groups
+        }
+        
+        if segue.identifier == "calendarSegue" {
+            var cani:[PFObject] = []
+            for task in tasks {
+                cani.append(task)
+            }
+            let destination = segue.destination as! CalendarViewController
+            destination.UsersTasks = cani
         }
     }
     

@@ -31,7 +31,7 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
     var userGroupsId = ""
     var groupsIds:[String] = []
     var groupImg: UIImage?
-    var IDtoImage = [Int:UIImage]()
+    var IDtoImage = [String:UIImage]()
     var imageDataList:[PFFileObject] = []
     
     let myRefreshControl = UIRefreshControl()
@@ -137,7 +137,7 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
                         let imgData = try imageData?.getData()
                         let img = UIImage(data: imgData as! Data)
                         groupImg = img
-                        IDtoImage[num] = groupImg
+                        IDtoImage[id] = groupImg
                     
                      }
                      catch {
@@ -157,6 +157,7 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
          // create dictionary to hold group id's and group names [name] --> "groupid"
          var num = 0
          print("groups lst: ", groupsIds)
+        print("groupdict: ",group_dict)
          for i in group_names {
              group_dict[i] = groupsIds[num]
              num += 1
@@ -238,9 +239,13 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
         let random_num = Int.random(in: 0...5)
         let group_titles = [String](group_dict.keys)
         let group_ids = [String](group_dict.values)
+        let groupID = group_ids[indexPath.row]
         let imageData = imageDataList[indexPath.row] // get image data of group
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell") as! GroupCell
+        
+        table_data[indexPath.row] = group_titles[indexPath.row]
+        cell.groupLabel.text = group_titles[indexPath.row]
         
         // turn image data into UIImage and change imageView
         imageData.getDataInBackground { (imgData:Data?, error:Error?) in
@@ -253,8 +258,7 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
             }
         }
         
-        table_data[indexPath.row] = group_titles[indexPath.row]
-        cell.groupLabel.text = group_titles[indexPath.row]
+        
         
         return cell
     }
@@ -342,7 +346,7 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
                         let imgData = try imageData?.getData()
                         let img = UIImage(data: imgData as! Data)
                         groupImg = img
-                        IDtoImage[num] = groupImg
+                        IDtoImage[id] = groupImg
                     
                      }
                      catch {

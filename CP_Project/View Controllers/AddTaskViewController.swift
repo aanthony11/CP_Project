@@ -14,17 +14,15 @@ class AddTaskViewController: UITableViewController, UIPickerViewDelegate, UIPick
     @IBOutlet weak var taskTextField: UITextField!
     @IBOutlet weak var groupNameLabel: UILabel!
     @IBOutlet weak var groupPicker: UIPickerView!
+    @IBOutlet weak var dateField: UITextField!
+    
+    private var datePicker: UIDatePicker?
     
     var groupsFromTaskVC = [PFObject]()
-    
     var groups = [String]()
-    
     var selectedGroupIndex : Int = 0
-        
     var currentUser = PFUser.current()
-    
     var delegate: AddTaskProtocol!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,6 +34,16 @@ class AddTaskViewController: UITableViewController, UIPickerViewDelegate, UIPick
         self.groups = ["Mace", "Anakin", "Luke", "Obi-Wan"]
         self.groupPicker.reloadAllComponents()
 
+        // Setting up date picker
+        datePicker = UIDatePicker()
+        datePicker?.datePickerMode = .date
+        dateField.inputView = datePicker
+        datePicker?.addTarget(self, action: #selector(AddTaskViewController.dateChanged(datePicker:)), for: .valueChanged)
+        
+        // dismiss datepicker when user taps off of it
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(AddTaskViewController.viewTapped(gestureRecognizer:)))
+        view.addGestureRecognizer(tapGesture)
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -44,6 +52,16 @@ class AddTaskViewController: UITableViewController, UIPickerViewDelegate, UIPick
         
         print(self.groupsFromTaskVC)
         
+    }
+    
+    @objc func dateChanged(datePicker: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateField.text = dateFormatter.string(from: datePicker.date)
+    }
+    
+    @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,6 +79,7 @@ class AddTaskViewController: UITableViewController, UIPickerViewDelegate, UIPick
         task["creator"] = PFUser.current()
         task["group"] = groupsFromTaskVC[self.selectedGroupIndex]
         task["dutyIndex"] = 0
+        task["dateDue"] = dateField.text
         
 
         //taskToUser.saveInBackground()

@@ -16,6 +16,7 @@
 		009615282455000400426DC9 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009615272455000400426DC9 /* UserInfoViewController.swift */; };
 		0096152A24554EF600426DC9 /* AddMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0096152924554EF600426DC9 /* AddMembersViewController.swift */; };
 		009615302455620400426DC9 /* GroupImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0096152F2455620300426DC9 /* GroupImageViewController.swift */; };
+		00961542245B584B00426DC9 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00961541245B584B00426DC9 /* CalendarViewController.swift */; };
 		06A264EEE870F3E323A422BE /* Pods_CP_ProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B98EF21FED09002ABD6CB668 /* Pods_CP_ProjectTests.framework */; };
 		1323FFDD2450E2B40055DEFB /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1323FFDC2450E2B40055DEFB /* CreateGroupViewController.swift */; };
 		132ACE84245154E100904D07 /* GroupDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132ACE83245154E100904D07 /* GroupDetailViewCell.swift */; };
@@ -67,6 +68,7 @@
 		009615272455000400426DC9 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		0096152924554EF600426DC9 /* AddMembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMembersViewController.swift; sourceTree = "<group>"; };
 		0096152F2455620300426DC9 /* GroupImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupImageViewController.swift; sourceTree = "<group>"; };
+		00961541245B584B00426DC9 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		1323FFDC2450E2B40055DEFB /* CreateGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
 		132ACE83245154E100904D07 /* GroupDetailViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDetailViewCell.swift; sourceTree = "<group>"; };
 		1338A53C2459196D009C4B69 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				008729022447D8E80075F1B2 /* GroupsViewController.swift */,
 				7164B9E92447CBBB00F001DE /* GroupViewController.swift */,
 				13E73B52242C225F000DCA5E /* HomeViewController.swift */,
+				00961541245B584B00426DC9 /* CalendarViewController.swift */,
 				008728FA2436C6F40075F1B2 /* LoginViewController.swift */,
 				1323FFDC2450E2B40055DEFB /* CreateGroupViewController.swift */,
 				008729062447F3580075F1B2 /* GroupDetailsViewController.swift */,
@@ -504,6 +507,7 @@
 				13CBA0842456551A0031D013 /* AddMembersCell.swift in Sources */,
 				009615302455620400426DC9 /* GroupImageViewController.swift in Sources */,
 				008728FB2436C6F40075F1B2 /* LoginViewController.swift in Sources */,
+				00961542245B584B00426DC9 /* CalendarViewController.swift in Sources */,
 				008729012436D13C0075F1B2 /* tasksViewController.swift in Sources */,
 				00872909244800490075F1B2 /* GroupCell.swift in Sources */,
 				7134F90F244F560800B3054E /* AddTaskViewController.swift in Sources */,

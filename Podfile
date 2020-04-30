@@ -8,6 +8,7 @@ target 'CP_Project' do
   # Pods for CP_Project
 pod "Parse"
 pod "AlamofireImage"
+pod "FSCalendar"
 
   target 'CP_ProjectTests' do
     inherit! :search_paths
