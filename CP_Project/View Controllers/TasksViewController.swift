@@ -120,6 +120,19 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
 
     }
+    @IBAction func onRefresh(_ sender: Any) {
+        helper.getTasksFromPFUser(user: PFUser.current()!) { (tasks, error) in
+            for task in tasks! {
+                if self.taskIds.contains(task.objectId!) {
+                    print("Task already in array")
+                } else {
+                    self.tasks.append(task)
+                    self.taskIds.append(task.objectId!)
+                }
+            }
+            self.tableView.reloadData()
+        }
+    }
     
     @IBAction func onJoker(_ sender: Any) {
 //        print("\n____ PRINTING GROUPS ____\n", self.groups, "\n____ DONE PRINTING GROUPS ____\n")

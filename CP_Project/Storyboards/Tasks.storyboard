@@ -98,7 +98,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kld-Lj-wYX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1134.7826086956522" y="2447.5446428571427"/>
+            <point key="canvasLocation" x="-71" y="3173"/>
         </scene>
         <!--Shared Tasks-->
         <scene sceneID="1Ib-8r-517">
@@ -156,7 +156,7 @@
                         <viewLayoutGuide key="safeArea" id="FvY-3C-dcN"/>
                     </view>
                     <navigationItem key="navigationItem" title="Shared Tasks" leftItemsSupplementBackButton="YES" id="TSo-p9-L8p">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="Eaa-yV-657">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" image="xmark.octagon" catalog="system" id="Eaa-yV-657">
                             <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="onLogout:" destination="2LZ-nT-BYe" id="yey-U4-q8z"/>
@@ -173,6 +173,12 @@
                                 <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="onJoker:" destination="2LZ-nT-BYe" id="LZa-eL-Db6"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="arrow.clockwise" catalog="system" id="8gt-aY-Ile">
+                                <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="onRefresh:" destination="2LZ-nT-BYe" id="Cok-kY-h5A"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -282,7 +288,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qgw-Su-DkO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="5yW-qx-2hK" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-71.014492753623188" y="3173.4375"/>
+            <point key="canvasLocation" x="751" y="3173"/>
         </scene>
         <!--Select Group-->
         <scene sceneID="Tzo-Mq-nI7">
@@ -314,7 +320,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dC7-IH-EAg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750.72463768115949" y="3172.7678571428569"/>
+            <point key="canvasLocation" x="1488" y="3173"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WGu-9T-4jD">
@@ -339,9 +345,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.clockwise" catalog="system" width="56" height="64"/>
         <image name="calendar" catalog="system" width="64" height="52"/>
         <image name="circle" catalog="system" width="64" height="60"/>
         <image name="info.circle" catalog="system" width="64" height="60"/>
         <image name="plus.circle.fill" catalog="system" width="64" height="60"/>
+        <image name="xmark.octagon" catalog="system" width="64" height="56"/>
     </resources>
 </document>
