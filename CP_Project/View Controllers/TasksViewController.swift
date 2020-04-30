@@ -10,7 +10,7 @@ import UIKit
 import Parse
 
 protocol AddTaskProtocol {
-    func didAddTask(task: PFObject, taskToUser: PFObject)
+    func didAddTask(task: PFObject)
 }
 
 class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddTaskProtocol {
@@ -124,13 +124,25 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
 //        print("\n____ PRINTING GROUPS ____\n", self.groups, "\n____ DONE PRINTING GROUPS ____\n")
 //        print("\n____ PRINTING TASKS ____\n", self.tasks, "\n____ DONE PRINTING TASK ____\n")
         
-        helper.getGroupsFromPFUser(user: PFUser.current()!) { (groups, error) in
-            print(groups)
-        }
+//        helper.getGroupsFromPFUser(user: PFUser.current()!) { (groups, error) in
+//            print(groups)
+//        }
         
-        PFUser.current()?.getGroups(completion: { (groups, error) in
-            print(groups)
-        })
+//        PFUser.current()?.getGroups(completion: { (groups, error) in
+//            print(groups)
+//        })
+        
+        helper.getTasksFromPFUser(user: PFUser.current()!) { (tasks, error) in
+            for task in tasks! {
+                if self.taskIds.contains(task.objectId!) {
+                    print("Task already in array")
+                } else {
+                    self.tasks.append(task)
+                    self.taskIds.append(task.objectId!)
+                }
+            }
+            self.tableView.reloadData()
+        }
         
         	
 //
@@ -158,12 +170,19 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     
-    func didAddTask(task: PFObject, taskToUser: PFObject) {
+    func didAddTask(task: PFObject) {
         task.saveInBackground { (x, y) in
             self.taskIds.append(task.objectId!)
         }
         
-        taskToUser.saveInBackground()
+        let group = task["group"] as! PFObject
+        let users = group["users"] as! Array<PFObject>
+        for user in users{
+            let taskToUser = PFObject(className: "TaskToUser")
+            taskToUser["user"] = user
+            taskToUser["task"] = task
+            taskToUser.saveInBackground()
+        }
         
         self.tasks.append(task)
         
@@ -190,6 +209,7 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
 //        }
         getTasksFromPFUser(user: PFUser.current()!)
 
+
     }
     
 //    override func viewDidAppear(_ animated: Bool) {
@@ -205,7 +225,7 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell") as! TaskCell
         
-        cell.taskLabel.text = tasks[indexPath.row]["title"] as! String
+        cell.taskLabel.text = (tasks[indexPath.row]["title"] as! String)
         
         return cell
     }
@@ -223,6 +243,7 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let newNvc = segue.destination as! UINavigationController
             let newVc = newNvc.children.first as! AddTaskViewController
             newVc.delegate = self
+            newVc.groupsFromTaskVC = self.groups
         }
     }
     

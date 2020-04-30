@@ -37,6 +37,29 @@ class ParseHelper {
     
         
     
+    func getTasksFromPFUser(user: PFUser,  completion: @escaping (([PFObject]?, Error?) -> ())) -> Void {
+        let query = PFQuery(className:"TaskToUser")
+        query.whereKey("user", equalTo:user)
+        query.includeKey("task")
+        query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
+            if let error = error {
+                // Log details of the failure
+                completion(nil, error)
+            } else if let objects = objects {
+                // The find succeeded.
+                print("Successfully retrieved \(objects.count) objects.")
+                // Do something with the found objects
+                var tasks = [PFObject]()
+                for object in objects{
+                    let task = object["task"] as! PFObject
+                    tasks.append(task)
+                }
+                completion(tasks, nil)
+            }
+        }
+    } // end function
+    
+ 
     
     
     

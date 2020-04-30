@@ -9,14 +9,19 @@
 import UIKit
 import Parse
 
-class AddTaskViewController: UITableViewController {
-    
-    
+class AddTaskViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+
     @IBOutlet weak var taskTextField: UITextField!
     @IBOutlet weak var groupNameLabel: UILabel!
+    @IBOutlet weak var groupPicker: UIPickerView!
     
+    var groupsFromTaskVC = [PFObject]()
+    
+    var groups = [String]()
+    
+    var selectedGroupIndex : Int = 0
+        
     var currentUser = PFUser.current()
-    var groupName = "Team Red"
     
     var delegate: AddTaskProtocol!
     
@@ -24,12 +29,21 @@ class AddTaskViewController: UITableViewController {
         super.viewDidLoad()
         
         taskTextField.becomeFirstResponder()
+        
+        groupPicker.delegate = self
+        groupPicker.dataSource = self
+        
+        self.groups = ["Mace", "Anakin", "Luke", "Obi-Wan"]
+        self.groupPicker.reloadAllComponents()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        print(self.groupsFromTaskVC)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,15 +59,14 @@ class AddTaskViewController: UITableViewController {
         let task = PFObject(className: "Task")
         task["title"] = taskTextField.text
         task["creator"] = PFUser.current()
+        task["group"] = groupsFromTaskVC[self.selectedGroupIndex]
+        task["dutyIndex"] = 0
         
-        let taskToUser = PFObject(className: "TaskToUser")
-        taskToUser["user"] = PFUser.current()
-        taskToUser["task"] = task
+
         //taskToUser.saveInBackground()
-        
-        // show a loading animation to the user while it saves...
-        
-        delegate.didAddTask(task: task, taskToUser: taskToUser);
+        // and show a loading animation to the user while it saves or use delegate...
+                
+        delegate.didAddTask(task: task);
         self.dismiss(animated: true, completion: nil)
        
         
@@ -87,7 +100,33 @@ class AddTaskViewController: UITableViewController {
 //                }
 //            }
 //        }
+        
+        
     } //end didTapDone
+    
+    
+    // MARK: - Picker view data source
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        let group = self.groupsFromTaskVC[row]
+        let title = group["name"]
+        return (title as! String)
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return groupsFromTaskVC.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.selectedGroupIndex = row
+                
+//        let vc = storyboard?.instantiateViewController(withIdentifier: "TaskDetailsVC") as? AddTaskViewController
+//        vc?.tableView.reloadData()
+    }
     
 
     
