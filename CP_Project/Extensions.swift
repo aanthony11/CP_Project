@@ -34,3 +34,8 @@ extension PFUser {
         }
     }
 }
+
+//// How to use in another class
+//        PFUser.current()?.getGroups(completion: { (groups, error) in
+//            print(groups)
+//        })

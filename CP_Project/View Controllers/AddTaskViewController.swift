@@ -73,17 +73,21 @@ class AddTaskViewController: UITableViewController, UIPickerViewDelegate, UIPick
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func didTapDone(_ sender: Any) {      
+    @IBAction func didTapDone(_ sender: Any) {
+        let group = groupsFromTaskVC[self.selectedGroupIndex]
+        let users = group["users"] as! Array<PFUser>
+        let user = users[0] as! PFUser
+        
         let task = PFObject(className: "Task")
         task["title"] = taskTextField.text
         task["creator"] = PFUser.current()
         task["group"] = groupsFromTaskVC[self.selectedGroupIndex]
         task["dutyIndex"] = 0
+        task["duty"] = user
         task["dateDue"] = dateField.text
-        
 
-        //taskToUser.saveInBackground()
-        // and show a loading animation to the user while it saves or use delegate...
+//        taskToUser.saveInBackground()
+//         and show a loading animation to the user while it saves or use delegate...
                 
         delegate.didAddTask(task: task);
         self.dismiss(animated: true, completion: nil)

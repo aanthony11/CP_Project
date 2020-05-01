@@ -1015,15 +1015,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ggi-f4-xZD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-981.15942028985512" y="2434.8214285714284"/>
-        </scene>
-        <!--TaskDetailsVC-->
-        <scene sceneID="NwK-Pf-WpY">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="TaskDetailsVC" storyboardName="Tasks" referencedIdentifier="TaskDetailsVC" id="p9p-p6-E8k" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xRm-Gu-xYi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-980" y="2512"/>
+            <point key="canvasLocation" x="164" y="2144"/>
         </scene>
     </scenes>
     <resources>

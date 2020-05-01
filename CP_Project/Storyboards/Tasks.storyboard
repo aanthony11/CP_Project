@@ -98,7 +98,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kld-Lj-wYX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-71" y="3173"/>
+            <point key="canvasLocation" x="-868" y="3173"/>
         </scene>
         <!--Shared Tasks-->
         <scene sceneID="1Ib-8r-517">
@@ -124,29 +124,62 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="info.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="uRL-6I-MHD">
-                                                    <rect key="frame" x="351" y="5.5" width="33" height="33"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Get the bag" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wgm-Dp-UQS">
-                                                    <rect key="frame" x="71" y="11" width="272" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Catch jellyfish" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wgm-Dp-UQS">
+                                                    <rect key="frame" x="30" y="10" width="272" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="272" id="gRu-a4-7Pj"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rFh-uZ-JdB">
-                                                    <rect key="frame" x="30" y="5.5" width="33" height="33"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Duty:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rml-gG-pD5">
+                                                    <rect key="frame" x="49" y="38" width="44" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="C3g-dY-GkO"/>
+                                                        <constraint firstAttribute="width" constant="44" id="hco-AO-btG"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Spongebob" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZLi-eI-aFc">
+                                                    <rect key="frame" x="96" y="38" width="89" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="89" id="0Nc-QQ-rSu"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" misplaced="YES" image="info.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="uRL-6I-MHD">
+                                                    <rect key="frame" x="351" y="16.5" width="33" height="33"/>
                                                     <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="33" id="GMj-wf-O4F"/>
+                                                        <constraint firstAttribute="width" constant="33" id="d8l-98-cvx"/>
+                                                        <constraint firstAttribute="height" constant="34" id="zy8-fa-Ufy"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="rml-gG-pD5" firstAttribute="baseline" secondItem="ZLi-eI-aFc" secondAttribute="baseline" id="2qg-Ts-BiG"/>
+                                                <constraint firstItem="rml-gG-pD5" firstAttribute="firstBaseline" secondItem="ZLi-eI-aFc" secondAttribute="firstBaseline" id="CkT-Rk-7jF"/>
+                                                <constraint firstItem="rml-gG-pD5" firstAttribute="top" secondItem="wgm-Dp-UQS" secondAttribute="bottom" constant="4" id="DfG-VA-mwQ"/>
+                                                <constraint firstItem="wgm-Dp-UQS" firstAttribute="top" secondItem="fp6-Nd-pIW" secondAttribute="topMargin" constant="-1" id="Jm6-r3-HAs"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="uRL-6I-MHD" secondAttribute="trailing" constant="10" id="VI1-GO-WCb"/>
+                                                <constraint firstItem="ZLi-eI-aFc" firstAttribute="leading" secondItem="rml-gG-pD5" secondAttribute="trailing" constant="3" id="Xa0-kJ-LOs"/>
+                                                <constraint firstItem="rml-gG-pD5" firstAttribute="leading" secondItem="fp6-Nd-pIW" secondAttribute="leadingMargin" constant="29" id="cqg-GX-GPj"/>
+                                                <constraint firstItem="uRL-6I-MHD" firstAttribute="top" secondItem="fp6-Nd-pIW" secondAttribute="topMargin" constant="5" id="i3t-5b-Yaw"/>
+                                                <constraint firstItem="uRL-6I-MHD" firstAttribute="centerY" secondItem="fp6-Nd-pIW" secondAttribute="centerY" id="jea-bv-sjv"/>
+                                                <constraint firstItem="uRL-6I-MHD" firstAttribute="leading" secondItem="wgm-Dp-UQS" secondAttribute="trailing" constant="49" id="oL0-V1-sAw"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="didCompleteImageVIew" destination="rFh-uZ-JdB" id="vnS-IK-i8t"/>
+                                            <outlet property="dutyLabel" destination="ZLi-eI-aFc" id="poF-x1-Go2"/>
                                             <outlet property="infoImageView" destination="uRL-6I-MHD" id="J8n-Uz-TTM"/>
                                             <outlet property="taskLabel" destination="wgm-Dp-UQS" id="faJ-HQ-04p"/>
+                                            <segue destination="0Mz-Jh-Ssh" kind="presentation" id="cky-C0-4jW"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -191,7 +224,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M3v-Zs-4WD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-71.014492753623188" y="2444.8660714285711"/>
+            <point key="canvasLocation" x="-71.014492753623188" y="2444.1964285714284"/>
+        </scene>
+        <!--Task Details View Controller-->
+        <scene sceneID="BHS-VU-hrO">
+            <objects>
+                <viewController id="0Mz-Jh-Ssh" customClass="TaskDetailsViewController" customModule="Tuurns" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FyS-1g-vdg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="L5Z-O6-XIW"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="cPM-TH-FOy"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cNP-vy-APA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="722" y="2454"/>
         </scene>
         <!--Add Task-->
         <scene sceneID="Rxb-9L-wPt">
@@ -288,39 +337,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qgw-Su-DkO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="5yW-qx-2hK" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="751" y="3173"/>
-        </scene>
-        <!--Select Group-->
-        <scene sceneID="Tzo-Mq-nI7">
-            <objects>
-                <viewController storyboardIdentifier="TaskDetailsVC" id="bxf-53-kVn" customClass="GroupSelectViewController" customModule="Tuurns" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ycN-TE-uex">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select group" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lhO-At-cA3">
-                                <rect key="frame" x="20" y="104" width="155" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="25"/>
-                                <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rDP-PL-OlB">
-                                <rect key="frame" x="0.0" y="150" width="414" height="290"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </pickerView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="pLQ-dO-qeJ"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Select Group" id="D6U-qx-fzE"/>
-                    <connections>
-                        <outlet property="pickerView" destination="rDP-PL-OlB" id="OGj-ry-0Yn"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dC7-IH-EAg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1488" y="3173"/>
+            <point key="canvasLocation" x="723" y="3173"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WGu-9T-4jD">
@@ -341,13 +358,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bLF-sX-yQW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750.72463768115949" y="2444.8660714285711"/>
+            <point key="canvasLocation" x="-71" y="3173"/>
         </scene>
     </scenes>
     <resources>
         <image name="arrow.clockwise" catalog="system" width="56" height="64"/>
         <image name="calendar" catalog="system" width="64" height="52"/>
-        <image name="circle" catalog="system" width="64" height="60"/>
         <image name="info.circle" catalog="system" width="64" height="60"/>
         <image name="plus.circle.fill" catalog="system" width="64" height="60"/>
         <image name="xmark.octagon" catalog="system" width="64" height="56"/>
