@@ -19,6 +19,7 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     var helper = ParseHelper()
     var groups : Array<PFObject> = []
+    var groupIds : Array<String> = []
     var tasks : Array<PFObject> = []
     var taskIds : Array<String> = []
     
@@ -35,7 +36,18 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.delegate = self
                 
         
-        getGroupsFromPFUser(user: PFUser.current()!)
+        helper.getGroupsFromPFUser(user: PFUser.current()!) { (groups, error) in
+            for group in groups! {
+                if self.groupIds.contains(group.objectId!) {
+                    print("Group already in array")
+                } else {
+                    self.groups.append(group)
+                    self.groupIds.append(group.objectId!)
+                }
+            }
+        }
+        
+        
         getTasksFromPFUser(user: PFUser.current()!)
         
         
@@ -131,6 +143,17 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 }
             }
             self.tableView.reloadData()
+        }
+        
+        helper.getGroupsFromPFUser(user: PFUser.current()!) { (groups, error) in
+            for group in groups! {
+                if self.groupIds.contains(group.objectId!) {
+                    print("Group already in array")
+                } else {
+                    self.groups.append(group)
+                    self.groupIds.append(group.objectId!)
+                }
+            }
         }
     }
     
