@@ -11,8 +11,8 @@ import UIKit
 class TaskCell: UITableViewCell {
     
     @IBOutlet weak var taskLabel: UILabel!
+    @IBOutlet weak var didCompleteImageVIew: UIImageView!
     @IBOutlet weak var infoImageView: UIImageView!
-    @IBOutlet weak var dutyLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -15,8 +15,8 @@ class ParseHelper {
     func getGroupsFromPFUser(user: PFUser,  completion: @escaping (([PFObject]?, Error?) -> ())) -> Void {
         let query = PFQuery(className:"UserToGroup")
         query.whereKey("user", equalTo:user)
-        query.includeKeys(["group", "users"])
-//        query.selectKeys(["group"])
+        query.includeKey("group")
+        
         query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
             if let error = error {
                 // Log details of the failure
@@ -40,7 +40,7 @@ class ParseHelper {
     func getTasksFromPFUser(user: PFUser,  completion: @escaping (([PFObject]?, Error?) -> ())) -> Void {
         let query = PFQuery(className:"TaskToUser")
         query.whereKey("user", equalTo:user)
-        query.includeKeys(["task", "user", "group"])
+        query.includeKey("task")
         query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
             if let error = error {
                 // Log details of the failure
@@ -60,12 +60,6 @@ class ParseHelper {
     } // end function
     
  
-    func getDutyForTask(task: PFObject,  completion: @escaping (([PFObject]?, Error?) -> ())) -> Void {
-     
-        
-        
-        
-    }
     
     
     

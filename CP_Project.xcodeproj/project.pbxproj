@@ -32,12 +32,12 @@
 		13E73B66242C2263000DCA5E /* CP_ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E73B65242C2263000DCA5E /* CP_ProjectTests.swift */; };
 		13E73B71242C2263000DCA5E /* CP_ProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E73B70242C2263000DCA5E /* CP_ProjectUITests.swift */; };
 		13E936AC24539ACE00BE3FD0 /* ParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E936AB24539ACE00BE3FD0 /* ParseHelper.swift */; };
-		13F50CBD245CBF8800985AF6 /* TaskDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F50CBC245CBF8800985AF6 /* TaskDetailsViewController.swift */; };
 		1EE96DD95BF61CC7480BFF6B /* Pods_CP_Project_CP_ProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4FD44C0BB1FE971DCFFF90E /* Pods_CP_Project_CP_ProjectUITests.framework */; };
 		7134F90F244F560800B3054E /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7134F90E244F560800B3054E /* AddTaskViewController.swift */; };
 		713C6DBD2447672800954DC7 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713C6DBC2447672800954DC7 /* TasksViewController.swift */; };
 		713C6DBF2447673C00954DC7 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713C6DBE2447673C00954DC7 /* TaskCell.swift */; };
 		7164B9EA2447CBBB00F001DE /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7164B9E92447CBBB00F001DE /* GroupViewController.swift */; };
+		7199FBAB2450B16A00FFE42F /* GroupSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7199FBAA2450B16A00FFE42F /* GroupSelectViewController.swift */; };
 		854C25EC5939906F85D822A4 /* Pods_CP_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 400AC7A499439A18AE1995CF /* Pods_CP_Project.framework */; };
 /* End PBXBuildFile section */
 
@@ -89,7 +89,6 @@
 		13E73B70242C2263000DCA5E /* CP_ProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CP_ProjectUITests.swift; sourceTree = "<group>"; };
 		13E73B72242C2263000DCA5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13E936AB24539ACE00BE3FD0 /* ParseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseHelper.swift; sourceTree = "<group>"; };
-		13F50CBC245CBF8800985AF6 /* TaskDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsViewController.swift; sourceTree = "<group>"; };
 		2328B80884221587998751E9 /* Pods-CP_Project-CP_ProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CP_Project-CP_ProjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-CP_Project-CP_ProjectUITests/Pods-CP_Project-CP_ProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2FA2AA51EE9D422C56EBDB97 /* Pods-CP_Project-CP_ProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CP_Project-CP_ProjectUITests.release.xcconfig"; path = "Target Support Files/Pods-CP_Project-CP_ProjectUITests/Pods-CP_Project-CP_ProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
 		391F1FA714CA74329FD61DC6 /* Pods-CP_Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CP_Project.release.xcconfig"; path = "Target Support Files/Pods-CP_Project/Pods-CP_Project.release.xcconfig"; sourceTree = "<group>"; };
@@ -100,6 +99,7 @@
 		713C6DBC2447672800954DC7 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		713C6DBE2447673C00954DC7 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		7164B9E92447CBBB00F001DE /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
+		7199FBAA2450B16A00FFE42F /* GroupSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSelectViewController.swift; sourceTree = "<group>"; };
 		73EE0363476DEAF743F1B7B8 /* Pods-CP_ProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CP_ProjectTests.release.xcconfig"; path = "Target Support Files/Pods-CP_ProjectTests/Pods-CP_ProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		B4FD44C0BB1FE971DCFFF90E /* Pods_CP_Project_CP_ProjectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CP_Project_CP_ProjectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B98EF21FED09002ABD6CB668 /* Pods_CP_ProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CP_ProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -174,10 +174,10 @@
 				1323FFDC2450E2B40055DEFB /* CreateGroupViewController.swift */,
 				008729062447F3580075F1B2 /* GroupDetailsViewController.swift */,
 				0096152F2455620300426DC9 /* GroupImageViewController.swift */,
+				7199FBAA2450B16A00FFE42F /* GroupSelectViewController.swift */,
 				008728FC2436C7080075F1B2 /* SignupViewController.swift */,
 				713C6DBC2447672800954DC7 /* TasksViewController.swift */,
 				009615272455000400426DC9 /* UserInfoViewController.swift */,
-				13F50CBC245CBF8800985AF6 /* TaskDetailsViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -513,10 +513,10 @@
 				7134F90F244F560800B3054E /* AddTaskViewController.swift in Sources */,
 				1323FFDD2450E2B40055DEFB /* CreateGroupViewController.swift in Sources */,
 				13E73B53242C225F000DCA5E /* HomeViewController.swift in Sources */,
-				13F50CBD245CBF8800985AF6 /* TaskDetailsViewController.swift in Sources */,
 				1338A53D2459196D009C4B69 /* Extensions.swift in Sources */,
 				713C6DBD2447672800954DC7 /* TasksViewController.swift in Sources */,
 				713C6DBF2447673C00954DC7 /* TaskCell.swift in Sources */,
+				7199FBAB2450B16A00FFE42F /* GroupSelectViewController.swift in Sources */,
 				0096152A24554EF600426DC9 /* AddMembersViewController.swift in Sources */,
 				13E936AC24539ACE00BE3FD0 /* ParseHelper.swift in Sources */,
 				008729072447F3580075F1B2 /* GroupDetailsViewController.swift in Sources */,
