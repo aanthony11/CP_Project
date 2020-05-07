@@ -207,6 +207,9 @@ query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
 } 
 ```
 
-#### OPTIONAL: Existing API endpoints
+#### Existing API endpoints
 - None
+
+#### External libraries & CocoaPods
+- [FSCalendar](https://github.com/WenchaoD/FSCalendar)
 
