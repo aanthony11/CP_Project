@@ -2,12 +2,22 @@
 
 ## Table of Contents
 1. [Overview](#Overview)
-1. [Product Spec](#Product-Spec)
-1. [Wireframes](#Wireframes)
-2. [Schema](#Schema)
+2. [Product Spec](#Product-Spec)
+3. [Wireframes](#Wireframes)
+4. [Schema](#Schema)
 
 ## Overview
 Turrns is a turn-based or cyclic tasks app. It allows users to keeps track of tasks that are shared between a group of people (i.e. who's turn is it to buy groceries, do the dishes, do a task at the office).
+
+### Screen Recordings
+<p float="left">
+<img src="Screen Recordings/tasks.gif" width=500>
+</p>
+<p float="left">
+<img src="Screen Recordings/image1.gif" width=250>
+<img src="Screen Recordings/image2.png" width=250>
+<img src="Screen Recordings/Kapture 2020-05-02 at 21.42.53.gif" width=250>
+</p>
 
 ### App Evaluation
 - **Category:** Lifestyle
@@ -47,15 +57,6 @@ Turrns is a turn-based or cyclic tasks app. It allows users to keeps track of ta
 * User is able to add a task that is displayed to everyone in the group
 * Task is designated to first user in charge
 * Calendar view of tasks list
-
-<p float="left">
-<img src="Screen Recordings/Kapture 2020-05-02 at 21.34.44.gif" width=500>
-</p>
-<p float="left">
-<img src="Screen Recordings/image1.gif" width=250>
-<img src="Screen Recordings/image2.png" width=250>
-<img src="Screen Recordings/Kapture 2020-05-02 at 21.42.53.gif" width=250>
-</p>
 
 ### 2. Screen Archetypes
 
