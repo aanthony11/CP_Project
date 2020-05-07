@@ -28,16 +28,34 @@ Turrns is a turn-based or cyclic tasks app. It allows users to keeps track of ta
 * User is able to create a group.
 * User is able to add a task that is displayed to everyone in the group
 * Chore designated in turn-style action
-* Push notification to tell user it is their turn
 * User can check off task in list, and task is designated to next person
 
 **Optional Nice-to-have Stories**
 
+* Push notification to tell user it is their turn
 * Users can chat with their groups
 * Users can create a shared grocery list
 * Users can create a whats in th fridge list
 * Calendar view of tasks list
 * Profile customization
+
+**Completed Stories**
+
+* User is able to login.
+* User is able to sign up.
+* User is able to create a group.
+* User is able to add a task that is displayed to everyone in the group
+* Task is designated to first user in charge
+* Calendar view of tasks list
+
+<p float="left">
+<img src="Screen Recordings/Kapture 2020-05-02 at 21.34.44.gif" width=500>
+</p>
+<p float="left">
+<img src="Screen Recordings/image1.gif" width=250>
+<img src="Screen Recordings/image2.png" width=250>
+<img src="Screen Recordings/Kapture 2020-05-02 at 21.42.53.gif" width=250>
+</p>
 
 ### 2. Screen Archetypes
 
@@ -189,6 +207,9 @@ query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
 } 
 ```
 
-#### OPTIONAL: Existing API endpoints
+#### Existing API endpoints
 - None
+
+#### External libraries & CocoaPods
+- [FSCalendar](https://github.com/WenchaoD/FSCalendar)
 
