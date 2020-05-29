@@ -20,11 +20,12 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
     
     
     
-    
+    var helper = ParseHelper()
     var groups_lst:[String] = []
     var group_names:[String] = []
     var usersTempList:[PFUser] = []
-    var count = 0
+    var groups:Array<PFObject> = []
+    var groupIds:Array<String> = []
     var group_dict = [String:String]() // dictionary of group[name] --> groupId
     var table_data = [Int:String]()
     var group_id = ""
@@ -42,9 +43,6 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
         
         GroupTableView.dataSource = self
         GroupTableView.delegate = self
-
-        
-        
         
         // create variable for current user
         let current_user = PFUser.current()
@@ -52,92 +50,106 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
         let lastname = current_user!["lastName"] as! String
         let name = "\(firstname) \(lastname)"
         
-        let data = current_user!["profilePicture"] as? PFFileObject
+        //let data = current_user!["profilePicture"] as? PFFileObject
         
-        if data != nil {
-            do {
-                
-                // get image data and change image view
-                let imgData = try data?.getData()
-                let img = UIImage(data: imgData as! Data)
-                profileImageView.image = img
-           
-            }
-            catch {
-                // image cant be loaded
-            }
-        }
+        // get users profile picture
+       // if data != nil {
+       //     do {
+       //
+       //         // get image data and change image view
+       //         let imgData = try data?.getData()
+       //         let img = UIImage(data: imgData as! Data)
+       //         profileImageView.image = img
+       //
+       //     }
+       //     catch {
+       //         // image cant be loaded
+       //         print("Profile Picture can't be loaded")
+       //     }
+       // }
         usernameLabel.text = name.capitalized
          
-        
-        do {
-            
-            let query3 = PFQuery(className: "_User")
-            query3.whereKey("objectId", equalTo: current_user?.objectId)
-            let usr_arr = try query3.getFirstObject()
-            
-            userGroupsId = usr_arr["userGroupsId"] as! String
-            
-        }
-        catch {
-            //
-        }
-        
-        do {
-            
-           let query4 = PFQuery(className: "userGroups")
-            query4.whereKey("uuidString", equalTo: userGroupsId)
-            let group_arr = try query4.getFirstObject()
-            groupsIds = group_arr["allUserGroups"] as! Array<String>
-            
-        }
-        catch {
-            // if error occurs
-        }
-        
-         
-         for id in groupsIds {
-            var num = 0
-             do {
-                 // query for group
-                 let query2 = PFQuery(className: "Group")
-                 let group = try query2.getObjectWithId(id)
-                 
-                 group_names.append(group["name"] as! String)
-                imageDataList.append(group["groupPicture"] as! PFFileObject)
-                
-                let imageData = group["groupPicture"] as? PFFileObject
-                if imageData != nil {
-                    do {
-                        // get image data and change image view
-                        let imgData = try imageData?.getData()
-                        let img = UIImage(data: imgData as! Data)
-                        groupImg = img
-                        IDtoImage[id] = groupImg
-                    
-                     }
-                     catch {
-                         // image cant be loaded
-                     }
-        
+        helper.getGroupsFromPFUser(user: PFUser.current()!) { (groups, error) in
+            for group in groups! {
+                if self.groupIds.contains(group.objectId!) {
+                    print("Group already in array")
+                } else {
+                    self.groups.append(group)
+                    self.groupIds.append(group.objectId!)
                 }
-                 
-             }
-             catch{
-                 // couldn't find group
-                 print("couldn't find group")
-             }
-            num += 1
-         }
+            }
+        }
         
-         // create dictionary to hold group id's and group names [name] --> "groupid"
-         var num = 0
-         print("groups lst: ", groupsIds)
-        print("groupdict: ",group_dict)
-         for i in group_names {
-             group_dict[i] = groupsIds[num]
-             num += 1
-         }
+       // do {
+       //
+       //     let query3 = PFQuery(className: "_User")
+       //     query3.whereKey("objectId", equalTo: current_user?.objectId)
+       //     let usr_arr = try query3.getFirstObject()
+       //
+       //     userGroupsId = usr_arr["userGroupsId"] as! String
+       //
+       // }
+       // catch {
+       //     //
+       // }
+       //
+       // do {
+       //
+       //    let query4 = PFQuery(className: "userGroups")
+       //     query4.whereKey("uuidString", equalTo: userGroupsId)
+       //     let group_arr = try query4.getFirstObject()
+       //     groupsIds = group_arr["allUserGroups"] as! Array<String>
+       //
+       // }
+       // catch {
+       //     // if error occurs
+       // }
+       //
+       //
+       //  for id in groupsIds {
+       //     var num = 0
+       //      do {
+       //          // query for group
+       //          let query2 = PFQuery(className: "Group")
+       //          let group = try query2.getObjectWithId(id)
+       //
+       //          group_names.append(group["name"] as! String)
+       //         imageDataList.append(group["groupPicture"] as! PFFileObject)
+       //
+       //         let imageData = group["groupPicture"] as? PFFileObject
+       //         if imageData != nil {
+       //             do {
+       //                 // get image data and change image view
+       //                 let imgData = try imageData?.getData()
+       //                 let img = UIImage(data: imgData as! Data)
+       //                 groupImg = img
+       //                 IDtoImage[id] = groupImg
+       //
+       //              }
+       //              catch {
+       //                  // image cant be loaded
+       //              }
+       //
+       //         }
+       //
+       //      }
+       //      catch{
+       //          // couldn't find group
+       //          print("couldn't find group")
+       //      }
+       //     num += 1
+       //  }
+       //
+       //  // create dictionary to hold group id's and group names [name] --> "groupid"
+       //  var num = 0
+       //  print("groups lst: ", groupsIds)
+       // print("groupdict: ",group_dict)
+       //  for i in group_names {
+       //      group_dict[i] = groupsIds[num]
+       //      num += 1
+       //  }
+        
+        getGroupsFromPFUser(user: PFUser.current()!)
         
         // needed for pull to refresh
         myRefreshControl.addTarget(self, action: #selector(loadGroups), for: .valueChanged)
@@ -174,6 +186,28 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBAction func unwindToViewControllerA(segue: UIStoryboardSegue) {}
     
+    func getGroupsFromPFUser(user: PFUser) -> Void {
+        let query = PFQuery(className:"UserToGroup")
+        query.whereKey("user", equalTo:user)
+        query.includeKeys(["group"])
+        query.selectKeys(["group"])
+        query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
+            if let error = error {
+                // Log details of the failure
+                print(error.localizedDescription)
+            } else if let objects = objects {
+                // The find succeeded.
+                print("Successfully retrieved \(objects.count) groups.")
+                // Do something with the found objects
+                for object in objects{
+                    let group = object["group"] as! PFObject
+                    self.groups.append(group)
+                }
+            }
+            self.GroupTableView.reloadData()
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "detailSegue" {
@@ -201,39 +235,40 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
     */
     
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        getGroupsFromPFUser(user: PFUser.current()!)
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return group_dict.count
+        return 5 // group_dict.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // image of group, user may choose group image
-        let photos = ["crown.png","fish.png","smiley.png","hat.png","shinin.png","rocket.png"]
-        let random_num = Int.random(in: 0...5)
-        let group_titles = [String](group_dict.keys)
-        let group_ids = [String](group_dict.values)
-        let groupID = group_ids[indexPath.row]
-        let imageData = imageDataList[indexPath.row] // get image data of group
-        
+        //let photos = ["crown.png","fish.png","smiley.png","hat.png","shinin.png","rocket.png"]
+        //let random_num = Int.random(in: 0...5)
+        //let group_titles = [String](group_dict.keys)
+        //let group_ids = [String](group_dict.values)
+        //let groupID = group_ids[indexPath.row]
+        //let imageData = imageDataList[indexPath.row] // get image data of group
+
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell") as! GroupCell
         
-        table_data[indexPath.row] = group_titles[indexPath.row]
-        cell.groupLabel.text = group_titles[indexPath.row]
+        // important -> table_data[indexPath.row] = group_titles[indexPath.row]
+        // important -> cell.groupLabel.text = group_titles[indexPath.row]
         
         // turn image data into UIImage and change imageView
-        imageData.getDataInBackground { (imgData:Data?, error:Error?) in
-            if let error = error {
-                print(error.localizedDescription)
-            } else if let imgData = imgData {
-                print("succesfully got image data :)")
-                let image = UIImage(data: imgData)
-                cell.groupImageView.image = image
-            }
-        }
-        
+      //  imageData.getDataInBackground { (imgData:Data?, error:Error?) in
+      //      if let error = error {
+      //          print(error.localizedDescription)
+      //      } else if let imgData = imgData {
+      //          print("succesfully got image data :)")
+      //          let image = UIImage(data: imgData)
+      //          cell.groupImageView.image = image
+      //      }
+      //  }
         
         
         return cell
@@ -245,7 +280,6 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
         groups_lst.removeAll()
         group_names.removeAll()
         usersTempList.removeAll()
-        count = 0
         group_dict.removeAll()
         table_data.removeAll()
         group_id = ""
@@ -268,76 +302,76 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
             //
         }
         
-        do {
-            
-           let query4 = PFQuery(className: "userGroups")
-            query4.whereKey("uuidString", equalTo: userGroupsId)
-            let group_arr = try query4.getFirstObject()
-            groupsIds = group_arr["allUserGroups"] as! Array<String>
-            
-        }
-        catch {
-            // if error occurs
-        }
+      // do {
+      //
+      //    let query4 = PFQuery(className: "userGroups")
+      //     query4.whereKey("uuidString", equalTo: userGroupsId)
+      //     let group_arr = try query4.getFirstObject()
+      //     groupsIds = group_arr["allUserGroups"] as! Array<String>
+      //
+      // }
+      // catch {
+      //     // if error occurs
+      // }
         
-         do {
-             
-             let query1 = PFQuery(className: "_User")
-             query1.whereKey("objectId", equalTo: current_user?.objectId)
-             let user_array = try query1.getFirstObject()
-            let user_uuid = user_array["userGroupsId"]
-            
-            
-            let query6 = PFQuery(className: "userGroups")
-            query6.whereKey("uuidString", equalTo: user_uuid)
-            let userGroupsArray = try query6.getFirstObject()
-            //print("userGroupsArray: ", userGroupsArray)
-            //print("allUsersGroups list: ",userGroupsArray["allUserGroups"])
-             
-             // make array of groupId's that user is in
-             let user_groups = userGroupsArray["allUserGroups"] as! Array<String>
-             groups_lst = user_groups // list of group id's
-         
-         }
-         catch {
-             // if user cant be found
-             print("error occured1")
-         }
+       //  do {
+       //
+       //      let query1 = PFQuery(className: "_User")
+       //      query1.whereKey("objectId", equalTo: current_user?.objectId)
+       //      let user_array = try query1.getFirstObject()
+       //     let user_uuid = user_array["userGroupsId"]
+       //
+       //
+       //     let query6 = PFQuery(className: "userGroups")
+       //     query6.whereKey("uuidString", equalTo: user_uuid)
+       //     let userGroupsArray = try query6.getFirstObject()
+       //     //print("userGroupsArray: ", userGroupsArray)
+       //     //print("allUsersGroups list: ",userGroupsArray["allUserGroups"])
+       //
+       //      // make array of groupId's that user is in
+       //      let user_groups = userGroupsArray["allUserGroups"] as! Array<String>
+       //      groups_lst = user_groups // list of group id's
+       //
+       //  }
+       //  catch {
+       //      // if user cant be found
+       //      print("error occured1")
+       //  }
 
          
-         for id in groupsIds {
-            var num = 0
-             do {
-                 // query for group
-                 let query2 = PFQuery(className: "Group")
-                 let group = try query2.getObjectWithId(id)
-                 
-                 group_names.append(group["name"] as! String)
-                imageDataList.append(group["groupPicture"] as! PFFileObject)
-                
-                let imageData = group["groupPicture"] as? PFFileObject
-                if imageData != nil {
-                    do {
-                        // get image data and change image view
-                        let imgData = try imageData?.getData()
-                        let img = UIImage(data: imgData as! Data)
-                        groupImg = img
-                        IDtoImage[id] = groupImg
-                    
-                     }
-                     catch {
-                         // image cant be loaded
-                     }
-        
-                }
-                 
-             }
-             catch{
-                 // couldn't find group
-                 print("couldn't find group")
-             }
-            num += 1
-         }
+        // for id in groupsIds {
+        //    var num = 0
+        //     do {
+        //         // query for group
+        //         let query2 = PFQuery(className: "Group")
+        //         let group = try query2.getObjectWithId(id)
+        //
+        //         group_names.append(group["name"] as! String)
+        //        imageDataList.append(group["groupPicture"] as! PFFileObject)
+        //
+        //        let imageData = group["groupPicture"] as? PFFileObject
+        //        if imageData != nil {
+        //            do {
+        //                // get image data and change image view
+        //                let imgData = try imageData?.getData()
+        //                let img = UIImage(data: imgData as! Data)
+        //                groupImg = img
+        //                IDtoImage[id] = groupImg
+        //
+        //             }
+        //             catch {
+        //                 // image cant be loaded
+        //             }
+        //
+        //        }
+        //
+        //     }
+        //     catch{
+        //         // couldn't find group
+        //         print("couldn't find group")
+        //     }
+        //    num += 1
+        // }
         
          // create dictionary to hold group id's and group names [name] --> "groupid"
          var dict_index = 0

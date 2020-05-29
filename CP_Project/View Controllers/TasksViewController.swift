@@ -49,7 +49,7 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         
         getTasksFromPFUser(user: PFUser.current()!)
-        
+        getGroupsFromPFUser(user: PFUser.current()!)
         
 //        #warning("Timer runnning")
 //        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.onTimer), userInfo: nil, repeats: true)
@@ -73,7 +73,8 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 print(error.localizedDescription)
             } else if let objects = objects {
                 // The find succeeded.
-                print("Successfully retrieved \(objects.count) objects.")
+                
+                print("Successfully retrieved \(objects.count) groups.")
                 // Do something with the found objects
                 for object in objects{
                     let group = object["group"] as! PFObject
@@ -82,6 +83,7 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
         }
     }
+    
     
     func getTasksFromPFUser(user: PFUser) -> Void {
         // TRIED TO DO A WHERE IT SEARCHES THE GROUP IN THE TASK ROW FOR THE PFUSER.CURRENT
@@ -114,7 +116,7 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 print(error.localizedDescription)
             } else if let objects = objects {
                 // The find succeeded.
-                print("Successfully retrieved \(objects.count) objects.")
+                print("Successfully retrieved \(objects.count) tasks.")
                 // Do something with the found objects
                 for object in objects{
                     let task = object["task"] as! PFObject
@@ -128,10 +130,8 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
             self.tableView.reloadData()
         }
-        
-        
-
     }
+    
     @IBAction func onRefresh(_ sender: Any) {
         helper.getTasksFromPFUser(user: PFUser.current()!) { (tasks, error) in
             for task in tasks! {
@@ -261,7 +261,9 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("Groups <>, ", groups)
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell") as! TaskCell
+        
         
         cell.taskLabel.text = (tasks[indexPath.row]["title"] as! String)
         
