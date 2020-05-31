@@ -147,7 +147,7 @@
                                 </prototypes>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lPj-lp-Yro">
-                                <rect key="frame" x="20" y="88" width="77" height="60"/>
+                                <rect key="frame" x="20" y="88" width="65" height="67"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOH-Fd-OOP">
@@ -940,10 +940,13 @@
                                 <rect key="frame" x="129" y="181" width="156" height="140"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kyQ-uU-VSa">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kyQ-uU-VSa">
                                 <rect key="frame" x="120" y="664" width="174" height="67"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="67" id="0UF-FY-baz"/>
+                                    <constraint firstAttribute="width" constant="174" id="pDp-ga-H2T"/>
+                                </constraints>
                                 <state key="normal" title="Remove">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -957,6 +960,11 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="oZh-Ib-FBV" firstAttribute="trailing" secondItem="kyQ-uU-VSa" secondAttribute="trailing" constant="120" id="MBU-vB-sKH"/>
+                            <constraint firstItem="oZh-Ib-FBV" firstAttribute="bottom" secondItem="kyQ-uU-VSa" secondAttribute="bottom" constant="77" id="g0N-7D-SX1"/>
+                            <constraint firstItem="kyQ-uU-VSa" firstAttribute="leading" secondItem="oZh-Ib-FBV" secondAttribute="leading" constant="120" id="vfN-xS-kXK"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="oZh-Ib-FBV"/>
                     </view>
                     <connections>

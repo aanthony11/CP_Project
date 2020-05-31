@@ -22,6 +22,7 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var groupIds : Array<String> = []
     var tasks : Array<PFObject> = []
     var taskIds : Array<String> = []
+    var count = 0
     
     @IBOutlet weak var tableView: UITableView!
 
@@ -261,9 +262,12 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("Groups <>, ", groups)
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell") as! TaskCell
         
+        if count == 0 {
+            print("tasks: ", tasks)
+        }
+        count += 1
         
         cell.taskLabel.text = (tasks[indexPath.row]["title"] as! String)
         

@@ -35,7 +35,7 @@ class ParseHelper {
         }
     } // end function
     
-        
+    
     
     func getTasksFromPFUser(user: PFUser,  completion: @escaping (([PFObject]?, Error?) -> ())) -> Void {
         let query = PFQuery(className:"TaskToUser")
@@ -58,6 +58,8 @@ class ParseHelper {
             }
         }
     } // end function
+    
+    
     
  
     

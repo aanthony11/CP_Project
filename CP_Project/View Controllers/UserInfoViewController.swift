@@ -26,6 +26,7 @@ class UserInfoViewController: UIViewController {
         // Change label to display user's name
         usernameLabel.text = name
         
+        
         // display user's profile picture
         do {
             
