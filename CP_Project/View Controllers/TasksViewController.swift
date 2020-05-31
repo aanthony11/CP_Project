@@ -87,26 +87,6 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     
     func getTasksFromPFUser(user: PFUser) -> Void {
-        // TRIED TO DO A WHERE IT SEARCHES THE GROUP IN THE TASK ROW FOR THE PFUSER.CURRENT
-//        let query = PFQuery(className:"Task")
-//        query.whereKey("user", containedIn: PFObject!["group"])
-//        query.includeKeys(["group"])
-//        query.selectKeys(["group"])
-//        query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
-//            if let error = error {
-//                // Log details of the failure
-//                print(error.localizedDescription)
-//            } else if let objects = objects {
-//                // The find succeeded.
-//                print("Successfully retrieved \(objects.count) objects.")
-//                // Do something with the found objects
-//                for object in objects{
-//                    print(object)
-//                }
-//            }
-//        }
-        
-        
         let query = PFQuery(className:"TaskToUser")
         query.whereKey("user", equalTo:user)
         query.includeKeys(["task"])

@@ -23,13 +23,16 @@ class GroupDetailsViewController: UIViewController, UITableViewDataSource, UITab
     @IBOutlet weak var groupnameLabel: UILabel!
     @IBOutlet weak var groupDetailTableView: UITableView!
     
+    var helper = ParseHelper()
     var usersTempArray:[PFUser] = []
     var userIds:[String] = []
     var userPics:[PFFileObject] = []
     var user_info:[PFObject] = []
+    var user_names : Array<String> = []
     var arr:[String] = []
     var group_title = ""
     var group_owner = ""
+    var group_ownerId = ""
     var count = 0
     
     
@@ -46,62 +49,21 @@ class GroupDetailsViewController: UIViewController, UITableViewDataSource, UITab
         
         // create variable for current user
         let user_current = PFUser.current()
+        
+        // hide Group Picture and Add Members button if user isn't group owner
+        if user_current?.objectId != group_ownerId {
+            changeImageButton.isHidden = true
+            addmembersButton.isHidden = true
+        }
+        
         groupnameLabel.text? = group_title
-        ownerLabel.text = group_owner
+        ownerLabel.text = group_owner.capitalized
         
         print("usersTempArray: ", usersTempArray)
         for user in usersTempArray {
             getPFUserInfo(user: user)
         }
-       // do {
-       //
-       //     let query = PFQuery(className: "Group") // query for group class
-
-       //     query.whereKey("objectId", equalTo: group_id) // search by group id
-       //     query.includeKey("users")
-       //     query.includeKey("owner")
-       //
-       //     // make array of user Id's
-       //
-       //     let lst = try query.getFirstObject()
-       //     // owner name
-       //     let ownerObj = lst["owner"] as! PFObject
- 
-       //     var name = "\(ownerObj["firstName"] as! String) \(ownerObj["lastName"] as! String)"
-       //     name = name.capitalized
-       //     ownerLabel.text = name
-       //     //owner name end
-       //     let arr = lst.object(forKey: "users")
-       //
-       //     let arr_data:NSArray = (arr as? NSArray)!
-       //
-       //     for i in 0...(arr_data.count-1) {
-       //         let user = arr_data[i] as! PFUser
-       //         userIds.append(user.objectId!)
-       //     }
-       //
-       //
-       // }
-       // catch {
-       //     // if list cant be found
-       //     print("error occured")
-       // }
-
-       // for id in userIds {
-       //     do {
-       //         // query for user
-       //         let query2 = PFQuery(className: "_User")
-       //         let user = try query2.getObjectWithId(id)
-       //
-       //         // get first and last name, and add to user_names array
-       //         let name = "\(user["firstName"] as! String) \(user["lastName"] as! String)"
-       //         user_names.append(name.capitalized)
-       //
-       //     }
-       //     catch {
-       //         // couldn't find user
-       //     }
-       // }
+       
     }
     
     @IBAction func onPressed(_ sender: Any) {
@@ -140,47 +102,18 @@ class GroupDetailsViewController: UIViewController, UITableViewDataSource, UITab
                     if self.userIds.contains(object.objectId!) {
                         print("object already in list")
                     } else {
-                        //let last_name = object["lastName"] as! String
-                        //let name = "\(first_name) \(last_name)"
-                        self.user_info.append(object)
+                        let last_name = object["lastName"] as! String
+                        let first_name = object["firstName"] as! String
+                        let name = "\(first_name) \(last_name)"
+                        self.userPics.append(object["profilePicture"] as! PFFileObject)
+                        self.user_names.append(name.capitalized)
                         self.userIds.append(object.objectId!)
-                        //self.userPics.append(object["profilePicture"] as! PFFileObject)
-                        
                     }
                 }
-                //print("user_dict: ",self.user_dict)
             }
         }
-    
-        
         self.groupDetailTableView.reloadData()
     }
-    
-   // func getPFUserInfo(users: [PFUser]) -> Void {
-   //     // need users name and profile image data
-   //
-   //     for user in users {
-   //         let query = PFQuery(className:"_User")
-   //         do {
-   //             let userQuery = try query.getObjectWithId(user.objectId!)
-   //             let first_name = userQuery["firstName"] as! String
-   //             let last_name = userQuery["lastName"] as! String
-   //             let name = "\(first_name) \(last_name)"
-   //             if userIds.contains(user.objectId!) {
-   //                 print("object already in list")
-   //             } else {
-   //                 user_names.append(name)
-   //                 users_pictures.append(userQuery["profilePicture"] as! PFFileObject)
-   //                 userIds.append(user.objectId!)
-   //             }
-   //         }
-   //         catch {
-   //             print("error occured")
-   //         }
-   //     }
-   //
-   //     self.groupDetailTableView.reloadData()
-   // }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
@@ -209,22 +142,39 @@ class GroupDetailsViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         for user in usersTempArray {
-            getPFUserInfo(user: user)
+            let query = PFQuery(className: "_User")
+            query.getObjectInBackground(withId: user.objectId!) { (objects:PFObject?, error:Error?) in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else if let objects = objects {
+                    self.getPFUserInfo(user: objects as! PFUser)
+                }
+            }
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return usersTempArray.count
+        return user_names.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        // let names = ["John Doe", "Jane Doe", "Timmy Turner", "Spongebob", "Jason Bourne"]
        // let random_num = Int.random(in: 0...4)
-       
         let cell = groupDetailTableView.dequeueReusableCell(withIdentifier: "GroupDetailViewCell") as! GroupDetailViewCell
-       print("user_info: ", user_info)
-        //cell.usernameLabel.text = user_names[indexPath.row]
+        cell.usernameLabel.text = user_names[indexPath.row]
+        
+        // get and set profile picture
+        let imgData = userPics[indexPath.row] 
+        imgData.getDataInBackground { (imgData:Data?, error:Error?) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let imgData = imgData {
+                let image = UIImage(data: imgData)
+                cell.profilePicture.image = image
+            }
+        }
         
         return cell
         
@@ -238,6 +188,9 @@ class GroupDetailsViewController: UIViewController, UITableViewDataSource, UITab
             //let name = user_names[indexpath.row]
             
             let destination = segue.destination as! UserInfoViewController
+            destination.name = user_names[indexpath.row]
+            destination.imageData = [userPics[indexpath.row]]
+            destination.groupOwnerId = group_ownerId
             //destination.name = name
             //destination.userId = userIds[indexpath.row]
         }

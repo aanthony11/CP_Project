@@ -173,6 +173,7 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
             detailController.usersTempArray = (groups[indexpath.row]["users"] as! Array<PFUser>)
            
             detailController.group_owner = name
+            detailController.group_ownerId = user.objectId as! String
             
             
         }

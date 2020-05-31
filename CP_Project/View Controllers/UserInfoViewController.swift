@@ -14,42 +14,38 @@ class UserInfoViewController: UIViewController {
     
     // data is passed from previous view controller
     var name = ""
-    var userId = ""
+    var imageData:[PFFileObject] = []
+    var groupOwnerId = ""
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var removeButton: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        removeButton.layer.cornerRadius = 15
+        
 
         // Change label to display user's name
         usernameLabel.text = name
         
+        // hide remove member button if user isn't group owner
+        if groupOwnerId != PFUser.current()?.objectId {
+            removeButton.isHidden = true
+        }
         
         // display user's profile picture
-        do {
-            
-            let userQuery = PFQuery(className: "_User")
-            let user = try userQuery.getObjectWithId(userId)
-            let profileImageData = user["profilePicture"] as! PFFileObject
-            profileImageData.getDataInBackground { (imageData:Data?, error:Error?) in
-                if let error = error {
-                    print(error.localizedDescription)
-                } else if let imageData = imageData {
-                    print("succesfully got image data :)")
-                    let image = UIImage(data: imageData)
-                    self.imageView.image = image
-                }
+        let imgData = imageData[0]
+        imgData.getDataInBackground { (imgData:Data?, error:Error?) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let imgData = imgData {
+                let image = UIImage(data: imgData)
+                self.imageView.image = image
             }
-            
-            
         }
-        catch {
-            // if error occured
-            print("error occured retrieving user data")
-        }
-        
     }
     
 
