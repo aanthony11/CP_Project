@@ -25,9 +25,9 @@ class UserInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // format remove members button
         removeButton.layer.cornerRadius = 15
         
-
         // Change label to display user's name
         usernameLabel.text = name
         

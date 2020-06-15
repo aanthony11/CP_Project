@@ -17,6 +17,13 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rst-Yf-yQh" customClass="FSCalendar">
                                 <rect key="frame" x="0.0" y="157" width="414" height="376"/>
+                                <subviews>
+                                    <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0bw-bc-cIe">
+                                        <rect key="frame" x="74" y="95" width="284" height="227"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -98,7 +105,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kld-Lj-wYX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-71" y="3173"/>
+            <point key="canvasLocation" x="-71.014492753623188" y="3172.7678571428569"/>
         </scene>
         <!--Shared Tasks-->
         <scene sceneID="1Ib-8r-517">
@@ -108,7 +115,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <userGuides>
-                            <userLayoutGuide location="384" affinity="minX"/>
+                            <userLayoutGuide location="385" affinity="minX"/>
                             <userLayoutGuide location="30" affinity="minX"/>
                         </userGuides>
                         <subviews>

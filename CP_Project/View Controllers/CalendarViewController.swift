@@ -10,7 +10,8 @@ import UIKit
 import Parse
 import FSCalendar
 
-class CalendarViewController: UIViewController,FSCalendarDataSource,FSCalendarDelegate, FSCalendarDelegateAppearance {
+class CalendarViewController: UIViewController,FSCalendarDataSource,FSCalendarDelegate, FSCalendarDelegateAppearance{
+    
 
     @IBOutlet weak var calendar: FSCalendar!
     
@@ -20,7 +21,8 @@ class CalendarViewController: UIViewController,FSCalendarDataSource,FSCalendarDe
     let borderDefaultColors = ["2020/04/21": UIColor.brown]
     let borderSelectionColors = ["2020/04/01": UIColor.red]
     let fillSelectionColors = ["2020/04/11": UIColor.green]
-    
+    let customAlert = MyAlert()
+
     var helper = ParseHelper()
     var currentUser = PFUser.current()
     var UsersTasks:[PFObject] = []
@@ -99,8 +101,19 @@ class CalendarViewController: UIViewController,FSCalendarDataSource,FSCalendarDe
     }
     */
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        // this function runs when a cell is tapped
+        
         let dateString = self.dateFormatter1.string(from: date)
+        
         //calendar.appearance.backgroundColors = UIColor.init(displayP3Red: 255, green: 140, blue: 105, alpha: 0.8)
+        
+        customAlert.showAlert(with: "Hello World", message: "yooooooo", on: self)
+        var newTableView: UITableView!
+        customAlert.setValue(newTableView, forKey: "accessoryView")
+        
+        func dismissAlert() {
+            customAlert.dismissAlert()
+        }
         
         print("\(dateString)")
     }
@@ -172,3 +185,140 @@ class CalendarViewController: UIViewController,FSCalendarDataSource,FSCalendarDe
     
 
 }
+
+class MyAlert: UIView, UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarTableCell") as! CalendarTableCell
+        cell.taskLabel.text = "here is the task that needs to be done"
+        
+        
+        return cell
+    }
+    
+    
+    struct Constants {
+        static let backgroundAlphaTo: CGFloat = 0.6
+    }
+    
+    private let backgrounudView: UIView = {
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = .black
+        backgroundView.alpha = 0
+        return backgroundView
+    }()
+    
+    private let alertView: UIView = {
+        let alert = UIView()
+        alert.backgroundColor = .white
+        alert.layer.masksToBounds = true
+        alert.layer.cornerRadius = 12
+        return alert
+    }()
+    
+    private var mytargetview: UIView?
+    
+    func showAlert(with title: String,
+                   message: String,
+                   on viewController: UIViewController) {
+        guard let targetView = viewController.view else {
+            return
+        }
+        
+        mytargetview = targetView
+        
+        backgrounudView.frame = targetView.bounds
+        
+        targetView.addSubview(backgrounudView)
+        
+        targetView.addSubview(alertView)
+        alertView.frame = CGRect(x: 40, y: -300, width: targetView.frame.size.width - 80, height: 300)
+        
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: alertView.frame.size.width, height: 80))
+        titleLabel.text = title
+        titleLabel.textAlignment = .center
+        alertView.addSubview(titleLabel)
+        
+       // let messageLabel = UILabel(frame: CGRect(x: 0, y: 80, width: alertView.frame.size.width, height: 170))
+       //
+       // messageLabel.numberOfLines = 0
+       // messageLabel.text = message
+       // messageLabel.textAlignment = .left
+       // alertView.addSubview(messageLabel)
+        
+        let tableView = UITableView()
+        alertView.addSubview(tableView)
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(CalendarTableCell.self, forCellReuseIdentifier: "CalendarTableCell")
+        
+        
+        // set delegates
+        
+        // set height
+        tableView.rowHeight = 50
+        // register cells
+        
+        //set constraints
+            
+            
+        
+        
+        let button = UIButton(frame: CGRect(x: 0, y: alertView.frame.size.height - 50, width: alertView.frame.size.width, height: 50))
+        button.setTitleColor(.orange, for: .normal)
+        button.setTitle("Dismiss", for: .normal)
+        button.addTarget(self, action: #selector(dismissAlert), for: .touchUpInside)
+        alertView.addSubview(button)
+        
+
+        UIView.animate(withDuration: 0.25, animations: {
+
+            self.backgrounudView.alpha = Constants.backgroundAlphaTo
+            
+
+        }, completion: { done in
+            if done {
+                UIView.animate(withDuration: 0.25, animations: {
+                    self.alertView.center = targetView.center
+                    
+                })
+            }
+        })
+        
+    }
+    
+    @objc func dismissAlert() {
+        UIView.animate(withDuration: 0.25, animations: {
+
+            guard let targetView = self.mytargetview else {
+                return
+            }
+            
+            
+            self.alertView.frame = CGRect(x: 40, y: targetView.frame.size.height, width: targetView.frame.size.width - 80, height: 300)
+
+
+        }, completion: { done in
+            if done {
+                UIView.animate(withDuration: 0.25, animations: {
+                    self.backgrounudView.alpha = 0
+                    
+                }, completion: {done in
+                    if done {
+                        self.alertView.removeFromSuperview()
+                        self.backgrounudView.removeFromSuperview()
+                    }
+                })
+            }
+        })
+    }
+    
+    
+}
+
+
+
