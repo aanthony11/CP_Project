@@ -1,22 +1,22 @@
 //
-//  TaskCell.swift
+//  NewCalendarTVC.swift
 //  CP_Project
 //
-//  Created by Adam Anderson on 4/15/20.
+//  Created by Austin Anthony on 6/27/20.
 //  Copyright © 2020 Manish Rajendran. All rights reserved.
 //
 
 import UIKit
 
-class TaskCell: UITableViewCell {
-    
-    @IBOutlet weak var taskLabel: UILabel!
+class NewCalendarTVC: UITableViewCell {
+
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var groupLabel: UILabel!
+    @IBOutlet weak var completeTaskImage: UIImageView!
+    @IBOutlet weak var taskLabel: UILabel!
     @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var groupLabel: UILabel!
     @IBOutlet weak var userLabel: UILabel!
-    @IBOutlet weak var taskdetailsButton: UIButton!
-    @IBOutlet weak var taskcompleteButton: UIButton!
+    @IBOutlet weak var taskDetailsImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,9 +25,8 @@ class TaskCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
+
         // Configure the view for the selected state
-        self.accessoryType = selected ? .checkmark : .none
     }
 
 }

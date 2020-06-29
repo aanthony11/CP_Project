@@ -16,19 +16,18 @@ protocol AddTaskProtocol {
 class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddTaskProtocol {
     
     //var pushCount : int = 0
-    
     var helper = ParseHelper()
     var groups : Array<PFObject> = []
     var groupIds : Array<String> = []
-    var tasks : Array<PFObject> = []
-    var taskIds : Array<String> = []
-    var count = 0
+    var tasks : Array<PFObject>  = []
+    var taskIds : Array<String>  = []
+    var name                     = ""
+    var userImg: UIImage?
+
+    //var count = 0
     
     @IBOutlet weak var tableView: UITableView!
-
-    
-    var currentUser = PFUser.current()
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,16 +36,17 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.delegate = self
                 
         
-        helper.getGroupsFromPFUser(user: PFUser.current()!) { (groups, error) in
-            for group in groups! {
-                if self.groupIds.contains(group.objectId!) {
-                    print("Group already in array")
-                } else {
-                    self.groups.append(group)
-                    self.groupIds.append(group.objectId!)
-                }
-            }
-        }
+       // helper.getGroupsFromPFUser(user: PFUser.current()!) { (groups, error) in
+       //     for group in groups! {
+       //         if self.groupIds.contains(group.objectId!) {
+       //             print("Group already in array")
+       //         } else {
+       //             self.groups.append(group)
+       //             self.groupIds.append(group.objectId!)
+       //         }
+       //     }
+       // }
+        print("XY: ", groups)
         
         
         getTasksFromPFUser(user: PFUser.current()!)
@@ -79,10 +79,40 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 // Do something with the found objects
                 for object in objects{
                     let group = object["group"] as! PFObject
-                    self.groups.append(group)
+                    if self.groupIds.contains(group.objectId!) {
+                        print("Group already in array")
+                    } else {
+                        self.groups.append(group)
+                        self.groupIds.append(group.objectId!)
+                    }
                 }
             }
         }
+    }
+    
+    func getUserInfo(userId: String) -> Void {
+        let query = PFQuery(className:"_User")
+        query.whereKey("objectId", equalTo: userId)
+        query.selectKeys(["lastName","firstName","profilePicture"])
+        query.findObjectsInBackground { (objects:[PFObject]?, error: Error?) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let objects = objects {
+                for object in objects {
+                    self.name = "\((object["firstName"]! as! String).capitalized) \((object["lastName"]! as! String).capitalized)"
+                    let imageData = object["profilePicture"] as? PFFileObject
+                    imageData?.getDataInBackground(block: { (imgData:Data?, error:Error?) in
+                        if let error = error {
+                            print(error.localizedDescription)
+                        } else if let imgData = imgData {
+                            self.userImg = UIImage(data: imgData)
+                        }
+                    })
+                    //self.userImg = UIImage(data: imgData as! Data)
+                }
+            }
+        }
+        
     }
     
     
@@ -139,16 +169,6 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @IBAction func onJoker(_ sender: Any) {
-//        print("\n____ PRINTING GROUPS ____\n", self.groups, "\n____ DONE PRINTING GROUPS ____\n")
-//        print("\n____ PRINTING TASKS ____\n", self.tasks, "\n____ DONE PRINTING TASK ____\n")
-        
-//        helper.getGroupsFromPFUser(user: PFUser.current()!) { (groups, error) in
-//            print(groups)
-//        }
-        
-//        PFUser.current()?.getGroups(completion: { (groups, error) in
-//            print(groups)
-//        })
         
         helper.getTasksFromPFUser(user: PFUser.current()!) { (tasks, error) in
             for task in tasks! {
@@ -162,31 +182,21 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.tableView.reloadData()
         }
         performSegue(withIdentifier: "calendarSegue", sender: self)
-        
-        	
-//
-//        let query = PFQuery(className:"UserToGroup")
-//        query.whereKey("user", equalTo:PFUser.current()!)
-//        query.includeKeys(["group"])
-//        query.selectKeys(["group"])
-//        query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
-//            if let error = error {
-//                // Log details of the failure
-//                print(error.localizedDescription)
-//            } else if let objects = objects {
-//                // The find succeeded.
-//                print("Successfully retrieved \(objects.count) objects.")
-//                // Do something with the found objects
-//                for object in objects{
-//                    let group = object["group"] as! PFObject
-//                    print(group)
-//                }
-//            }
-//        }
-        
-        
-        
-        
+    }
+    
+    @IBAction func newCalendar(_ sender: Any) {
+        helper.getTasksFromPFUser(user: PFUser.current()!) { (tasks, error) in
+            for task in tasks! {
+                if self.taskIds.contains(task.objectId!) {
+                    print("Task already in array")
+                } else {
+                    self.tasks.append(task)
+                    self.taskIds.append(task.objectId!)
+                }
+            }
+            self.tableView.reloadData()
+        }
+        performSegue(withIdentifier: "NewCalendarSegue", sender: self)
     }
     
     func didAddTask(task: PFObject) {
@@ -209,7 +219,6 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @IBAction func onLogout(_ sender: Any) {
-            
         PFUser.logOut()
         UserDefaults.standard.set(false, forKey: "UserLoggedIn")
 
@@ -222,13 +231,8 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
      override func viewWillAppear(_ animated: Bool) {
-//        if currentUser?["tasks"] != nil {
-//            tasks = currentUser!["tasks"] as! [String]
-//            self.tableView.reloadData()
-//        }
         getTasksFromPFUser(user: PFUser.current()!)
-
-
+        getGroupsFromPFUser(user: PFUser.current()!)
     }
     
 //    override func viewDidAppear(_ animated: Bool) {
@@ -244,12 +248,34 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell") as! TaskCell
         
-        if count == 0 {
-            print("tasks: ", tasks)
-        }
-        count += 1
+        let groupFind = tasks[indexPath.row]["group"] as! PFObject
+        let groupId = groupFind.objectId!
+        
+        let userOwner = tasks[indexPath.row]["creator"] as! PFObject
+        let userID = userOwner.objectId!
+        getUserInfo(userId: userID)
         
         cell.taskLabel.text = (tasks[indexPath.row]["title"] as! String)
+        
+        // change image to circle
+        cell.userImageView.layer.cornerRadius = cell.userImageView.frame.size.width / 2
+        cell.userImageView.layer.borderColor = UIColor.black.cgColor
+        cell.userImageView.layer.borderWidth = 1.6
+        cell.userImageView.clipsToBounds = true
+        cell.userImageView.image = userImg
+        
+        
+        for group in groups {
+            if group.objectId == groupId {
+                cell.groupLabel.text = group["name"] as! String
+            } else {
+                continue
+            }
+        }
+        
+        cell.userLabel.text = name
+        
+        //count += 1
         
         return cell
     }
@@ -277,6 +303,16 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
             let destination = segue.destination as! CalendarViewController
             destination.UsersTasks = cani
+        }
+        
+        if segue.identifier == "NewCalendarSegue" {
+            var cani:[PFObject] = []
+            for task in tasks {
+                cani.append(task)
+            }
+            let destination = segue.destination as! NewCalendarVC
+            destination.usersTasks = cani
+            destination.groups = self.groups
         }
     }
     

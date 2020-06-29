@@ -213,25 +213,8 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
 
     // pull to refresh data function
     @objc func loadGroups() {
-        
 
         table_data.removeAll()
-
-        
-        let current_user = PFUser.current()
-        do {
-            
-            let query3 = PFQuery(className: "_User")
-            query3.whereKey("objectId", equalTo: current_user?.objectId)
-            let usr_arr = try query3.getFirstObject()
-            
-            
-        }
-        catch {
-            //
-        }
-    
-        
         
         self.GroupTableView.reloadData()
         myRefreshControl.endRefreshing()

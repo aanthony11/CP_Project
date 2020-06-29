@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		006558AF24A7DB57008DACCA /* NewCalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006558AE24A7DB57008DACCA /* NewCalendarVC.swift */; };
+		006558B124A7E298008DACCA /* NewCalendarTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006558B024A7E298008DACCA /* NewCalendarTVC.swift */; };
 		008728FB2436C6F40075F1B2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008728FA2436C6F40075F1B2 /* LoginViewController.swift */; };
 		008728FD2436C7080075F1B2 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008728FC2436C7080075F1B2 /* SignupViewController.swift */; };
 		008729012436D13C0075F1B2 /* tasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008729002436D13C0075F1B2 /* tasksViewController.swift */; };
@@ -17,6 +19,8 @@
 		0096152A24554EF600426DC9 /* AddMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0096152924554EF600426DC9 /* AddMembersViewController.swift */; };
 		009615302455620400426DC9 /* GroupImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0096152F2455620300426DC9 /* GroupImageViewController.swift */; };
 		00961542245B584B00426DC9 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00961541245B584B00426DC9 /* CalendarViewController.swift */; };
+		009885C6249E898200DFCB96 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009885C5249E898200DFCB96 /* PopupViewController.swift */; };
+		009885CA249E8ACF00DFCB96 /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009885C9249E8ACF00DFCB96 /* DayCell.swift */; };
 		00E423372496E7EA00B30F6C /* CalendarTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E423362496E7EA00B30F6C /* CalendarTableCell.swift */; };
 		06A264EEE870F3E323A422BE /* Pods_CP_ProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B98EF21FED09002ABD6CB668 /* Pods_CP_ProjectTests.framework */; };
 		1323FFDD2450E2B40055DEFB /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1323FFDC2450E2B40055DEFB /* CreateGroupViewController.swift */; };
@@ -60,6 +64,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		006558AE24A7DB57008DACCA /* NewCalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCalendarVC.swift; sourceTree = "<group>"; };
+		006558B024A7E298008DACCA /* NewCalendarTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCalendarTVC.swift; sourceTree = "<group>"; };
 		008728FA2436C6F40075F1B2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		008728FC2436C7080075F1B2 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		008729002436D13C0075F1B2 /* tasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tasksViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +76,8 @@
 		0096152924554EF600426DC9 /* AddMembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMembersViewController.swift; sourceTree = "<group>"; };
 		0096152F2455620300426DC9 /* GroupImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupImageViewController.swift; sourceTree = "<group>"; };
 		00961541245B584B00426DC9 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		009885C5249E898200DFCB96 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
+		009885C9249E8ACF00DFCB96 /* DayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCell.swift; sourceTree = "<group>"; };
 		00E423362496E7EA00B30F6C /* CalendarTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableCell.swift; sourceTree = "<group>"; };
 		1323FFDC2450E2B40055DEFB /* CreateGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
 		132ACE83245154E100904D07 /* GroupDetailViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDetailViewCell.swift; sourceTree = "<group>"; };
@@ -147,7 +155,9 @@
 			children = (
 				00872908244800490075F1B2 /* GroupCell.swift */,
 				713C6DBE2447673C00954DC7 /* TaskCell.swift */,
+				006558B024A7E298008DACCA /* NewCalendarTVC.swift */,
 				13CBA083245655190031D013 /* AddMembersCell.swift */,
+				009885C9249E8ACF00DFCB96 /* DayCell.swift */,
 				132ACE83245154E100904D07 /* GroupDetailViewCell.swift */,
 				00E423362496E7EA00B30F6C /* CalendarTableCell.swift */,
 			);
@@ -173,6 +183,7 @@
 				7164B9E92447CBBB00F001DE /* GroupViewController.swift */,
 				13E73B52242C225F000DCA5E /* HomeViewController.swift */,
 				00961541245B584B00426DC9 /* CalendarViewController.swift */,
+				006558AE24A7DB57008DACCA /* NewCalendarVC.swift */,
 				008728FA2436C6F40075F1B2 /* LoginViewController.swift */,
 				1323FFDC2450E2B40055DEFB /* CreateGroupViewController.swift */,
 				008729062447F3580075F1B2 /* GroupDetailsViewController.swift */,
@@ -181,6 +192,7 @@
 				008728FC2436C7080075F1B2 /* SignupViewController.swift */,
 				713C6DBC2447672800954DC7 /* TasksViewController.swift */,
 				009615272455000400426DC9 /* UserInfoViewController.swift */,
+				009885C5249E898200DFCB96 /* PopupViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -506,12 +518,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				009885C6249E898200DFCB96 /* PopupViewController.swift in Sources */,
 				7164B9EA2447CBBB00F001DE /* GroupViewController.swift in Sources */,
 				13CBA0842456551A0031D013 /* AddMembersCell.swift in Sources */,
 				009615302455620400426DC9 /* GroupImageViewController.swift in Sources */,
+				009885CA249E8ACF00DFCB96 /* DayCell.swift in Sources */,
 				008728FB2436C6F40075F1B2 /* LoginViewController.swift in Sources */,
 				00961542245B584B00426DC9 /* CalendarViewController.swift in Sources */,
 				008729012436D13C0075F1B2 /* tasksViewController.swift in Sources */,
+				006558B124A7E298008DACCA /* NewCalendarTVC.swift in Sources */,
 				00872909244800490075F1B2 /* GroupCell.swift in Sources */,
 				7134F90F244F560800B3054E /* AddTaskViewController.swift in Sources */,
 				1323FFDD2450E2B40055DEFB /* CreateGroupViewController.swift in Sources */,
@@ -521,6 +536,7 @@
 				713C6DBF2447673C00954DC7 /* TaskCell.swift in Sources */,
 				7199FBAB2450B16A00FFE42F /* GroupSelectViewController.swift in Sources */,
 				0096152A24554EF600426DC9 /* AddMembersViewController.swift in Sources */,
+				006558AF24A7DB57008DACCA /* NewCalendarVC.swift in Sources */,
 				13E936AC24539ACE00BE3FD0 /* ParseHelper.swift in Sources */,
 				008729072447F3580075F1B2 /* GroupDetailsViewController.swift in Sources */,
 				008728FD2436C7080075F1B2 /* SignupViewController.swift in Sources */,
