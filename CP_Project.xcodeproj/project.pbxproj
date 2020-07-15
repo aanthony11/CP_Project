@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0000D10024AFC31900D11CED /* SubCalendarTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0000D0FF24AFC31900D11CED /* SubCalendarTVC.swift */; };
 		006558AF24A7DB57008DACCA /* NewCalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006558AE24A7DB57008DACCA /* NewCalendarVC.swift */; };
 		006558B124A7E298008DACCA /* NewCalendarTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006558B024A7E298008DACCA /* NewCalendarTVC.swift */; };
 		008728FB2436C6F40075F1B2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008728FA2436C6F40075F1B2 /* LoginViewController.swift */; };
@@ -15,6 +16,8 @@
 		008729032447D8E80075F1B2 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008729022447D8E80075F1B2 /* GroupsViewController.swift */; };
 		008729072447F3580075F1B2 /* GroupDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008729062447F3580075F1B2 /* GroupDetailsViewController.swift */; };
 		00872909244800490075F1B2 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00872908244800490075F1B2 /* GroupCell.swift */; };
+		0093956824BBE0E100A6743B /* OrderTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0093956724BBE0E100A6743B /* OrderTVC.swift */; };
+		0093956A24BBE37700A6743B /* OrderChangeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0093956924BBE37700A6743B /* OrderChangeVC.swift */; };
 		009615282455000400426DC9 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009615272455000400426DC9 /* UserInfoViewController.swift */; };
 		0096152A24554EF600426DC9 /* AddMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0096152924554EF600426DC9 /* AddMembersViewController.swift */; };
 		009615302455620400426DC9 /* GroupImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0096152F2455620300426DC9 /* GroupImageViewController.swift */; };
@@ -42,7 +45,6 @@
 		713C6DBD2447672800954DC7 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713C6DBC2447672800954DC7 /* TasksViewController.swift */; };
 		713C6DBF2447673C00954DC7 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713C6DBE2447673C00954DC7 /* TaskCell.swift */; };
 		7164B9EA2447CBBB00F001DE /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7164B9E92447CBBB00F001DE /* GroupViewController.swift */; };
-		7199FBAB2450B16A00FFE42F /* GroupSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7199FBAA2450B16A00FFE42F /* GroupSelectViewController.swift */; };
 		854C25EC5939906F85D822A4 /* Pods_CP_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 400AC7A499439A18AE1995CF /* Pods_CP_Project.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +66,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0000D0FF24AFC31900D11CED /* SubCalendarTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCalendarTVC.swift; sourceTree = "<group>"; };
 		006558AE24A7DB57008DACCA /* NewCalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCalendarVC.swift; sourceTree = "<group>"; };
 		006558B024A7E298008DACCA /* NewCalendarTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCalendarTVC.swift; sourceTree = "<group>"; };
 		008728FA2436C6F40075F1B2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +75,8 @@
 		008729022447D8E80075F1B2 /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		008729062447F3580075F1B2 /* GroupDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailsViewController.swift; sourceTree = "<group>"; };
 		00872908244800490075F1B2 /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
+		0093956724BBE0E100A6743B /* OrderTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTVC.swift; sourceTree = "<group>"; };
+		0093956924BBE37700A6743B /* OrderChangeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderChangeVC.swift; sourceTree = "<group>"; };
 		009615272455000400426DC9 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		0096152924554EF600426DC9 /* AddMembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMembersViewController.swift; sourceTree = "<group>"; };
 		0096152F2455620300426DC9 /* GroupImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupImageViewController.swift; sourceTree = "<group>"; };
@@ -109,7 +114,6 @@
 		713C6DBC2447672800954DC7 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		713C6DBE2447673C00954DC7 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		7164B9E92447CBBB00F001DE /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
-		7199FBAA2450B16A00FFE42F /* GroupSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSelectViewController.swift; sourceTree = "<group>"; };
 		73EE0363476DEAF743F1B7B8 /* Pods-CP_ProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CP_ProjectTests.release.xcconfig"; path = "Target Support Files/Pods-CP_ProjectTests/Pods-CP_ProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		B4FD44C0BB1FE971DCFFF90E /* Pods_CP_Project_CP_ProjectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CP_Project_CP_ProjectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B98EF21FED09002ABD6CB668 /* Pods_CP_ProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CP_ProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +147,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0093956224BBDBA100A6743B /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tasks;
+			sourceTree = "<group>";
+		};
+		0093956324BBDBDE00A6743B /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Groups;
+			sourceTree = "<group>";
+		};
+		0093956424BBDBF400A6743B /* Misc. */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Misc.;
+			sourceTree = "<group>";
+		};
 		13078DB12459150A0032C7B5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,7 +181,9 @@
 				00872908244800490075F1B2 /* GroupCell.swift */,
 				713C6DBE2447673C00954DC7 /* TaskCell.swift */,
 				006558B024A7E298008DACCA /* NewCalendarTVC.swift */,
+				0093956724BBE0E100A6743B /* OrderTVC.swift */,
 				13CBA083245655190031D013 /* AddMembersCell.swift */,
+				0000D0FF24AFC31900D11CED /* SubCalendarTVC.swift */,
 				009885C9249E8ACF00DFCB96 /* DayCell.swift */,
 				132ACE83245154E100904D07 /* GroupDetailViewCell.swift */,
 				00E423362496E7EA00B30F6C /* CalendarTableCell.swift */,
@@ -177,21 +204,24 @@
 		13078DB42459153E0032C7B5 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				713C6DBC2447672800954DC7 /* TasksViewController.swift */,
 				0096152924554EF600426DC9 /* AddMembersViewController.swift */,
-				7134F90E244F560800B3054E /* AddTaskViewController.swift */,
 				008729022447D8E80075F1B2 /* GroupsViewController.swift */,
-				7164B9E92447CBBB00F001DE /* GroupViewController.swift */,
-				13E73B52242C225F000DCA5E /* HomeViewController.swift */,
-				00961541245B584B00426DC9 /* CalendarViewController.swift */,
-				006558AE24A7DB57008DACCA /* NewCalendarVC.swift */,
-				008728FA2436C6F40075F1B2 /* LoginViewController.swift */,
+				0096152F2455620300426DC9 /* GroupImageViewController.swift */,
 				1323FFDC2450E2B40055DEFB /* CreateGroupViewController.swift */,
 				008729062447F3580075F1B2 /* GroupDetailsViewController.swift */,
-				0096152F2455620300426DC9 /* GroupImageViewController.swift */,
-				7199FBAA2450B16A00FFE42F /* GroupSelectViewController.swift */,
+				7134F90E244F560800B3054E /* AddTaskViewController.swift */,
+				006558AE24A7DB57008DACCA /* NewCalendarVC.swift */,
+				008728FA2436C6F40075F1B2 /* LoginViewController.swift */,
+				0093956924BBE37700A6743B /* OrderChangeVC.swift */,
 				008728FC2436C7080075F1B2 /* SignupViewController.swift */,
-				713C6DBC2447672800954DC7 /* TasksViewController.swift */,
 				009615272455000400426DC9 /* UserInfoViewController.swift */,
+				13E73B52242C225F000DCA5E /* HomeViewController.swift */,
+				0093956324BBDBDE00A6743B /* Groups */,
+				0093956224BBDBA100A6743B /* Tasks */,
+				0093956424BBDBF400A6743B /* Misc. */,
+				7164B9E92447CBBB00F001DE /* GroupViewController.swift */,
+				00961541245B584B00426DC9 /* CalendarViewController.swift */,
 				009885C5249E898200DFCB96 /* PopupViewController.swift */,
 			);
 			path = "View Controllers";
@@ -528,13 +558,13 @@
 				008729012436D13C0075F1B2 /* tasksViewController.swift in Sources */,
 				006558B124A7E298008DACCA /* NewCalendarTVC.swift in Sources */,
 				00872909244800490075F1B2 /* GroupCell.swift in Sources */,
+				0093956824BBE0E100A6743B /* OrderTVC.swift in Sources */,
 				7134F90F244F560800B3054E /* AddTaskViewController.swift in Sources */,
 				1323FFDD2450E2B40055DEFB /* CreateGroupViewController.swift in Sources */,
 				13E73B53242C225F000DCA5E /* HomeViewController.swift in Sources */,
 				1338A53D2459196D009C4B69 /* Extensions.swift in Sources */,
 				713C6DBD2447672800954DC7 /* TasksViewController.swift in Sources */,
 				713C6DBF2447673C00954DC7 /* TaskCell.swift in Sources */,
-				7199FBAB2450B16A00FFE42F /* GroupSelectViewController.swift in Sources */,
 				0096152A24554EF600426DC9 /* AddMembersViewController.swift in Sources */,
 				006558AF24A7DB57008DACCA /* NewCalendarVC.swift in Sources */,
 				13E936AC24539ACE00BE3FD0 /* ParseHelper.swift in Sources */,
@@ -543,9 +573,11 @@
 				009615282455000400426DC9 /* UserInfoViewController.swift in Sources */,
 				13E73B4F242C225F000DCA5E /* AppDelegate.swift in Sources */,
 				00E423372496E7EA00B30F6C /* CalendarTableCell.swift in Sources */,
+				0000D10024AFC31900D11CED /* SubCalendarTVC.swift in Sources */,
 				13E73B51242C225F000DCA5E /* SceneDelegate.swift in Sources */,
 				008729032447D8E80075F1B2 /* GroupsViewController.swift in Sources */,
 				132ACE84245154E100904D07 /* GroupDetailViewCell.swift in Sources */,
+				0093956A24BBE37700A6743B /* OrderChangeVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

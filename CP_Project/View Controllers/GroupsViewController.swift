@@ -190,6 +190,10 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("groups: ", groups)
+        let group = groups[indexPath.row]
+        let user = group["owner"] as! PFUser
+        print("userGuy: ", user)
+        
         
         // image of group, user may choose group image
         let imageData = (groups[indexPath.row]["groupPicture"] as! PFFileObject) // get image data of group

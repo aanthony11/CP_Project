@@ -7,6 +7,12 @@
 //
 
 import UIKit
+import Parse
+
+protocol TaskCellDelegate {
+    func didTapCompleteTask(tag: Int, groupId: String)
+}
+
 
 class TaskCell: UITableViewCell {
     
@@ -17,6 +23,9 @@ class TaskCell: UITableViewCell {
     @IBOutlet weak var userLabel: UILabel!
     @IBOutlet weak var taskdetailsButton: UIButton!
     @IBOutlet weak var taskcompleteButton: UIButton!
+    
+    var delegate: TaskCellDelegate?
+    var groupId = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,4 +39,7 @@ class TaskCell: UITableViewCell {
         self.accessoryType = selected ? .checkmark : .none
     }
 
+    @IBAction func buttonClicked(_ sender: Any) {
+        delegate?.didTapCompleteTask(tag: self.tag, groupId: groupId)
+    }
 }

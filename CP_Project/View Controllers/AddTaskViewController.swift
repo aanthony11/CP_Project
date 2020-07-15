@@ -19,19 +19,23 @@ class AddTaskViewController: UITableViewController, UIPickerViewDelegate, UIPick
     private var datePicker: UIDatePicker?
     
     var groupsFromTaskVC = [PFObject]()
-    var groups = [String]()
+    var group = PFObject(className: "Group")
+    var groupId = ""
+    var userData = [String:String]()
     var selectedGroupIndex : Int = 0
     var currentUser = PFUser.current()
     var delegate: AddTaskProtocol!
+    var newTask = PFObject(className: "Task")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("dicitonary: ", userData)
         taskTextField.becomeFirstResponder()
         
         groupPicker.delegate = self
         groupPicker.dataSource = self
         
-        self.groups = ["Mace", "Anakin", "Luke", "Obi-Wan"]
         self.groupPicker.reloadAllComponents()
 
         // Setting up date picker
@@ -81,12 +85,15 @@ class AddTaskViewController: UITableViewController, UIPickerViewDelegate, UIPick
         task["dutyIndex"] = 0
         task["dateDue"] = dateField.text
         
+        self.newTask = task
+        self.groupId = groupsFromTaskVC[self.selectedGroupIndex].objectId!
 
         //taskToUser.saveInBackground()
         // and show a loading animation to the user while it saves or use delegate...
                 
-        delegate.didAddTask(task: task);
-        self.dismiss(animated: true, completion: nil)
+        //delegate.didAddTask(task: task);
+        //self.dismiss(animated: true, completion: nil)
+        
        
         
 //        let taskTitle = taskTextField.text
@@ -208,14 +215,35 @@ class AddTaskViewController: UITableViewController, UIPickerViewDelegate, UIPick
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "OrderSegue" {
+            let task = PFObject(className: "Task")
+            task["title"] = taskTextField.text
+            task["creator"] = PFUser.current()
+            task["group"] = groupsFromTaskVC[self.selectedGroupIndex]
+            task["dutyIndex"] = 0
+            task["dateDue"] = dateField.text
+            self.newTask = task
+            self.groupId = groupsFromTaskVC[self.selectedGroupIndex].objectId!
+            
+            let destination = segue.destination as! OrderChangeVC
+            destination.task = self.newTask
+            let newUsers = self.userData
+            print("groupId", groupId)
+            destination.userData = self.userData
+            destination.groups = self.groupsFromTaskVC
+            destination.groupId = groupId
+            destination.delegate = delegate
+        }
     }
-    */
+    
+    
 
 }

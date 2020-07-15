@@ -22,27 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                        configuration.server = "https://arcane-river-31190.herokuapp.com/parse"
                    })
         )
-        
-        // Testing if Parse is working by adding a user to the table
-      //  let user = PFUser()
-      //  user.username = "jamie@cse.msu.edu"
-      //  user.password = "stronkPassword"
-      //
-      //  user["firstName"] = "Jamie"
-      //  user["lastName"] = "Doe"
-      //
-      //  user.signUpInBackground { (success, error) in
-      //      if success {
-      //          print("Jackie was added to User table!")
-      //      } else {
-      //          print("Error: \(error?.localizedDescription)")
-      //      }
-      //  }
-        
-        
-        
-        
-        
+
         return true
     }
 
